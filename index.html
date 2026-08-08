@@ -1,1463 +1,1621 @@
 <!DOCTYPE html>
-  <html lang="zh-Hant">
+<html lang="zh-Hant">
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>數學冒險島｜國一代數與數論探索</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>數學冒險島｜國一代數與數論探索</title>
   <style>
-  :root{
-    --bg-1:#151233;
-  --bg-2:#1d1a45;
-  --panel:#242058;
-  --panel-2:#2b276b;
-  --panel-light:#33308a;
-  --border:#4a45a3;
-  --text:#f1efff;
-      --text-dim:#b8b3e8;
-      --accent-teal:#2dd4bf;
-  --accent-amber:#fbbf24;
-      --accent-coral:#fb7185;
-      --accent-purple:#a78bfa;
-      --accent-green:#4ade80;
-  --accent-red:#f87171;
-      --radius:16px;
-  --shadow: 0 8px 24px rgba(0,0,0,0.35);
-}
-*{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
-  background: radial-gradient(circle at 20% 0%, #2a2570 0%, var(--bg-1) 55%) fixed;
-  color:var(--text);
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
-#app{max-width:980px;margin:0 auto;padding:0 16px 80px;}
-a{color:inherit;}
-button{font-family:inherit;cursor:pointer;}
-.hidden{display:none !important;}
+    :root{
+        --bg-1:#151233;
+        --bg-2:#1d1a45;
+        --panel:#242058;
+        --panel-2:#2b276b;
+        --panel-light:#33308a;
+        --border:#4a45a3;
+        --text:#f1efff;
+        --text-dim:#b8b3e8;
+        --accent-teal:#2dd4bf;
+        --accent-amber:#fbbf24;
+        --accent-coral:#fb7185;
+        --accent-purple:#a78bfa;
+        --accent-green:#4ade80;
+        --accent-red:#f87171;
+        --radius:16px;
+        --shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+    body{
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
+        background: radial-gradient(circle at 20% 0%, #2a2570 0%, var(--bg-1) 55%) fixed;
+        color:var(--text);
+        min-height:100vh;
+        -webkit-font-smoothing:antialiased;
+    }
+    #app{max-width:980px;margin:0 auto;padding:0 16px 80px;}
+    a{color:inherit;}
+    button{font-family:inherit;cursor:pointer;}
+    .hidden{display:none !important;}
 
-/* ---------- Header ---------- */
-header.topbar{
-  position:sticky;top:0;z-index:50;
-  background:linear-gradient(135deg,#201c52,#2a2570);
-  border-bottom:1px solid var(--border);
-  padding:10px 16px;
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  box-shadow:var(--shadow);
-}
-.topbar .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.05rem;letter-spacing:.5px;cursor:pointer;flex-shrink:0;}
-.topbar .brand .logo-emoji{font-size:1.4rem;}
-  .topbar .spacer{flex:1;}
-  .stat-pill{
-      display:flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:5px 12px;
-  font-size:.82rem;font-weight:700;white-space:nowrap;
-}
-.level-badge{
-    background:linear-gradient(135deg,var(--accent-purple),#7c3aed);
-  border-radius:999px;width:30px;height:30px;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:.78rem;flex-shrink:0;
-  box-shadow:0 0 0 2px rgba(167,139,250,.35);
-}
-.xp-bar-wrap{width:110px;height:8px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;flex-shrink:0;}
-.xp-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent-teal),var(--accent-purple));border-radius:999px;transition:width .4s ease;}
-.streak-pill{color:var(--accent-amber);}
-.streak-pill.hot{animation:pulseHot 1s infinite;}
-@keyframes pulseHot{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
-.icon-btn{
-    background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:10px;
-  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;color:var(--text);flex-shrink:0;
-  }
-.icon-btn:hover{background:rgba(255,255,255,.14);}
+    /* ---------- Header ---------- */
+    header.topbar{
+        position:sticky;top:0;z-index:50;
+        background:linear-gradient(135deg,#201c52,#2a2570);
+        border-bottom:1px solid var(--border);
+        padding:10px 16px;
+        display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+        box-shadow:var(--shadow);
+    }
+    .topbar .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.05rem;letter-spacing:.5px;cursor:pointer;flex-shrink:0;}
+    .topbar .brand .logo-emoji{font-size:1.4rem;}
+    .topbar .spacer{flex:1;}
+    .stat-pill{
+        display:flex;align-items:center;gap:6px;
+        background:rgba(255,255,255,.06);
+        border:1px solid var(--border);
+        border-radius:999px;
+        padding:5px 12px;
+        font-size:.82rem;font-weight:700;white-space:nowrap;
+    }
+    .level-badge{
+        background:linear-gradient(135deg,var(--accent-purple),#7c3aed);
+        border-radius:999px;width:30px;height:30px;
+        display:flex;align-items:center;justify-content:center;
+        font-weight:800;font-size:.78rem;flex-shrink:0;
+        box-shadow:0 0 0 2px rgba(167,139,250,.35);
+    }
+    .xp-bar-wrap{width:110px;height:8px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;flex-shrink:0;}
+    .xp-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent-teal),var(--accent-purple));border-radius:999px;transition:width .4s ease;}
+    .streak-pill{color:var(--accent-amber);}
+    .streak-pill.hot{animation:pulseHot 1s infinite;}
+    @keyframes pulseHot{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+    .icon-btn{
+        background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:10px;
+        width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+        font-size:1.1rem;color:var(--text);flex-shrink:0;
+    }
+    .icon-btn:hover{background:rgba(255,255,255,.14);}
 
-/* ---------- Layout / Cards ---------- */
-  .screen{padding-top:20px;animation:fadeIn .35s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-  h1.page-title{font-size:1.5rem;margin:6px 0 4px;}
-p.page-sub{color:var(--text-dim);margin:0 0 20px;font-size:.95rem;}
+    /* ---------- Layout / Cards ---------- */
+    .screen{padding-top:20px;animation:fadeIn .35s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+    h1.page-title{font-size:1.5rem;margin:6px 0 4px;}
+    p.page-sub{color:var(--text-dim);margin:0 0 20px;font-size:.95rem;}
 
-.unit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-  @media (max-width:680px){.unit-grid{grid-template-columns:1fr;}}
-.unit-card{
-    background:linear-gradient(160deg,var(--panel),var(--panel-2));
-  border:1px solid var(--border);border-radius:var(--radius);
-  padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden;
-    transition:transform .15s ease;
-}
-  .unit-card:not(.locked):hover{transform:translateY(-3px);}
-.unit-card.locked{opacity:.55;filter:grayscale(.4);}
+    .unit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+    @media (max-width:680px){.unit-grid{grid-template-columns:1fr;}}
+    .unit-card{
+        background:linear-gradient(160deg,var(--panel),var(--panel-2));
+        border:1px solid var(--border);border-radius:var(--radius);
+        padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+        transition:transform .15s ease;
+    }
+    .unit-card:not(.locked):hover{transform:translateY(-3px);}
+    .unit-card.locked{opacity:.55;filter:grayscale(.4);}
     .unit-card .unit-icon{font-size:2.2rem;}
-.unit-card h3{margin:10px 0 4px;font-size:1.15rem;}
-.unit-card p{color:var(--text-dim);font-size:.87rem;margin:0 0 14px;line-height:1.5;}
-.progress-track{height:10px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-bottom:8px;}
-  .progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent-teal),var(--accent-green));transition:width .4s ease;}
-.unit-meta{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text-dim);}
-.stars{color:var(--accent-amber);letter-spacing:2px;font-size:.9rem;}
-.unit-cta{
-    margin-top:14px;display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,var(--accent-teal),#0ea5a5);
-  color:#062a28;font-weight:800;border:none;border-radius:10px;
-  padding:9px 16px;font-size:.88rem;
-}
-.unit-cta:hover{filter:brightness(1.08);}
-.lock-overlay{position:absolute;top:14px;right:14px;font-size:1.3rem;}
+    .unit-card h3{margin:10px 0 4px;font-size:1.15rem;}
+    .unit-card p{color:var(--text-dim);font-size:.87rem;margin:0 0 14px;line-height:1.5;}
+    .progress-track{height:10px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-bottom:8px;}
+    .progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent-teal),var(--accent-green));transition:width .4s ease;}
+    .unit-meta{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text-dim);}
+    .stars{color:var(--accent-amber);letter-spacing:2px;font-size:.9rem;}
+    .unit-cta{
+        margin-top:14px;display:inline-flex;align-items:center;gap:6px;
+        background:linear-gradient(135deg,var(--accent-teal),#0ea5a5);
+        color:#062a28;font-weight:800;border:none;border-radius:10px;
+        padding:9px 16px;font-size:.88rem;
+    }
+    .unit-cta:hover{filter:brightness(1.08);}
+    .lock-overlay{position:absolute;top:14px;right:14px;font-size:1.3rem;}
 
-.badges-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
-.badge-chip{
-    display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);
-  border:1px solid var(--border);border-radius:999px;padding:6px 12px;font-size:.8rem;color:var(--text-dim);
-}
-.badge-chip.earned{color:var(--text);border-color:var(--accent-amber);background:rgba(251,191,36,.08);}
+    .badges-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+    .badge-chip{
+        display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);
+        border:1px solid var(--border);border-radius:999px;padding:6px 12px;font-size:.8rem;color:var(--text-dim);
+    }
+    .badge-chip.earned{color:var(--text);border-color:var(--accent-amber);background:rgba(251,191,36,.08);}
 
-/* ---------- Unit flow ---------- */
-.unit-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
-.back-btn{
-    background:none;border:1px solid var(--border);color:var(--text-dim);
-  border-radius:8px;padding:6px 10px;font-size:.82rem;
-}
-.back-btn:hover{color:var(--text);}
-.phase-stepper{display:flex;gap:6px;margin:14px 0 22px;flex-wrap:wrap;}
-.phase-dot{
-    flex:1;min-width:60px;text-align:center;padding:8px 4px;border-radius:10px;
-  font-size:.72rem;font-weight:700;background:rgba(255,255,255,.05);
-  color:var(--text-dim);border:1px solid transparent;
-}
-.phase-dot.active{background:rgba(45,212,191,.15);color:var(--accent-teal);border-color:var(--accent-teal);}
-.phase-dot.done{color:var(--accent-green);}
+    /* ---------- Unit flow ---------- */
+    .unit-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+    .back-btn{
+        background:none;border:1px solid var(--border);color:var(--text-dim);
+        border-radius:8px;padding:6px 10px;font-size:.82rem;
+    }
+    .back-btn:hover{color:var(--text);}
+    .phase-stepper{display:flex;gap:6px;margin:14px 0 22px;flex-wrap:wrap;}
+    .phase-dot{
+        flex:1;min-width:60px;text-align:center;padding:8px 4px;border-radius:10px;
+        font-size:.72rem;font-weight:700;background:rgba(255,255,255,.05);
+        color:var(--text-dim);border:1px solid transparent;
+    }
+    .phase-dot.active{background:rgba(45,212,191,.15);color:var(--accent-teal);border-color:var(--accent-teal);}
+    .phase-dot.done{color:var(--accent-green);}
 
-.card{
-    background:linear-gradient(160deg,var(--panel),var(--panel-2));
-  border:1px solid var(--border);border-radius:var(--radius);
-  padding:22px;box-shadow:var(--shadow);margin-bottom:18px;
-}
-.tag{
-    display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.5px;
-  padding:4px 10px;border-radius:999px;margin-bottom:12px;
-}
-.tag.hook{background:rgba(251,113,133,.15);color:var(--accent-coral);}
-.tag.discovery{background:rgba(45,212,191,.15);color:var(--accent-teal);}
-.tag.formalize{background:rgba(167,139,250,.15);color:var(--accent-purple);}
-.tag.practice{background:rgba(251,191,36,.15);color:var(--accent-amber);}
-.tag.boss{background:rgba(248,113,113,.18);color:var(--accent-red);}
+    .card{
+        background:linear-gradient(160deg,var(--panel),var(--panel-2));
+        border:1px solid var(--border);border-radius:var(--radius);
+        padding:22px;box-shadow:var(--shadow);margin-bottom:18px;
+    }
+    .tag{
+        display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.5px;
+        padding:4px 10px;border-radius:999px;margin-bottom:12px;
+    }
+    .tag.hook{background:rgba(251,113,133,.15);color:var(--accent-coral);}
+    .tag.discovery{background:rgba(45,212,191,.15);color:var(--accent-teal);}
+    .tag.formalize{background:rgba(167,139,250,.15);color:var(--accent-purple);}
+    .tag.practice{background:rgba(251,191,36,.15);color:var(--accent-amber);}
+    .tag.boss{background:rgba(248,113,113,.18);color:var(--accent-red);}
 
-.prompt-text{font-size:1.08rem;line-height:1.75;margin-bottom:16px;}
-.prompt-text b{color:var(--accent-amber);}
-.helper-note{font-size:.82rem;color:var(--text-dim);margin:-8px 0 14px;}
+    .prompt-text{font-size:1.08rem;line-height:1.75;margin-bottom:16px;}
+    .prompt-text b{color:var(--accent-amber);}
+    .helper-note{font-size:.82rem;color:var(--text-dim);margin:-8px 0 14px;}
+    .answer-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+    input[type=text],input[type=number]{
+        background:rgba(0,0,0,.25);border:1.5px solid var(--border);border-radius:10px;
+        color:var(--text);padding:10px 14px;font-size:1rem;min-width:0;flex:1;max-width:280px;
+    }
+    input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--accent-teal);}
+    .btn{
+        border:none;border-radius:10px;padding:10px 18px;font-weight:800;font-size:.9rem;
+        background:linear-gradient(135deg,var(--accent-teal),#0ea5a5);color:#062a28;
+    }
+    .btn:hover{filter:brightness(1.08);}
+    .btn:disabled{opacity:.4;cursor:not-allowed;filter:none;}
+    .btn.secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--border);}
+    .btn.ghost{background:transparent;color:var(--accent-teal);border:1px solid var(--accent-teal);}
+    .btn.warn{background:linear-gradient(135deg,var(--accent-coral),#e11d48);color:#3a0512;}
+    .mc-options{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
+    .mc-btn{
+        text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--border);
+        border-radius:12px;padding:12px 16px;color:var(--text);font-size:.95rem;
+    }
+    .mc-btn:hover{border-color:var(--accent-teal);}
+    .mc-btn.selected{border-color:var(--accent-purple);background:rgba(167,139,250,.12);}
+    .mc-btn.correct{border-color:var(--accent-green);background:rgba(74,222,128,.14);}
+    .mc-btn.wrong{border-color:var(--accent-red);background:rgba(248,113,113,.14);}
 
-.answer-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
-input[type=text],input[type=number]{
-  background:rgba(0,0,0,.25);border:1.5px solid var(--border);border-radius:10px;
-  color:var(--text);padding:10px 14px;font-size:1rem;min-width:0;flex:1;max-width:280px;
-}
-input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--accent-teal);}
-.btn{
-    border:none;border-radius:10px;padding:10px 18px;font-weight:800;font-size:.9rem;
-  background:linear-gradient(135deg,var(--accent-teal),#0ea5a5);color:#062a28;
-}
-.btn:hover{filter:brightness(1.08);}
-.btn:disabled{opacity:.4;cursor:not-allowed;filter:none;}
-.btn.secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--border);}
-.btn.ghost{background:transparent;color:var(--accent-teal);border:1px solid var(--accent-teal);}
-.btn.warn{background:linear-gradient(135deg,var(--accent-coral),#e11d48);color:#3a0512;}
-.mc-options{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
-.mc-btn{
-    text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--border);
-  border-radius:12px;padding:12px 16px;color:var(--text);font-size:.95rem;
-}
-.mc-btn:hover{border-color:var(--accent-teal);}
-.mc-btn.selected{border-color:var(--accent-purple);background:rgba(167,139,250,.12);}
-.mc-btn.correct{border-color:var(--accent-green);background:rgba(74,222,128,.14);}
-.mc-btn.wrong{border-color:var(--accent-red);background:rgba(248,113,113,.14);}
+    .feedback{
+        margin-top:12px;padding:12px 16px;border-radius:12px;font-size:.9rem;line-height:1.6;
+        animation:fadeIn .25s ease;
+    }
+    .feedback.correct{background:rgba(74,222,128,.12);border:1px solid var(--accent-green);color:#c9f7d5;}
+    .feedback.wrong{background:rgba(248,113,113,.1);border:1px solid var(--accent-red);color:#ffd7d5;}
+    .feedback.info{background:rgba(167,139,250,.1);border:1px solid var(--accent-purple);color:#e5deff;}
 
-.feedback{
-    margin-top:12px;padding:12px 16px;border-radius:12px;font-size:.9rem;line-height:1.6;
-  animation:fadeIn .25s ease;
-}
-.feedback.correct{background:rgba(74,222,128,.12);border:1px solid var(--accent-green);color:#c9f7d5;}
-.feedback.wrong{background:rgba(248,113,113,.1);border:1px solid var(--accent-red);color:#ffd7d5;}
-.feedback.info{background:rgba(167,139,250,.1);border:1px solid var(--accent-purple);color:#e5deff;}
+    .hint-zone{margin-top:14px;}
+    .hint-btn{
+        background:rgba(251,191,36,.1);border:1px dashed var(--accent-amber);color:var(--accent-amber);
+        border-radius:10px;padding:8px 14px;font-size:.82rem;margin:4px 6px 0 0;
+    }
+    .hint-btn:hover{background:rgba(251,191,36,.2);}
+    .hint-btn:disabled{opacity:.35;}
+    .hint-box{
+        background:rgba(255,255,255,.05);border-left:3px solid var(--accent-amber);
+        padding:10px 14px;border-radius:8px;margin-top:8px;font-size:.86rem;color:var(--text-dim);
+    }
 
-.hint-zone{margin-top:14px;}
-.hint-btn{
-    background:rgba(251,191,36,.1);border:1px dashed var(--accent-amber);color:var(--accent-amber);
-  border-radius:10px;padding:8px 14px;font-size:.82rem;margin:4px 6px 0 0;
-               }
-.hint-btn:hover{background:rgba(251,191,36,.2);}
-.hint-btn:disabled{opacity:.35;}
-.hint-box{
-    background:rgba(255,255,255,.05);border-left:3px solid var(--accent-amber);
-  padding:10px 14px;border-radius:8px;margin-top:8px;font-size:.86rem;color:var(--text-dim);
-                 }
+    .step-progress-label{font-size:.78rem;color:var(--text-dim);margin-bottom:10px;}
+    .formalize-block h4{color:var(--accent-purple);margin:18px 0 6px;font-size:1rem;}
+    .formalize-block h4:first-child{margin-top:0;}
+    .formula-box{
+        background:rgba(0,0,0,.25);border:1px solid var(--accent-purple);border-radius:12px;
+        padding:14px 18px;font-size:1.1rem;text-align:center;margin:10px 0;color:var(--accent-purple);font-weight:800;
+    }
 
-.step-progress-label{font-size:.78rem;color:var(--text-dim);margin-bottom:10px;}
-.formalize-block h4{color:var(--accent-purple);margin:18px 0 6px;font-size:1rem;}
-.formalize-block h4:first-child{margin-top:0;}
-.formula-box{
-  background:rgba(0,0,0,.25);border:1px solid var(--accent-purple);border-radius:12px;
-  padding:14px 18px;font-size:1.1rem;text-align:center;margin:10px 0;color:var(--accent-purple);font-weight:800;
-}
+    /* ---------- Sieve grid ---------- */
+    .sieve-wrap{margin-top:10px;}
+    .sieve-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--text-dim);margin-bottom:12px;}
+    .sieve-legend span{display:inline-flex;align-items:center;gap:5px;}
+    .legend-dot{width:14px;height:14px;border-radius:50%;display:inline-block;}
+    .legend-dot.prime{background:var(--accent-green);}
+    .legend-dot.comp{background:var(--accent-red);}
+    .legend-dot.unset{background:rgba(255,255,255,.2);}
+    .sieve-grid{
+        display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px;margin-bottom:14px;
+    }
+    .sieve-cell{
+        aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+        background:rgba(255,255,255,.06);border:1.5px solid var(--border);border-radius:8px;
+        font-size:.82rem;font-weight:700;color:var(--text);position:relative;
+    }
+    .sieve-cell.prime{background:rgba(74,222,128,.18);border-color:var(--accent-green);color:#c9f7d5;}
+    .sieve-cell.comp{background:rgba(248,113,113,.12);border-color:var(--accent-red);color:#ffd7d5;text-decoration:line-through;}
+    .sieve-cell.pulse-wrong{animation:shakeWrong .4s ease;}
+    .sieve-cell.pulse-right{animation:popRight .4s ease;}
+    @keyframes shakeWrong{0%,100%{transform:translateX(0);}25%{transform:translateX(-3px);}75%{transform:translateX(3px);}}
+    @keyframes popRight{0%{transform:scale(1);}50%{transform:scale(1.15);}100%{transform:scale(1);}}
+    .sieve-status{font-size:.85rem;color:var(--text-dim);margin-bottom:10px;}
+    .pulse-attn{animation:pulseAttn 1s ease-in-out 3;box-shadow:0 0 0 3px rgba(251,191,36,.6);}
+    @keyframes pulseAttn{0%,100%{transform:scale(1);filter:brightness(1);}50%{transform:scale(1.08);filter:brightness(1.25);}}
 
-/* ---------- Sieve grid ---------- */
-.sieve-wrap{margin-top:10px;}
-  .sieve-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--text-dim);margin-bottom:12px;}
-.sieve-legend span{display:inline-flex;align-items:center;gap:5px;}
-.legend-dot{width:14px;height:14px;border-radius:50%;display:inline-block;}
-.legend-dot.prime{background:var(--accent-green);}
-.legend-dot.comp{background:var(--accent-red);}
-.legend-dot.unset{background:rgba(255,255,255,.2);}
-.sieve-grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px;margin-bottom:14px;
-                                                                         }
-.sieve-cell{
-    aspect-ratio:1;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.06);border:1.5px solid var(--border);border-radius:8px;
-  font-size:.82rem;font-weight:700;color:var(--text);position:relative;
-}
-.sieve-cell.prime{background:rgba(74,222,128,.18);border-color:var(--accent-green);color:#c9f7d5;}
-.sieve-cell.comp{background:rgba(248,113,113,.12);border-color:var(--accent-red);color:#ffd7d5;text-decoration:line-through;}
-.sieve-cell.pulse-wrong{animation:shakeWrong .4s ease;}
-.sieve-cell.pulse-right{animation:popRight .4s ease;}
-@keyframes shakeWrong{0%,100%{transform:translateX(0);}25%{transform:translateX(-3px);}75%{transform:translateX(3px);}}
-@keyframes popRight{0%{transform:scale(1);}50%{transform:scale(1.15);}100%{transform:scale(1);}}
-.sieve-status{font-size:.85rem;color:var(--text-dim);margin-bottom:10px;}
+    /* ---------- Boss ---------- */
+    .boss-frame{
+        border:2px solid var(--accent-red);border-radius:var(--radius);
+        background:radial-gradient(circle at 30% 0%,rgba(248,113,113,.12),transparent 60%),linear-gradient(160deg,var(--panel),var(--panel-2));
+        padding:24px;
+    }
+    .boss-title{font-size:1.3rem;font-weight:900;color:var(--accent-red);display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+    .boss-part{border-top:1px dashed var(--border);padding-top:16px;margin-top:16px;}
+    .boss-part:first-of-type{border-top:none;margin-top:0;}
+    .boss-part-label{font-size:.8rem;color:var(--accent-amber);font-weight:800;margin-bottom:6px;}
+    /* ---------- Practice question index chips ---------- */
+    .qchip-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+    .qchip{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+             font-size:.72rem;font-weight:800;background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text-dim);}
+    .qchip.correct{background:rgba(74,222,128,.2);border-color:var(--accent-green);color:#c9f7d5;}
+    .qchip.current{border-color:var(--accent-teal);color:var(--accent-teal);}
 
-/* ---------- Boss ---------- */
-.boss-frame{
-    border:2px solid var(--accent-red);border-radius:var(--radius);
-  background:radial-gradient(circle at 30% 0%,rgba(248,113,113,.12),transparent 60%),linear-gradient(160deg,var(--panel),var(--panel-2));
-  padding:24px;
-}
-.boss-title{font-size:1.3rem;font-weight:900;color:var(--accent-red);display:flex;align-items:center;gap:8px;margin-bottom:6px;}
-.boss-part{border-top:1px dashed var(--border);padding-top:16px;margin-top:16px;}
-.boss-part:first-of-type{border-top:none;margin-top:0;}
-.boss-part-label{font-size:.8rem;color:var(--accent-amber);font-weight:800;margin-bottom:6px;}
+    /* ---------- Toast ---------- */
+    #toast-stack{position:fixed;top:70px;right:16px;z-index:200;display:flex;flex-direction:column;gap:8px;max-width:280px;}
+    .toast{
+        background:linear-gradient(135deg,#242058,#33308a);border:1px solid var(--accent-teal);
+        border-radius:12px;padding:10px 14px;font-size:.85rem;box-shadow:var(--shadow);
+        animation:toastIn .3s ease, toastOut .3s ease 2.7s forwards;
+    }
+    .toast.badge{border-color:var(--accent-amber);}
+    .toast.level{border-color:var(--accent-purple);}
+    @keyframes toastIn{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
+    @keyframes toastOut{to{opacity:0;transform:translateX(30px);}}
 
-/* ---------- Practice question index chips ---------- */
-.qchip-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
-.qchip{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:.72rem;font-weight:800;background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text-dim);}
-.qchip.correct{background:rgba(74,222,128,.2);border-color:var(--accent-green);color:#c9f7d5;}
-.qchip.current{border-color:var(--accent-teal);color:var(--accent-teal);}
+    /* ---------- Modal ---------- */
+    .modal-backdrop{
+        position:fixed;inset:0;background:rgba(10,8,30,.75);z-index:300;
+        display:flex;align-items:center;justify-content:center;padding:20px;
+    }
+    .modal{
+        background:linear-gradient(160deg,var(--panel),var(--panel-2));border:1px solid var(--border);
+        border-radius:var(--radius);padding:24px;max-width:480px;width:100%;max-height:85vh;overflow:auto;
+        box-shadow:var(--shadow);
+    }
+    .modal h3{margin-top:0;}
+    .badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px;}
+    .badge-tile{
+        background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;
+        padding:12px;text-align:center;font-size:.78rem;color:var(--text-dim);
+    }
+    .badge-tile.earned{border-color:var(--accent-amber);color:var(--text);background:rgba(251,191,36,.08);}
+    .badge-tile .bicon{font-size:1.8rem;display:block;margin-bottom:6px;}
 
-/* ---------- Toast ---------- */
-#toast-stack{position:fixed;top:70px;right:16px;z-index:200;display:flex;flex-direction:column;gap:8px;max-width:280px;}
-.toast{
-    background:linear-gradient(135deg,#242058,#33308a);border:1px solid var(--accent-teal);
-  border-radius:12px;padding:10px 14px;font-size:.85rem;box-shadow:var(--shadow);
-  animation:toastIn .3s ease, toastOut .3s ease 2.7s forwards;
-}
-.toast.badge{border-color:var(--accent-amber);}
-.toast.level{border-color:var(--accent-purple);}
-@keyframes toastIn{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
-@keyframes toastOut{to{opacity:0;transform:translateX(30px);}}
+    /* ---------- Celebration ---------- */
+    #celebrate-overlay{
+        position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;
+        background:rgba(8,6,24,.85);
+    }
+    .celebrate-card{
+        text-align:center;background:linear-gradient(160deg,#2b276b,#1d1a45);border:2px solid var(--accent-amber);
+        border-radius:20px;padding:36px 30px;max-width:420px;width:92%;box-shadow:0 0 60px rgba(251,191,36,.25);
+        animation:celebratePop .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes celebratePop{from{transform:scale(.7);opacity:0;}to{transform:scale(1);opacity:1;}}
+    .celebrate-card .big-emoji{font-size:3.2rem;}
+    .celebrate-card h2{margin:8px 0 4px;color:var(--accent-amber);}
+    .celebrate-card p{color:var(--text-dim);font-size:.9rem;}
+    #confetti-canvas{position:fixed;inset:0;z-index:399;pointer-events:none;}
 
-/* ---------- Modal ---------- */
-.modal-backdrop{
-    position:fixed;inset:0;background:rgba(10,8,30,.75);z-index:300;
-  display:flex;align-items:center;justify-content:center;padding:20px;
-}
-.modal{
-    background:linear-gradient(160deg,var(--panel),var(--panel-2));border:1px solid var(--border);
-  border-radius:var(--radius);padding:24px;max-width:480px;width:100%;max-height:85vh;overflow:auto;
-  box-shadow:var(--shadow);
-}
-.modal h3{margin-top:0;}
-.badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px;}
-.badge-tile{
-    background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;
-  padding:12px;text-align:center;font-size:.78rem;color:var(--text-dim);
-}
-.badge-tile.earned{border-color:var(--accent-amber);color:var(--text);background:rgba(251,191,36,.08);}
-.badge-tile .bicon{font-size:1.8rem;display:block;margin-bottom:6px;}
+    footer.site-footer{text-align:center;color:var(--text-dim);font-size:.75rem;padding:30px 0 10px;}
 
-/* ---------- Celebration ---------- */
-#celebrate-overlay{
-  position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;
-  background:rgba(8,6,24,.85);
-}
-.celebrate-card{
-    text-align:center;background:linear-gradient(160deg,#2b276b,#1d1a45);border:2px solid var(--accent-amber);
-  border-radius:20px;padding:36px 30px;max-width:420px;width:92%;box-shadow:0 0 60px rgba(251,191,36,.25);
-  animation:celebratePop .4s cubic-bezier(.34,1.56,.64,1);
-}
-@keyframes celebratePop{from{transform:scale(.7);opacity:0;}to{transform:scale(1);opacity:1;}}
-.celebrate-card .big-emoji{font-size:3.2rem;}
-  .celebrate-card h2{margin:8px 0 4px;color:var(--accent-amber);}
-.celebrate-card p{color:var(--text-dim);font-size:.9rem;}
-#confetti-canvas{position:fixed;inset:0;z-index:399;pointer-events:none;}
-
-footer.site-footer{text-align:center;color:var(--text-dim);font-size:.75rem;padding:30px 0 10px;}
-
-@media (max-width:520px){
-  .stat-pill{padding:4px 8px;font-size:.74rem;}
-  .xp-bar-wrap{width:70px;}
-      .celebrate-card{padding:26px 18px;}
-}
-</style>
+    @media (max-width:520px){
+        .stat-pill{padding:4px 8px;font-size:.74rem;}
+        .xp-bar-wrap{width:70px;}
+        .celebrate-card{padding:26px 18px;}
+    }
+    </style>
   </head>
   <body>
-
+    
   <header class="topbar">
-    <div class="brand" onclick="goHome()"><span class="logo-emoji">🎓</span><span>數學冒險島</span></div>
-    <div class="spacer"></div>
-    <div class="stat-pill streak-pill" id="streakPill">🔥 0</div>
-    <div class="stat-pill"><div class="level-badge" id="levelBadge">Lv1</div><div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div></div></div>
-    <button class="icon-btn" title="我的徽章" onclick="openBadgeModal()">🏅</button>
-    <button class="icon-btn" title="設定" onclick="openSettingsModal()">⚙️</button>
+      <div class="brand" onclick="goHome()"><span class="logo-emoji">🎓</span><span>數學冒險島</span></div>
+        <div class="spacer"></div>
+          <div class="stat-pill streak-pill" id="streakPill">🔥 0</div>
+                            <div class="stat-pill"><div class="level-badge" id="levelBadge">Lv1</div><div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div></div></div>
+                              <button class="icon-btn" title="我的徽章" onclick="openBadgeModal()">🏅</button>
+      <button class="icon-btn" title="設定" onclick="openSettingsModal()">⚙️</button>
+
   </header>
 
-  <div id="app"></div>
-  <div id="toast-stack"></div>
+    <div id="app"></div>
+    <div id="toast-stack"></div>
 
-  <footer class="site-footer">為國一數學打基礎而生・引導式發現學習法</footer>
+    <footer class="site-footer">為國一數學打基礎而生・引導式發現學習法</footer>
 
-  <canvas id="confetti-canvas"></canvas>
+    <canvas id="confetti-canvas"></canvas>
 
-  <script>
-  /* ========================================================================
-     數學冒險島 - 資料層 (Data Layer)
-     ======================================================================== */
-
-const STORAGE_KEY = 'mathAdventureProgress_v1';
-
-  const BADGES = {
-    unit1_discoverer: {id:'unit1_discoverer', name:'代數探險家', desc:'完成單元一的引導發現', icon:'🧭'},
-    unit2_discoverer: {id:'unit2_discoverer', name:'數論偵探', desc:'完成單元二的引導發現', icon:'🔎'},
-    no_hint_ace:       {id:'no_hint_ace', name:'免提示達人', desc:'不看提示答對一題', icon:'💡'},
-    streak5:           {id:'streak5', name:'五連勝', desc:'連續答對 5 題', icon:'🔥'},
-    streak10:          {id:'streak10', name:'十連勝火焰', desc:'連續答對 10 題', icon:'⚡'},
-    boss1:             {id:'boss1', name:'代數魔王擊破', desc:'通過單元一魔王挑戰', icon:'🏆'},
-    boss2:             {id:'boss2', name:'質數魔王擊破', desc:'通過單元二魔王挑戰', icon:'👑'},
-    sieve_master:      {id:'sieve_master', name:'篩法大師', desc:'完成 100 以內的質數篩選', icon:'🕸️'},
+    <script>/* ========================================================================
+       數學冒險島 - 資料層 (Data Layer)
+       ======================================================================== */
+    
+    const STORAGE_KEY = 'mathAdventureProgress_v1';
+    
+    const BADGES = {
+        unit1_discoverer: {id:'unit1_discoverer', name:'代數探險家', desc:'完成單元一的引導發現', icon:'🧭'},
+        unit2_discoverer: {id:'unit2_discoverer', name:'數論偵探', desc:'完成單元二的引導發現', icon:'🔎'},
+        no_hint_ace:       {id:'no_hint_ace', name:'免提示達人', desc:'不看提示答對一題', icon:'💡'},
+        streak5:           {id:'streak5', name:'五連勝', desc:'連續答對 5 題', icon:'🔥'},
+        streak10:          {id:'streak10', name:'十連勝火焰', desc:'連續答對 10 題', icon:'⚡'},
+        boss1:             {id:'boss1', name:'代數魔王擊破', desc:'通過單元一魔王挑戰', icon:'🏆'},
+        boss2:             {id:'boss2', name:'質數魔王擊破', desc:'通過單元二魔王挑戰', icon:'👑'},
+        sieve_master:      {id:'sieve_master', name:'篩法大師', desc:'完成 100 以內的質數篩選', icon:'🕸️'},
         perfect1:          {id:'perfect1', name:'單元一・完美通關', desc:'單元一全程零提示', icon:'🌟'},
-            perfect2:          {id:'perfect2', name:'單元二・完美通關', desc:'單元二全程零提示', icon:'🌟'}
-  };
-
-// ---- 工具：算式檢查 (以數值代入比對，容忍各種等價寫法) ----
-function safeEvalExpr(expr, n){
-    const cleaned = expr.replace(/\s+/g,'').replace(/×/g,'*').replace(/x/gi,'n');
+        perfect2:          {id:'perfect2', name:'單元二・完美通關', desc:'單元二全程零提示', icon:'🌟'}
+    };
+    
+    // ---- 工具：算式檢查 (以數值代入比對，容忍各種等價寫法) ----
+    function safeEvalExpr(expr, n){
+        const cleaned = expr.replace(/\s+/g,'').replace(/×/g,'*').replace(/x/gi,'n');
         if(!/^[0-9n+\-*/().]+$/i.test(cleaned)) return null;
-  // 支援 3n 這種省略乘號寫法 -> 3*n
-  const withMul = cleaned.replace(/(\d)(n)/gi,'$1*$2').replace(/(n)(\d)/gi,'$1*$2').replace(/(n)\(/gi,'$1*(').replace(/\)(n)/gi,')*$1').replace(/\)(\d)/g,')*$1').replace(/(\d)\(/g,'$1*(');
-  try{
-    // eslint-disable-next-line no-new-func
-    const fn = new Function('n', 'return (' + withMul + ');');
-    const v = fn(n);
-    return (typeof v === 'number' && isFinite(v)) ? v : null;
-  }catch(e){ return null; }
-}
-function checkExprEquivalent(userExpr, expectedExpr){
-    if(!userExpr || !userExpr.trim()) return false;
-  const testPoints = [1,2,5,7,11];
-  for(const n of testPoints){
-        const a = safeEvalExpr(userExpr, n);
-    const b = safeEvalExpr(expectedExpr, n);
-    if(a===null || b===null) return false;
-    if(Math.abs(a-b) > 1e-9) return false;
-}
-  return true;
-}
-function parseNumberList(str){
-    if(!str) return [];
-  return str.split(/[,，、\s]+/).map(s=>s.trim()).filter(s=>s.length>0).map(Number).filter(n=>!isNaN(n)).sort((a,b)=>a-b);
-}
-function arraysEqual(a,b){
-    if(a.length!==b.length) return false;
-  for(let i=0;i<a.length;i++){ if(a[i]!==b[i]) return false; }
-  return true;
-}
-function isPrime(num){
-    if(num < 2) return false;
-  for(let i=2;i*i<=num;i++){ if(num % i === 0) return false; }
-  return true;
-}
-
-/* ========================================================================
-     單元一：代數式與變數的探索
-     ======================================================================== */
-const UNIT1 = {
-    id:'unit1',
+        // 支援 3n 這種省略乘號寫法 -> 3*n
+      const withMul = cleaned.replace(/(\d)(n)/gi,'$1*$2').replace(/(n)(\d)/gi,'$1*$2').replace(/(n)\(/gi,'$1*(').replace(/\)(n)/gi,')*$1').replace(/\)(\d)/g,')*$1').replace(/(\d)\(/g,'$1*(');
+        try{
+              // eslint-disable-next-line no-new-func
+          const fn = new Function('n', 'return (' + withMul + ');');
+              const v = fn(n);
+              return (typeof v === 'number' && isFinite(v)) ? v : null;
+        }catch(e){ return null; }
+    }
+    function checkExprEquivalent(userExpr, expectedExpr){
+        if(!userExpr || !userExpr.trim()) return false;
+        const testPoints = [1,2,5,7,11];
+        for(const n of testPoints){
+              const a = safeEvalExpr(userExpr, n);
+              const b = safeEvalExpr(expectedExpr, n);
+              if(a===null || b===null) return false;
+              if(Math.abs(a-b) > 1e-9) return false;
+        }
+        return true;
+    }
+    function parseNumberList(str){
+        if(!str) return [];
+        return str.split(/[,，、\s]+/).map(s=>s.trim()).filter(s=>s.length>0).map(Number).filter(n=>!isNaN(n)).sort((a,b)=>a-b);
+    }
+    function arraysEqual(a,b){
+        if(a.length!==b.length) return false;
+        for(let i=0;i<a.length;i++){ if(a[i]!==b[i]) return false; }
+        return true;
+    }
+    function isPrime(num){
+        if(num < 2) return false;
+        for(let i=2;i*i<=num;i++){ if(num % i === 0) return false; }
+        return true;
+    }
+    
+    /* ========================================================================
+       單元一：代數式與變數的探索
+       ======================================================================== */
+    const UNIT1 = {
+        id:'unit1',
         title:'代數式與變數的探索',
         icon:'🔢',
         shortDesc:'從數列規律出發，發現「變數」的意義，學會用代數式表達規律，並理解方程式其實是天秤的平衡遊戲。',
         hook:{
-    text:'老師心裡想了一個數列：<b>1, 4, 7, 10, 13, …</b><br>它會一直照規律增加下去。<br><br>老師問全班：「這個數列的<b>第 100 項</b>是多少？」<br><br>全班同學都埋頭一個一個往下加……你覺得，有沒有更聰明的辦法，不用一直加到第 100 個？',
-          cta:'先別急，我們一步一步來找出聰明的方法 →'
-      },
+              text:'小美開始存零用錢：<br>第1週存 <b>1</b> 元，第2週存 <b>4</b> 元，第3週存 <b>7</b> 元，第4週存 <b>10</b> 元……<br>她每一週存的錢，都比前一週多存一樣多。<br><br>小美很好奇：「如果照這樣存下去，<b>第 100 週</b>我會存多少錢？」<br><br>先別擔心會不會算，我們會一小步一小步慢慢找出來，你一定做得到！',
+              cta:'好，我們先從簡單的開始 →'
+        },
         discovery:[
-{
-      id:'d1', type:'number',
-              prompt:'別急著挑戰第 100 項，我們先從簡單的開始。數列 1, 4, 7, 10, 13, … 的<b>第 6 項</b>是多少？',
-              answer:16,
-              hints:['試著把數列繼續往後寫：1, 4, 7, 10, 13, ?','每次都在前一項的基礎上，加上同一個數字。'],
-              correctMsg:'沒錯！第 6 項是 16。'
-        },
           {
-                id:'d2', type:'number',
-                        prompt:'很好。那麼從第 1 項到第 2 項、第 2 項到第 3 項……每一次，數字都增加了多少？',
-                        answer:3,
-                        hints:['拿第2項減去第1項看看：4 − 1 = ?','再檢查一次 7 − 4 是不是也一樣？'],
-                        correctMsg:'對！每次都固定增加 3，這叫做「公差」。'
-                  },
-{
-      id:'d3', type:'mc',
-              prompt:'如果要直接算出「第 100 項」，你覺得哪一種做法比較聰明？',
-              options:['把第 1 項到第 100 項，一項一項慢慢加出來','找出「第幾項」和「每次增加多少」之間的規律，直接用算式算出答案，不用全部加'],
-              answer:1,
-              hints:['想像一下，如果是「第 100000 項」呢？一個一個加還可行嗎？'],
-              correctMsg:'完全正確！這就是數學家的思考方式——找出規律，用式子代表它，而不是蠻力硬算。'
+                  id:'d1', type:'number',
+                  prompt:'小美第1週存1元，第2週存4元。<b>第3週</b>她存了多少元？（提示：題目裡就有寫喔）',
+                  answer:7,
+                  hints:['再往上看一次數列：1, 4, 7, 10……','第3個數字是多少？'],
+                  correctMsg:'對！第3週存了7元。'
+          },
+          {
+                  id:'d2', type:'number',
+                  prompt:'很好！那<b>第4週</b>呢？',
+                  answer:10,
+                  hints:['數列是 1, 4, 7, 10……第4個數字是多少？'],
+                  correctMsg:'沒錯，第4週存了10元，跟題目說的一樣！'
+          },
+          {
+                  id:'d3', type:'number',
+                  prompt:'我們來找找規律。從第1週到第2週，錢從1元變成4元，增加了多少元？（算算看 4 − 1）',
+                  answer:3,
+                  hints:['4 − 1 = ?','用手指頭算算看，4比1多多少。'],
+                  correctMsg:'對，增加了3元！'
+          },
+          {
+                  id:'d4', type:'number',
+                  prompt:'再檢查一次：從第2週到第3週，錢從4元變成7元，也是增加3元嗎？請算出 7 − 4 的答案來確認。',
+                  answer:3,
+                  hints:['7 − 4 = ?'],
+                  correctMsg:'完全正確！每次都固定增加3元，這叫做「公差」。'
+          },
+          {
+                  id:'d5', type:'number',
+                  prompt:'照這個規律（每次+3），<b>第5週</b>會存多少元？（用第4週的10元加3元）',
+                  answer:13,
+                  hints:['10 + 3 = ?'],
+                  correctMsg:'太棒了！第5週是13元。'
+          },
+          {
+                  id:'d6', type:'number',
+                  prompt:'那<b>第6週</b>呢？（用第5週的13元加3元）',
+                  answer:16,
+                  hints:['13 + 3 = ?'],
+                  correctMsg:'沒錯！第6週是16元。'
+          },
+          {
+                  id:'d7', type:'mc',
+                  prompt:'如果要一路算到「第100週」，你覺得哪一種做法比較聰明？',
+                  options:['把第1週到第100週，一週一週慢慢加出來','找出「第幾週」和「每次增加多少」之間的規律，直接用算式算出答案，不用全部加'],
+                  answer:1,
+                  hints:['想像一下，如果是「第100000週」呢？一個一個加還算得完嗎？'],
+                  correctMsg:'完全正確！這就是數學家的思考方式——找出規律，用式子代表它，而不是蠻力硬算。'
+          },
+          {
+                  id:'d8', type:'number',
+                  prompt:'我們換個方式來看規律：<br>第1週 = 1 + 3×0　　第2週 = 1 + 3×1　　第3週 = 1 + 3×2<br>照這個規律，<b>第4週</b> = 1 + 3×多少？',
+                  answer:3,
+                  hints:['看看「週數」和「乘的數字」的關係：第1週乘0，第2週乘1，第3週乘2……','乘的數字，好像都比「第幾週」少1。第4週要乘的數字，就是 4 − 1 = ?'],
+                  correctMsg:'對！第4週 = 1 + 3×3 = 10，符合我們前面算的答案。'
+          },
+          {
+                  id:'d9', type:'number',
+                  prompt:'很好！照這個規律，如果是<b>第10週</b>，要乘的數字是多少？（提示：週數 − 1）',
+                  answer:9,
+                  hints:['乘的數字 = 週數 − 1。','10 − 1 = ?'],
+                  correctMsg:'沒錯！第10週 = 1 + 3×9 = 28。'
+          },
+          {
+                  id:'d10', type:'mc',
+                  prompt:'如果用<b>n</b>代表「第幾週」，下面哪一個式子可以代表「第 n 週存的錢」？',
+                  options:['1 + 3(n − 1)','1 + 3n','3 + 1×n','n + 3'],
+                  answer:0,
+                  hints:['你剛剛發現，乘的數字都是「週數 − 1」。如果週數用 n 代表，乘的數字要怎麼寫？','試試看把 n 代入 n=1：算出來應該要等於第1週的1元。'],
+                  correctMsg:'太棒了！你剛剛自己「發現」了代數式：第 n 週 = 1 + 3(n − 1)。這裡的 n 就是<b>變數</b>——它可以代表任何一週的編號。'
+          },
+          {
+                  id:'d11', type:'mc',
+                  prompt:'換個新遊戲：一個天秤，兩邊一樣重的時候就會保持平衡。<br>如果天秤左邊是「一個神秘箱子 + 2公斤砝碼」，右邊是「9公斤砝碼」，而且天秤是平衡的，你覺得神秘箱子會比9公斤重還是輕？',
+                  options:['比9公斤輕','比9公斤重'],
+                  answer:0,
+          hints:['箱子那一邊還多放了2公斤的砝碼，兩邊卻一樣重，所以箱子自己一定比較輕還是比較重呢？'],
+                correctMsg:'答對了，箱子一定比較輕，因為它那邊還多了2公斤的砝碼卻還是一樣重。'
+          },
+          {
+                  id:'d12', type:'mc',
+                  prompt:'如果天秤兩邊「同時拿掉一樣重的東西」（例如兩邊都拿掉2公斤），天秤還會平衡嗎？',
+                  options:['還會平衡','不會平衡了'],
+                  answer:0,
+                  hints:['兩邊本來就一樣重，如果兩邊都拿走同樣多的重量，會不會失去平衡呢？'],
+                  correctMsg:'沒錯！兩邊同時做同一件事，平衡不會被打破。這是解方程式最重要的規則！'
+          },
+          {
+                  id:'d13', type:'number',
+                  prompt:'那麼，兩邊同時拿掉2公斤之後：左邊只剩下箱子，右邊變成 9 − 2 = ? 公斤',
+                  answer:7,
+                  hints:['9 − 2 = ?'],
+                  correctMsg:'對，右邊變成7公斤。'
+          },
+          {
+                  id:'d14', type:'number',
+                  prompt:'所以，箱子的重量 x 是多少公斤？',
+                  answer:7,
+                  hints:['剛剛算出來右邊變成7公斤，兩邊平衡，所以左邊的箱子也是……？'],
+                  correctMsg:'沒錯，x = 7！你剛剛已經學會解方程式的核心概念了。'
+          }
+            ],
+        formalize:`
+            <h4>📐 什麼是代數式和變數？</h4>
+                <p>剛剛我們發現的規律，用數學符號寫出來就是：</p>
+                    <div class="formula-box">第 n 週 = 1 + 3(n − 1) = 3n − 2</div>
+                        <p>這裡的 <b>n</b> 叫做「變數」，它其實就是一個「代替品」——因為我們不想每次都寫「第幾週」這麼長，就用一個字母 n 來代替。你要算第幾週，就把 n 換成那個數字。</p>
+                            <p>舉個例子：如果要算第6週，就把 n 換成6：3×6 − 2 = 16，跟我們前面一步一步算出來的答案一樣！再舉一個例子：第10週呢？3×10 − 2 = 28，也跟我們剛才算的一樣！</p>
+                                <p>現在回到一開始的問題：第100週會存多少錢？<b>3×100 − 2 = 298</b> 元。不用一週一週慢慢加，代數式讓我們馬上就找到答案！</p>
+                                    <h4>⚖️ 方程式其實就是天秤遊戲</h4>
+                                        <p>方程式（例如 x + 2 = 9）就是在說「這個天秤是平衡的」。要找出 x 是多少，只要記住一個規則：</p>
+                                            <div class="formula-box">兩邊同時做同一件事（一起加、一起減、一起乘、一起除同一個數），天秤還是會平衡</div>
+                                                <p>解 x + 2 = 9 的時候，我們兩邊「一起減2」：x = 9 − 2 = 7。<br>再舉一個例子：解 x + 5 = 12，兩邊一起減5：x = 12 − 5 = 7。<br>這就是課本上「移項要變號」規則背後真正的意思——並不是什麼神秘規則，只是兩邊同時做同一件事而已，完全不需要死背！</p>
+                                                  `,
+        formalizeCheck:{
+              id:'fc1', type:'number',
+              prompt:'小測驗：方程式 2x = 10（天秤兩邊同時除以 2），x 是多少？',
+              answer:5,
+              hints:['兩邊同時除以 2 試試看。','2x 代表 2乘以x；如果2乘以某個數字等於10，那個數字是多少？'],
+              correctMsg:'完全正確！準備好進入練習關卡了。'
         },
-{
-      id:'d4', type:'mc',
-              prompt:'我們來排排看規律：<br>第1項 = 1 + 3×0　　第2項 = 1 + 3×1　　第3項 = 1 + 3×2 …<br>如果用<b>n</b>代表「第幾項」，下面哪一個式子可以代表「第 n 項」？',
-              options:['1 + 3(n − 1)','1 + 3n','3 + 1×n','n + 3'],
-              answer:0,
-              hints:['看看規律裡「3」後面乘的數字：0, 1, 2……跟 n 差了多少？','第1項時 n=1，此時乘的是0，也就是 n−1。'],
-              correctMsg:'太棒了！你剛剛自己「發現」了代數式：第 n 項 = 1 + 3(n − 1)。這裡的 n 就是<b>變數</b>——它可以代表任何一項的編號。'
-        },
-{
-      id:'d5', type:'number',
-              prompt:'換個情境：一個天秤兩邊保持平衡。<br>左邊放著一個裝了神秘重量的箱子（重量是 <b>x</b> 公斤）和一個 2 公斤的砝碼；右邊放著一個 9 公斤的砝碼。<br><br>如果兩邊「同時拿掉 2 公斤」，天秤還會平衡嗎？拿掉之後，箱子的重量 x 是多少？',
-              answer:7,
-              hints:['天秤的規則：兩邊同時做一樣的事，平衡不會被打破。','原本兩邊相等：x + 2 = 9。兩邊同時減去 2，會變成什麼？'],
-              correctMsg:'沒錯，天秤仍然平衡！x = 7。你剛剛已經在用「解方程式」的核心概念了。'
-        }
-  ],
-          formalize:`
-    <h4>📐 代數式與變數</h4>
-          <p>剛剛你發現的規律，用數學的方式寫出來就是：</p>
-          <div class="formula-box">第 n 項 = 1 + 3(n − 1) = 3n − 2</div>
-                <p>這裡的 <b>n</b> 就是「變數」（variable）——它不是固定的一個數字，而是可以代表「任何一項的編號」的符號。當我們把 n 換成不同的數字，就能算出對應那一項的值。例如驗證第 6 項：3×6 − 2 = 16，跟你剛才算的一樣！</p>
-                <p>現在回到一開始的問題：第 100 項是多少？<b>3×100 − 2 = 298</b>。不用一個一個加，代數式讓我們瞬間找到答案！</p>
-                <h4>⚖️ 方程式：維持平衡的遊戲</h4>
-                <p>方程式（例如 x + 2 = 9）代表一個「平衡的天秤」。要找出 x 是多少，核心原則只有一個：</p>
-                <div class="formula-box">兩邊同時做同一件事（加、減、乘、除同一個數），天秤依然平衡</div>
-                <p>所以解 x + 2 = 9 時，我們兩邊同時「減 2」：x = 9 − 2 = 7。這就是為什麼你在課本上會看到「移項要變號」的規則——它的本質其實就是兩邊同時做同一個運算而已，不需要死背。</p>
-              `,
-              formalizeCheck:{
-    id:'fc1', type:'number',
-          prompt:'小測驗：方程式 2x = 10（天秤兩邊同時除以 2），x 是多少？',
-          answer:5,
-          hints:['兩邊同時除以 2 試試看。'],
-          correctMsg:'完全正確！準備好進入練習關卡了。'
-      },
         practice:[
-{id:'u1p1', type:'number', prompt:'數列 2, 5, 8, 11, … 的第 10 項是多少？', answer:29,
-        hints:['先找出每次增加多少（公差）。','試著寫出第 n 項的代數式：3n + 常數。','公式是 3n − 1，代入 n = 10。'],
-        explain:'公差為 3，第 n 項 = 3n − 1，所以第 10 項 = 3×10 − 1 = 29。'},
+          {id:'u1p1', type:'number', prompt:'數列 2, 5, 8, 11, … 的第 10 項是多少？', answer:29,
+                 hints:['試著先把數列往後多寫幾項：2, 5, 8, 11, 14……','每次增加多少？（公差是多少？）','公差是3，所以可以用 3×n 再做一點調整。','公式是 3n − 1，把 n 換成10算算看。'],
+                 explain:'公差為 3，第 n 項 = 3n − 1，所以第 10 項 = 3×10 − 1 = 29。'},
           {id:'u1p2', type:'expr', prompt:'承上題，這個數列（2, 5, 8, 11, …）的第 n 項，請用含 n 的代數式表示。（可直接輸入，例如 3n-1）', answer:'3n-1',
-                hints:['第一項是 2，每次增加 3。','試試看 3×n 再做調整：3n = 3, 6, 9, 12…比原數列多了多少？','把 3n 減掉多的那個數，就是答案。'],
-                explain:'公差是 3，所以式子裡有 3n；再用第1項驗證：3×1=3，但實際第1項是2，所以要減1，答案是 3n − 1。'},
-{id:'u1p3', type:'mc', prompt:'下列哪一個代數式，代表「某數的 2 倍再加 5」？', options:['2x + 5','x + 2 + 5','2(x + 5)','5x + 2'], answer:0,
-        hints:['「某數的 2 倍」先寫成 2 乘以那個數。','再把「加 5」接在後面。'],
-        explain:'「某數的2倍」是 2x，再加5，就是 2x + 5。'},
-{id:'u1p4', type:'number', prompt:'解方程式：x + 7 = 15，x 是多少？', answer:8,
-        hints:['想像天秤：兩邊要同時做同一件事才能維持平衡。','兩邊同時減去 7。'],
-        explain:'兩邊同減 7：x = 15 − 7 = 8。'},
-{id:'u1p5', type:'number', prompt:'解方程式：3x = 21，x 是多少？', answer:7,
-        hints:['3x 代表 3 乘以 x。','兩邊同時除以 3。'],
-        explain:'兩邊同除以 3：x = 21 ÷ 3 = 7。'},
-{id:'u1p6', type:'number', prompt:'解方程式：2x + 5 = 17，x 是多少？（這題要做兩個步驟）', answer:6,
-        hints:['先把「+5」處理掉：兩邊同時減 5。','會得到 2x = 12。','再兩邊同除以 2。'],
-        explain:'兩邊同減5：2x = 12；再同除以2：x = 6。'},
-{id:'u1p7', type:'number', prompt:'應用題：小明比小華大 3 歲，兩人的年齡和是 27 歲。小華幾歲？', answer:12,
-        hints:['設小華的年齡為 x。','那麼小明的年齡就是 x + 3。','兩人年齡和：x + (x + 3) = 27，先化簡再解。'],
-        explain:'x + (x+3) = 27 → 2x + 3 = 27 → 2x = 24 → x = 12，小華 12 歲（小明 15 歲）。'},
-{id:'u1p8', type:'number', prompt:'解方程式：4x − 3 = 13，x 是多少？', answer:4,
-        hints:['先處理「−3」：兩邊同時加 3。','會得到 4x = 16。','再兩邊同除以 4。'],
-        explain:'兩邊同加3：4x = 16；再同除以4：x = 4。'}
-  ],
-    boss:{
-    title:'代數魔王：數列指揮官',
-          intro:'魔王甩出一串神秘數列：<b>7, 12, 17, 22, …</b> 它要求你完成三個試煉，才願意讓路！',
-          parts:[
-      {id:'b1a', type:'expr', prompt:'試煉一：寫出這個數列第 n 項的代數式。', answer:'5n+2',
-              hints:['公差是多少？','用第1項驗證：n=1時代入你的式子，應該要等於7。'],
-              explain:'公差為5，且第1項要等於7，所以是 5n + 2。'},
-{id:'b1b', type:'number', prompt:'試煉二：這個數列的第 15 項是多少？', answer:77,
-          hints:['用剛剛的式子 5n + 2，代入 n = 15。'],
-          explain:'5×15 + 2 = 77。'},
-{id:'b1c', type:'number', prompt:'試煉三：數列中「哪一項」的值是 97？（也就是解方程式 5n + 2 = 97）', answer:19,
-          hints:['列出方程式：5n + 2 = 97。','兩邊同減 2，再同除以 5。'],
-          explain:'5n+2=97 → 5n=95 → n=19，也就是第19項的值是97。'}
-    ],
-      victoryText:'魔王低頭認輸：「你已經完全掌握了規律、代數式與方程式之間的關係！」'
+                 hints:['先想想公差是多少（每次增加多少）？','公差是3，所以式子裡會有 3n。','用第1項檢查：3×1=3，但實際第一項是2，所以要調整多少？','答案的形式類似 3n 加或減一個數字，試試看 3n-1。'],
+                 explain:'公差是 3，所以式子裡有 3n；再用第1項驗證：3×1=3，但實際第1項是2，所以要減1，答案是 3n − 1。'},
+          {id:'u1p3', type:'mc', prompt:'下列哪一個代數式，代表「某數的 2 倍再加 5」？', options:['2x + 5','x + 2 + 5','2(x + 5)','5x + 2'], answer:0,
+                 hints:['先想「某數的2倍」要怎麼寫成式子。','2倍就是「2乘以那個數」，寫成 2x。','再把「加5」接在 2x 後面試試看。'],
+                 explain:'「某數的2倍」是 2x，再加5，就是 2x + 5。'},
+          {id:'u1p4', type:'number', prompt:'解方程式：x + 7 = 15，x 是多少？', answer:8,
+                 hints:['想像天秤：兩邊要同時做同一件事才能維持平衡。','題目是 x + 7 = 15，你想讓左邊只剩下 x，可以兩邊同時做什麼？','兩邊同時減去7。','15 − 7 = ?'],
+                 explain:'兩邊同減 7：x = 15 − 7 = 8。'},
+          {id:'u1p5', type:'number', prompt:'解方程式：3x = 21，x 是多少？', answer:7,
+                 hints:['3x 代表 3 乘以 x。','你想讓左邊只剩下 x，可以兩邊同時做什麼運算？','兩邊同時除以3。','21 ÷ 3 = ?'],
+                 explain:'兩邊同除以 3：x = 21 ÷ 3 = 7。'},
+          {id:'u1p6', type:'number', prompt:'解方程式：2x + 5 = 17，x 是多少？（這題要做兩個步驟）', answer:6,
+                 hints:['這題要分兩步驟，先處理「+5」。','兩邊同時減5，會得到 2x = ?','2x = 12，接下來兩邊同時除以2。','12 ÷ 2 = ?'],
+                 explain:'兩邊同減5：2x = 12；再同除以2：x = 6。'},
+          {id:'u1p7', type:'number', prompt:'應用題：小明比小華大 3 歲，兩人的年齡和是 27 歲。小華幾歲？', answer:12,
+                 hints:['先設小華的年齡為 x。','小明比小華大3歲，所以小明是 x + 3。','兩人年齡和是27，寫成式子：x + (x + 3) = 27。','化簡後是 2x + 3 = 27，先兩邊減3，再除以2。'],
+                 explain:'x + (x+3) = 27 → 2x + 3 = 27 → 2x = 24 → x = 12，小華 12 歲（小明 15 歲）。'},
+          {id:'u1p8', type:'number', prompt:'解方程式：4x − 3 = 13，x 是多少？', answer:4,
+                 hints:['這題要分兩步驟，先處理「−3」。','兩邊同時加3，會得到 4x = ?','4x = 16，接下來兩邊同時除以4。','16 ÷ 4 = ?'],
+                 explain:'兩邊同加3：4x = 16；再同除以4：x = 4。'}
+            ],
+        boss:{
+              title:'代數魔王：數列指揮官',
+              intro:'魔王甩出一串神秘數列：<b>7, 12, 17, 22, …</b> 它要求你完成幾個小試煉，才願意讓路！別擔心，一步一步來。',
+              parts:[
+                {id:'b1_0', type:'number', prompt:'暖身試煉：魔王的數列是 7, 12, 17, 22, … 每次增加多少？（公差是多少？）', answer:5,
+                         hints:['12 − 7 = ?'],
+                         explain:'公差是5。'},
+                {id:'b1a', type:'expr', prompt:'試煉一：寫出這個數列第 n 項的代數式。', answer:'5n+2',
+                         hints:['你剛剛找到公差是5，所以式子裡會有 5n。','用第1項檢查：n=1時，5×1=5，但實際第一項是7，要調整多少？','試試看 5n 加上一個數字。'],
+                         explain:'公差為5，且第1項要等於7，所以是 5n + 2。'},
+                {id:'b1b', type:'number', prompt:'試煉二：這個數列的第 15 項是多少？', answer:77,
+                         hints:['用剛剛的式子 5n + 2，代入 n = 15。','5×15 = ?然後再加2。'],
+                         explain:'5×15 + 2 = 77。'},
+                {id:'b1c', type:'number', prompt:'試煉三：數列中「哪一項」的值是 97？（也就是解方程式 5n + 2 = 97）', answer:19,
+                         hints:['列出方程式：5n + 2 = 97。','兩邊同減 2，變成 5n = ?','95 ÷ 5 = ?'],
+                         explain:'5n+2=97 → 5n=95 → n=19，也就是第19項的值是97。'}
+                    ],
+              victoryText:'魔王低頭認輸：「你已經完全掌握了規律、代數式與方程式之間的關係！」'
         }
-};
-
-/* ========================================================================
-     單元二：因數、倍數與質數的秘密
-     ======================================================================== */
-const UNIT2 = {
-    id:'unit2',
+    };
+    
+    /* ========================================================================
+       單元二：因數、倍數與質數的秘密
+       ======================================================================== */
+    const UNIT2 = {
+                     id:'unit2',
         title:'因數、倍數與質數的秘密',
         icon:'🍬',
         shortDesc:'從分糖果的情境出發，發現因數與倍數的關係，並親手用篩法找出質數的秘密。',
         hook:{
-    text:'老師有 <b>24 顆糖果</b>，想要平分給班上同學，讓每個人分到的顆數<b>一樣多</b>，而且<b>不能有剩下</b>。<br><br>老師問：「班上可能剛好有幾位同學呢？」（不只一種答案喔！）',
-          cta:'一起把所有可能找出來 →'
+              text:'老師有 <b>24 顆糖果</b>，想要平分給班上同學，讓每個人分到的顆數<b>一樣多</b>，而且<b>不能有剩下</b>。<br><br>老師問：「班上可能剛好有幾位同學呢？」（不只一種答案喔！）<br><br>先不用急著找出全部答案，我們會一步一步慢慢找。',
+              cta:'先從簡單的開始 →'
       },
-        discovery:[
-{
-      id:'e1', type:'list',
-              prompt:'請列出所有「可能的同學人數」——也就是所有能整除 24、讓糖果剛好分完的數字。（請用逗號分開，例如 1,2,3）',
-              answer:[1,2,3,4,6,8,12,24],
-              hints:['從 1 開始試：24÷1=24（整除），1可以。24÷2=12，2也可以……一路試到24。','別忘了 24 本身也算一個答案（一個人獨得全部）。','完整答案共有 8 個數字。'],
-              correctMsg:'太厲害了！你剛剛找出的，就是 24 的「所有因數」。'
-        },
-          {
-                id:'e2', type:'mc',
-                        prompt:'下列哪一個數字，是 24 的因數？',
-                        options:['5','6','7','9'],
-                        answer:1,
-                        hints:['因數的意思是「能整除24、沒有餘數」的數字。','24÷6 = ?'],
-                        correctMsg:'沒錯，24÷6=4，整除！6 是 24 的因數。'
-                  },
-{
-      id:'e3', type:'list',
-              prompt:'換個角度想：3 的倍數有哪些？請由小到大列出<b>前 5 個</b>（不包含0）。',
-              answer:[3,6,9,12,15],
-              hints:['倍數就是「3乘以1、2、3、4、5……」得到的數字。','3×1=3, 3×2=6, 3×3=?'],
-              correctMsg:'完全正確！3, 6, 9, 12, 15 都是 3 的倍數。'
-        },
-{
-      id:'e4', type:'mc',
-              prompt:'因為 24 ÷ 6 = 4，剛好整除，所以我們可以說：',
-              options:['6 是 24 的因數，24 是 6 的倍數','6 是 24 的倍數，24 是 6 的因數'],
-              answer:0,
-              hints:['「因數」通常是比較小、能整除大數的那個。','24 比較大，6 能整除它——誰是誰的因數？'],
-              correctMsg:'答對了！因數與倍數是一體兩面的關係：小的是大的的因數，大的是小的的倍數。'
-        },
-{
-      id:'e5', type:'sieve', min:2, max:20,
-              prompt:'現在來挑戰一個更深的問題：在剛剛找因數的過程中，你有沒有發現有些數字「只有 1 和自己」兩個因數（例如 7：只有1和7能整除它）？這種數字非常特別，叫做<b>質數</b>。<br><br>請動手操作下方的表格：點一下數字圈出你認為的「質數」（綠色），再點一下變成「合數」（紅色，代表有兩個以上非1的因數 / 可整除），點第三下清空重來。找出 2～20 之間所有的質數！',
-              correctMsg:'太厲害了，你剛剛親手完成了「質數篩選」！2～20之間共有 8 個質數：2, 3, 5, 7, 11, 13, 17, 19。'
-        }
-  ],
-          formalize:`
-    <h4>🧩 因數與倍數</h4>
-          <p>如果 <b>a ÷ b</b> 能夠整除（沒有餘數），我們就說：</p>
-                <div class="formula-box">b 是 a 的「因數」　　a 是 b 的「倍數」</div>
-                <p>例如 24 ÷ 6 = 4 整除，所以 6 是 24 的因數，24 是 6 的倍數。一個數字的因數是有限個（找得完），但倍數有無限多個（可以一直乘下去）。</p>
-                <h4>💎 質數的秘密</h4>
-                <p>如果一個大於 1 的數字，<b>只能被 1 和自己整除</b>（也就是只有 1 和自己兩個因數），這個數字就叫做<b>質數</b>。如果因數超過兩個，就叫做<b>合數</b>。</p>
-                <div class="formula-box">質數：恰好只有 1 和自己這兩個因數</div>
-                <p>特別注意：<b>1 既不是質數也不是合數</b>（它只有一個因數）；<b>2 是最小的質數，也是唯一的偶數質數</b>（其他質數都是奇數）。你剛剛用篩法親手篩出的 2、3、5、7、11、13、17、19，就是 20 以內的全部質數。</p>
-              `,
-              formalizeCheck:{
-    id:'fc2', type:'mc',
-          prompt:'小測驗：15 是質數還是合數？',
-          options:['質數','合數（因為 15 = 3 × 5，因數不只1和自己）'],
+      discovery:[
+    {
+                            id:'e0a', type:'number',
+          prompt:'我們先試試看：如果每個人分到 <b>2顆</b> 糖果，24顆可以分給幾個人？（24 ÷ 2）',
+          answer:12,
+          hints:['24 ÷ 2 = ?'],
+          correctMsg:'對！可以分給12個人，剛好分完，沒有剩下。'
+      },
+      {
+          id:'e0b', type:'number',
+          prompt:'如果每個人分到 <b>3顆</b> 呢？（24 ÷ 3）可以分給幾個人？',
+          answer:8,
+          hints:['24 ÷ 3 = ?'],
+          correctMsg:'沒錯，可以分給8個人。'
+      },
+      {
+          id:'e0c', type:'mc',
+          prompt:'那如果每個人分到 <b>5顆</b> 呢？24 ÷ 5 = 4 餘 4，會不會剛好分完，沒有剩下？',
+          options:['會剛好分完','不會，會有剩下'],
           answer:1,
-          hints:['試試看 15 除以 3。'],
-          correctMsg:'答對了！15 = 3×5，除了1和15之外還有3和5這兩個因數，所以是合數。'
+          hints:['24 ÷ 5 等於4餘4，「餘」代表還有剩下沒分完。'],
+          correctMsg:'答對了！24 ÷ 5 有剩下，所以「5個人」這個答案不能用（不能讓每人分到的顆數一樣多、又剛好分完）。'
       },
-        practice:[
-{id:'u2p1', type:'list', prompt:'請列出 36 的所有因數。（用逗號分開，由小到大）', answer:[1,2,3,4,6,9,12,18,36],
-        hints:['從1開始一個一個試除到36。','記得檢查 1, 2, 3, 4, 6, 9, 12, 18, 36 這些數字。'],
-        explain:'36 的因數：1, 2, 3, 4, 6, 9, 12, 18, 36，共9個。'},
-          {id:'u2p2', type:'mc', prompt:'51 是質數嗎？', options:['是質數','不是質數'], answer:1,
-                hints:['試試看用 3 去除 51。','51 ÷ 3 = 17，整除了嗎？'],
-                explain:'51 = 3 × 17，除了1和51還有其他因數，所以不是質數。'},
-{id:'u2p3', type:'list', prompt:'列出 20 以內（含20）的所有質數。', answer:[2,3,5,7,11,13,17,19],
-        hints:['回想你剛剛做過的篩法結果。','別忘了 2 是最小的質數。'],
-        explain:'20以內的質數：2, 3, 5, 7, 11, 13, 17, 19，共8個。'},
-{id:'u2p4', type:'number', prompt:'應用題：有 18 顆糖果和 24 片餅乾，要平分給幾位小朋友，讓每人分到的糖果數一樣多、餅乾數也一樣多（都不能剩）。最多可以分給幾位小朋友？', answer:6,
-        hints:['先分別列出18和24的所有因數。','找出兩者「共同」的因數。','人數要「最多」，所以要選共同因數中最大的那個。'],
-        explain:'18的因數:1,2,3,6,9,18；24的因數:1,2,3,4,6,8,12,24。共同因數有1,2,3,6，最大是6。每人分3顆糖、4片餅乾。'},
-{id:'u2p5', type:'mc', prompt:'97 是質數嗎？', options:['是質數','不是質數'], answer:0,
-        hints:['只需要檢查到約 10 以內的數字能不能整除它（因為10×10=100已經超過97）。','試試看 2、3、5、7 分別除97，都不能整除。'],
-        explain:'97不能被2,3,5,7整除，且下一個要檢查的11×11=121已經超過97，所以97是質數。'},
-{id:'u2p6', type:'list', prompt:'請列出 60 的所有因數。', answer:[1,2,3,4,5,6,10,12,15,20,30,60],
-        hints:['先從小的開始：1,2,3,4,5,6都能整除60。','記得60本身也是因數。'],
-        explain:'60的因數：1,2,3,4,5,6,10,12,15,20,30,60，共12個。'},
-{id:'u2p7', type:'mc', prompt:'91 是質數嗎？（小心，這題有陷阱！）', options:['是質數','不是質數'], answer:1,
-        hints:['試試看用7去除91。','91 ÷ 7 = 13，整除了嗎？'],
-        explain:'91 = 7 × 13，雖然看起來像質數，但其實是合數！這是常見的陷阱數字。'},
-{id:'u2p8', type:'number', prompt:'24 和 36 的最大公因數是多少？', answer:12,
-        hints:['列出24的因數和36的因數。','找出兩者共同的因數中最大的一個。'],
-        explain:'24的因數:1,2,3,4,6,8,12,24；36的因數:1,2,3,4,6,9,12,18,36。共同的最大因數是12。'}
-  ],
-    boss:{
-    title:'質數魔王：篩法試煉場',
-          intro:'魔王在你面前展開一張 2～100 的巨大數字網，宣稱：「找出所有質數，證明你是真正的數論高手！」',
-          sieveRange:{min:2,max:100},
-          afterSieveParts:[
-      {id:'b2a', type:'mc', prompt:'完成篩法後回答：89 是質數嗎？', options:['是質數','不是質數'], answer:0,
-              hints:['檢查89能不能被2,3,5,7整除。','都不能整除，而且下一個要檢查的11×11=121已超過89。'],
-              explain:'89無法被2,3,5,7整除，是質數。'},
-{id:'b2b', type:'number', prompt:'魔王的終極提問：根據你剛剛篩出的結果，100 以內總共有幾個質數？', answer:25,
-          hints:['數一數你篩選網格中，被標記為「質數」（綠色）的數字總共有幾個。'],
-          explain:'100以內共有25個質數：2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97。'}
-    ],
-      victoryText:'魔王徹底臣服：「你親手篩出了100以內所有的質數，這是真正的數論力量！」'
+      {
+          id:'e1', type:'list',
+          prompt:'請列出所有「可能的同學人數」——也就是所有能整除 24、讓糖果剛好分完的數字。（請用逗號分開，例如 1,2,3）你已經知道 2、3 可以，5 不行，把其他的也找出來吧！',
+          answer:[1,2,3,4,6,8,12,24],
+          hints:['從 1 開始試：24÷1=24（整除），1可以。24÷2=12，2也可以……剛剛我們也確認過3可以、5不行。','繼續試 4, 6, 7, 8……一路試到24。','別忘了 24 本身也算一個答案（一個人獨得全部）。','完整答案共有 8 個數字：1, 2, 3, 4, 6, 8, 12, 24。'],
+          correctMsg:'太厲害了！你剛剛找出的，就是 24 的「所有因數」。'
+      },
+      {
+          id:'e2', type:'mc',
+          prompt:'下列哪一個數字，是 24 的因數？',
+          options:['5','6','7','9'],
+          answer:1,
+          hints:['因數的意思是「能整除24、沒有餘數」的數字。','24÷6 = ?','算出來如果沒有餘數，6就是24的因數。'],
+          correctMsg:'沒錯，24÷6=4，整除！6 是 24 的因數。'
+      },
+      {
+          id:'e3a', type:'number',
+          prompt:'我們來練習找倍數。3 的「第1個倍數」是 3×1，等於多少？',
+              answer:3,
+              hints:['3 × 1 = ?'],
+              correctMsg:'對，3×1=3。'
+      },
+        {
+                id:'e3b', type:'number',
+          prompt:'3 的「第2個倍數」是 3×2，等於多少？',
+                answer:6,
+                hints:['3 × 2 = ?'],
+                correctMsg:'沒錯，3×2=6。'
+        },
+        {
+                id:'e3', type:'list',
+                prompt:'換個角度想：3 的倍數有哪些？請由小到大列出<b>前 5 個</b>（不包含0），你已經算出前兩個了。',
+                answer:[3,6,9,12,15],
+                hints:['倍數就是「3乘以1、2、3、4、5……」得到的數字，你剛剛已經算出前兩個了。','3×1=3, 3×2=6, 3×3=?, 3×4=?, 3×5=?','由小到大列出：3, 6, 9, 12, 15。'],
+                correctMsg:'完全正確！3, 6, 9, 12, 15 都是 3 的倍數。'
+        },
+        {
+                id:'e4', type:'mc',
+                prompt:'因為 24 ÷ 6 = 4，剛好整除，所以我們可以說：',
+                options:['6 是 24 的因數，24 是 6 的倍數','6 是 24 的倍數，24 是 6 的因數'],
+                answer:0,
+                hints:['「因數」通常是比較小、能整除大數的那個。','24 比較大，6 能整除它——誰是誰的因數？','把小的數放在「因數」，大的數放在「倍數」。'],
+                correctMsg:'答對了！因數與倍數是一體兩面的關係：小的是大的的因數，大的是小的的倍數。'
+        },
+        {
+                id:'e4b', type:'sieve', min:2, max:10,
+                prompt:'在正式挑戰找質數之前，先用一個小一點的範圍練習看看：在剛剛找因數的過程中，你有沒有發現有些數字「只有 1 和自己」兩個因數（例如 7：只有1和7能整除它）？這種數字非常特別，叫做<b>質數</b>。<br><br>請動手操作下方的表格：點一下數字圈出你認為的「質數」（綠色），再點一下變成「合數」（紅色），點第三下清空重來。先找出 2～10 之間所有的質數！',
+                correctMsg:'太棒了！2～10之間的質數是 2, 3, 5, 7。你已經抓到訣竅了，接下來我們挑戰更大的範圍！'
+        },
+        {
+                id:'e5', type:'sieve', min:2, max:20,
+                prompt:'現在挑戰稍微大一點的範圍：找出 2～20 之間所有的質數！方法跟剛剛一樣，點一下圈出質數，再點一下變成合數。如果卡住了，可以按「給我一個提示」。',
+                correctMsg:'太厲害了，你剛剛親手完成了「質數篩選」！2～20之間共有 8 個質數：2, 3, 5, 7, 11, 13, 17, 19。'
         }
-};
-
-const UNITS = [UNIT1, UNIT2];
-function getUnit(id){ return UNITS.find(u=>u.id===id); }
-
-/* ========================================================================
+          ],
+        formalize:`
+            <h4>🧩 因數和倍數，其實很簡單</h4>
+                <p>如果一個數字可以「整除」另一個數字（除完剛剛好，沒有餘數），我們就說：</p>
+                    <div class="formula-box">小的那個是大的的「因數」　　大的那個是小的的「倍數」</div>
+                        <p>例如 24 ÷ 6 = 4，剛好除完，所以 6 是 24 的因數，24 是 6 的倍數。再舉一個例子：18 ÷ 3 = 6，剛好除完，所以 3 是18的因數，18是3的倍數。</p>
+                            <p>一個數字的因數是「找得完」的（例如24的因數只有8個），但倍數可以一直乘下去，是「找不完」的（3的倍數有3,6,9,12……可以一直乘到無限大）。</p>
+                                <h4>💎 質數：數字世界裡的「獨行俠」</h4>
+                                    <p>如果一個大於1的數字，只能被 1 和自己整除（別的數字都除不盡），這種數字就叫<b>質數</b>。像 7 這個數字，只有 1 和 7 能整除它，所以7是質數。如果因數不只1和自己（例如6可以被1,2,3,6整除），這種數字就叫<b>合數</b>。</p>
+                                        <div class="formula-box">質數：只有 1 和自己這兩個因數，沒有別的了</div>
+                                            <p>特別要記住兩件事：<b>1 不算質數也不算合數</b>（因為它只有自己一個因數）；<b>2 是最小的質數，也是唯一的偶數質數</b>（除了2以外，所有質數都是奇數，因為偶數都能被2整除）。你剛剛親手篩出的 2、3、5、7、11、13、17、19，就是20以內全部的質數！</p>
+                                              `,
+        formalizeCheck:{
+              id:'fc2', type:'mc',
+              prompt:'小測驗：15 是質數還是合數？',
+              options:['質數','合數（因為 15 = 3 × 5，因數不只1和自己）'],
+              answer:1,
+              hints:['試試看 15 除以 3。','15 ÷ 3 = 5，剛好整除，代表15還有別的因數，不只1和自己。'],
+              correctMsg:'答對了！15 = 3×5，除了1和15之外還有3和5這兩個因數，所以是合數。'
+        },
+        practice:[
+          {id:'u2p1', type:'list', prompt:'請列出 36 的所有因數。（用逗號分開，由小到大）', answer:[1,2,3,4,6,9,12,18,36],
+                 hints:['從1開始一個一個試除到36：1, 2, 3……','記得檢查 1, 2, 3, 4, 6, 9, 12, 18, 36 這些數字能不能整除36。','36 = 4×9 = 6×6，這些關係可以幫你找到更多因數。','完整答案：1, 2, 3, 4, 6, 9, 12, 18, 36，共9個。'],
+                 explain:'36 的因數：1, 2, 3, 4, 6, 9, 12, 18, 36，共9個。'},
+          {id:'u2p2', type:'mc', prompt:'51 是質數嗎？', options:['是質數','不是質數'], answer:1,
+                 hints:['質數只能被1和自己整除，試試看51能不能被小一點的質數整除。','試試看用 3 去除 51。','51 ÷ 3 = 17，整除了嗎？'],
+                 explain:'51 = 3 × 17，除了1和51還有其他因數，所以不是質數。'},
+          {id:'u2p3', type:'list', prompt:'列出 20 以內（含20）的所有質數。', answer:[2,3,5,7,11,13,17,19],
+                 hints:['回想你剛剛做過的篩法結果。','別忘了 2 是最小的質數，也是唯一的偶數質數。','質數們是：2, 3, 5, 7, 11, 13, 17, 19。'],
+                 explain:'20以內的質數：2, 3, 5, 7, 11, 13, 17, 19，共8個。'},
+          {id:'u2p4', type:'number', prompt:'應用題：有 18 顆糖果和 24 片餅乾，要平分給幾位小朋友，讓每人分到的糖果數一樣多、餅乾數也一樣多（都不能剩）。最多可以分給幾位小朋友？', answer:6,
+          hints:['先分別列出18和24的所有因數。','18的因數：1,2,3,6,9,18。24的因數：1,2,3,4,6,8,12,24。','找出兩者「共同」的因數：1, 2, 3, 6。','人數要「最多」，所以選共同因數中最大的：6。'],
+        explain:'18的因數:1,2,3,6,9,18；24的因數:1,2,3,4,6,8,12,24。共同因數有1,2,3,6，最大是6。每人分3顆糖、4片餅乾。'},
+      {id:'u2p5', type:'mc', prompt:'97 是質數嗎？', options:['是質數','不是質數'], answer:0,
+          hints:['質數只需要檢查到大約 10 以內的數字能不能整除它（因為10×10=100已經超過97）。','試試看 2、3、5、7 分別除97。','都不能整除，所以97是質數。'],
+        explain:'97不能被2,3,5,7整除，且下一個要檢查的11×11=121已經超過97，所以97是質數。'},
+      {id:'u2p6', type:'list', prompt:'請列出 60 的所有因數。', answer:[1,2,3,4,5,6,10,12,15,20,30,60],
+          hints:['先從小的開始：1,2,3,4,5,6都能整除60。','60 = 6×10 = 4×15 = 5×12，這些關係可以幫你找到更多因數。','記得60本身也是因數。','完整答案：1,2,3,4,5,6,10,12,15,20,30,60，共12個。'],
+          explain:'60的因數：1,2,3,4,5,6,10,12,15,20,30,60，共12個。'},
+  {id:'u2p7', type:'mc', prompt:'91 是質數嗎？（小心，這題有陷阱！）', options:['是質數','不是質數'], answer:1,
+          hints:['91看起來像質數，但要小心陷阱！','試試看用7去除91。','91 ÷ 7 = 13，整除了嗎？'],
+          explain:'91 = 7 × 13，雖然看起來像質數，但其實是合數！這是常見的陷阱數字。'},
+        {id:'u2p8', type:'number', prompt:'24 和 36 的最大公因數是多少？', answer:12,
+          hints:['列出24的因數：1,2,3,4,6,8,12,24。','列出36的因數：1,2,3,4,6,9,12,18,36。','找出兩者共同的因數中最大的一個：12。'],
+          explain:'24的因數:1,2,3,4,6,8,12,24；36的因數:1,2,3,4,6,9,12,18,36。共同的最大因數是12。'}
+    ],
+      boss:{
+        title:'質數魔王：篩法試煉場',
+        intro:'魔王在你面前展開一張 2～100 的巨大數字網，宣稱：「找出所有質數，證明你是真正的數論高手！」別擔心，卡住了可以按提示。',
+        sieveRange:{min:2,max:100},
+      afterSieveParts:[
+        {id:'b2a', type:'mc', prompt:'完成篩法後回答：89 是質數嗎？', options:['是質數','不是質數'], answer:0,
+            hints:['先檢查89能不能被2整除（89是奇數，不能被2整除）。','再檢查能不能被3、5、7整除。','都不能整除，而且下一個要檢查的11×11=121已經超過89，所以89是質數。'],
+            explain:'89無法被2,3,5,7整除，是質數。'},
+  {id:'b2b', type:'number', prompt:'魔王的終極提問：根據你剛剛篩出的結果，100 以內總共有幾個質數？', answer:25,
+          hints:['數一數你篩選網格中，被標記為「質數」（綠色）的數字總共有幾個。','如果不確定，可以重新數一次2到100之間所有綠色的格子。'],
+          explain:'100以內共有25個質數：2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97。'}
+      ],
+      victoryText:'魔王徹底臣服：「你親手篩出了100以內所有的質數，這是真正的數論力量！」'
+  }
+    };
+  
+    const UNITS = [UNIT1, UNIT2];
+    function getUnit(id){ return UNITS.find(u=>u.id===id); }
+  
+    /* ========================================================================
      狀態管理 (State / Progress)
-   ======================================================================== */
-function defaultUnitState(){
+       ======================================================================== */
+  function defaultUnitState(){
     return {
-          unlocked:false,
-          hookSeen:false,
-          discoveryIndex:0,
-          discoveryDone:false,
-          formalizeSeen:false,
-          formalizeCheckDone:false,
-          practiceIndex:0,
-          practiceAnswers:{}, // qId -> {correct, hintsUsed}
-          practiceDone:false,
-                bossState:{ partsAnswers:{}, sievePassed:false, cleared:false },
-                bossDone:false,
-                hintsUsedTotal:0
-            };
-}
-function defaultProgress(){
-    return {
-          xp:0,
-          streak:0,
-          maxStreak:0,
-          badges:[],
-          units:{
-      unit1: Object.assign(defaultUnitState(), {unlocked:true}),
-              unit2: defaultUnitState()
-}
-};
-}
-let STATE = null;
-
-function loadProgress(){
-    try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw){
-      const parsed = JSON.parse(raw);
-      // 合併預設值以防未來擴充欄位缺漏
-      const def = defaultProgress();
-      STATE = Object.assign(def, parsed);
-      STATE.units = STATE.units || {};
-      STATE.units.unit1 = Object.assign(defaultUnitState(), {unlocked:true}, parsed.units && parsed.units.unit1 || {});
-      STATE.units.unit2 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit2 || {});
-      return;
+        unlocked:false,
+        hookSeen:false,
+        discoveryIndex:0,
+        discoveryDone:false,
+        formalizeSeen:false,
+      formalizeCheckDone:false,
+        practiceIndex:0,
+        practiceAnswers:{}, // qId -> {correct, hintsUsed}
+        practiceDone:false,
+        bossState:{ partsAnswers:{}, sievePassed:false, cleared:false },
+      bossDone:false,
+        hintsUsedTotal:0
+  };
     }
-    }catch(e){ console.warn('讀取進度失敗，使用預設值', e); }
-  STATE = defaultProgress();
-}
-function saveProgress(){
-    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE)); }
-        catch(e){ console.warn('儲存進度失敗', e); }
-}
-
-/* ---- XP / Level ---- */
-const XP_PER_LEVEL = 80;
-function levelFromXp(xp){ return Math.floor(xp / XP_PER_LEVEL) + 1; }
-function xpIntoLevel(xp){ return xp % XP_PER_LEVEL; }
-
-function addXp(amount, reason){
-    const beforeLevel = levelFromXp(STATE.xp);
-  STATE.xp = Math.max(0, STATE.xp + amount);
-  const afterLevel = levelFromXp(STATE.xp);
-  saveProgress();
-  updateHeaderStats();
-  if(amount > 0) showToast(`✨ +${amount} XP　${reason||''}`, 'xp');
-    if(afterLevel > beforeLevel){
-    showToast(`🎉 升級了！Lv.${afterLevel}`, 'level');
+    function defaultProgress(){
+            return {
+      xp:0,
+      streak:0,
+      maxStreak:0,
+        badges:[],
+      units:{
+        unit1: Object.assign(defaultUnitState(), {unlocked:true}),
+          unit2: defaultUnitState()
+        }
+      };
+  }
+  let STATE = null;
+    
+  function loadProgress(){
+      try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){
+          const parsed = JSON.parse(raw);
+          // 合併預設值以防未來擴充欄位缺漏
+        const def = defaultProgress();
+        STATE = Object.assign(def, parsed);
+            STATE.units = STATE.units || {};
+        STATE.units.unit1 = Object.assign(defaultUnitState(), {unlocked:true}, parsed.units && parsed.units.unit1 || {});
+                STATE.units.unit2 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit2 || {});
+            return;
+        }
+      }catch(e){ console.warn('讀取進度失敗，使用預設值', e); }
+      STATE = defaultProgress();
+    }
+      function saveProgress(){
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE)); }
+      catch(e){ console.warn('儲存進度失敗', e); }
+  }
+  
+    /* ---- XP / Level ---- */
+  const XP_PER_LEVEL = 80;
+    function levelFromXp(xp){ return Math.floor(xp / XP_PER_LEVEL) + 1; }
+    function xpIntoLevel(xp){ return xp % XP_PER_LEVEL; }
+    
+    function addXp(amount, reason){
+      const beforeLevel = levelFromXp(STATE.xp);
+    STATE.xp = Math.max(0, STATE.xp + amount);
+      const afterLevel = levelFromXp(STATE.xp);
+      saveProgress();
+    updateHeaderStats();
+      if(amount > 0) showToast(`✨ +${amount} XP　${reason||''}`, 'xp');
+      if(afterLevel > beforeLevel){
+      showToast(`🎉 升級了！Lv.${afterLevel}`, 'level');
       }
     }
-function registerCorrect(){
-    STATE.streak += 1;
-  if(STATE.streak > STATE.maxStreak) STATE.maxStreak = STATE.streak;
-  if(STATE.streak === 5) awardBadge('streak5');
-  if(STATE.streak === 10) awardBadge('streak10');
-  saveProgress();
-  updateHeaderStats();
-}
-function registerWrong(){
-    STATE.streak = 0;
-  saveProgress();
-  updateHeaderStats();
-}
-function awardBadge(id){
+    function registerCorrect(){
+      STATE.streak += 1;
+      if(STATE.streak > STATE.maxStreak) STATE.maxStreak = STATE.streak;
+      if(STATE.streak === 5) awardBadge('streak5');
+      if(STATE.streak === 10) awardBadge('streak10');
+    saveProgress();
+      updateHeaderStats();
+    }
+    function registerWrong(){
+      STATE.streak = 0;
+      saveProgress();
+      updateHeaderStats();
+    }
+    function awardBadge(id){
     if(!STATE.badges.includes(id)){
     STATE.badges.push(id);
-    saveProgress();
-    const b = BADGES[id];
-    if(b) showToast(`🏅 獲得新徽章：${b.icon} ${b.name}`, 'badge');
-                                        }
+        saveProgress();
+                               const b = BADGES[id];
+      if(b) showToast(`🏅 獲得新徽章：${b.icon} ${b.name}`, 'badge');
+  }
+      }
+  
+    /* ========================================================================
+     UI：Header
+     ======================================================================== */
+  function updateHeaderStats(){
+      const lvl = levelFromXp(STATE.xp);
+      const inLevel = xpIntoLevel(STATE.xp);
+      document.getElementById('levelBadge').textContent = 'Lv' + lvl;
+      document.getElementById('xpBarFill').style.width = (inLevel / XP_PER_LEVEL * 100) + '%';
+    const streakEl = document.getElementById('streakPill');
+    streakEl.textContent = '🔥 ' + STATE.streak;
+    streakEl.classList.toggle('hot', STATE.streak >= 3);
     }
-
-/* ========================================================================
-         UI：Header
-         ======================================================================== */
-function updateHeaderStats(){
-    const lvl = levelFromXp(STATE.xp);
-  const inLevel = xpIntoLevel(STATE.xp);
-  document.getElementById('levelBadge').textContent = 'Lv' + lvl;
-  document.getElementById('xpBarFill').style.width = (inLevel / XP_PER_LEVEL * 100) + '%';
-  const streakEl = document.getElementById('streakPill');
-  streakEl.textContent = '🔥 ' + STATE.streak;
-  streakEl.classList.toggle('hot', STATE.streak >= 3);
-}
-
-function showToast(msg, kind){
+    
+  function showToast(msg, kind){
     const stack = document.getElementById('toast-stack');
-  const el = document.createElement('div');
-  el.className = 'toast' + (kind==='badge' ? ' badge' : kind==='level' ? ' level' : '');
+                                       const el = document.createElement('div');
+    el.className = 'toast' + (kind==='badge' ? ' badge' : kind==='level' ? ' level' : '');
       el.textContent = msg;
-  stack.appendChild(el);
-  setTimeout(()=>{ el.remove(); }, 3100);
-}
-
-/* ========================================================================
-   Router / Screens
-   ======================================================================== */
-let CURRENT_UNIT_PHASE = null; // {unitId, phase}
-
-function goHome(){
+    stack.appendChild(el);
+      setTimeout(()=>{ el.remove(); }, 3100);
+    }
+    
+  /* ========================================================================
+     Router / Screens
+     ======================================================================== */
+    let CURRENT_UNIT_PHASE = null; // {unitId, phase}
+  
+    function goHome(){
     CURRENT_UNIT_PHASE = null;
-  renderHome();
-}
-
-function unitProgressPercent(unitId){
+      renderHome();
+    }
+    
+  function unitProgressPercent(unitId){
     const u = getUnit(unitId);
-  const s = STATE.units[unitId];
-  if(!s.unlocked) return 0;
-  let total = 1 + u.discovery.length + 1 + u.practice.length + 1; // hook + discovery + formalize + practice + boss
-  let done = 0;
-  if(s.hookSeen) done += 1;
-  done += Math.min(s.discoveryIndex, u.discovery.length);
-  if(s.formalizeCheckDone) done += 1;
-  done += Object.values(s.practiceAnswers).filter(a=>a.correct).length;
-  if(s.bossDone) done += 1;
-  return Math.round(done/total*100);
-}
-function unitStars(unitId){
     const s = STATE.units[unitId];
-  if(!s.bossDone) return 0;
-  if(s.hintsUsedTotal === 0) return 3;
-  if(s.hintsUsedTotal <= 5) return 2;
-  return 1;
-}
-
-function renderHome(){
-    const app = document.getElementById('app');
-  const u1 = STATE.units.unit1, u2 = STATE.units.unit2;
-  app.innerHTML = `
-        <div class="screen">
+    if(!s.unlocked) return 0;
+      let total = 1 + u.discovery.length + 1 + u.practice.length + 1; // hook + discovery + formalize + practice + boss
+      let done = 0;
+      if(s.hookSeen) done += 1;
+  done += Math.min(s.discoveryIndex, u.discovery.length);
+      if(s.formalizeCheckDone) done += 1;
+      done += Object.values(s.practiceAnswers).filter(a=>a.correct).length;
+      if(s.bossDone) done += 1;
+            return Math.round(done/total*100);
+  }
+  function unitStars(unitId){
+    const s = STATE.units[unitId];
+                             if(!s.bossDone) return 0;
+    if(s.hintsUsedTotal === 0) return 3;
+      if(s.hintsUsedTotal <= 5) return 2;
+      return 1;
+    }
+    
+  function renderHome(){
+                              const app = document.getElementById('app');
+      const u1 = STATE.units.unit1, u2 = STATE.units.unit2;
+    app.innerHTML = `
+      <div class="screen">
           <h1 class="page-title">選擇你的冒險單元 🗺️</h1>
           <p class="page-sub">用 AoPS 引導式發現學習法，一步步打好國一數學基礎。完成單元一的魔王挑戰，即可解鎖單元二。</p>
-      <div class="unit-grid">
+          <div class="unit-grid">
             ${UNITS.map(u => renderUnitCard(u)).join('')}
-      </div>
-      <div class="badges-row">
-        ${Object.values(BADGES).map(b=>{
-              const earned = STATE.badges.includes(b.id);
-          return `<div class="badge-chip ${earned?'earned':''}" title="${b.desc}">${b.icon} ${b.name}</div>`;
-}).join('')}
-      </div>
     </div>
-  `;
-}
-function renderUnitCard(u){
+        <div class="badges-row">
+          ${Object.values(BADGES).map(b=>{
+              const earned = STATE.badges.includes(b.id);
+              return `<div class="badge-chip ${earned?'earned':''}" title="${b.desc}">${b.icon} ${b.name}</div>`;
+  }).join('')}
+    </div>
+  </div>
+    `;
+    }
+    function renderUnitCard(u){
     const s = STATE.units[u.id];
-  const pct = unitProgressPercent(u.id);
-  const stars = unitStars(u.id);
-  const starStr = '★'.repeat(stars) + '☆'.repeat(3-stars);
-  const locked = !s.unlocked;
-  return `
-    <div class="unit-card ${locked?'locked':''}">
-          ${locked ? '<div class="lock-overlay">🔒</div>' : ''}
-          <div class="unit-icon">${u.icon}</div>
+      const pct = unitProgressPercent(u.id);
+      const stars = unitStars(u.id);
+      const starStr = '★'.repeat(stars) + '☆'.repeat(3-stars);
+    const locked = !s.unlocked;
+    return `
+      <div class="unit-card ${locked?'locked':''}">
+        ${locked ? '<div class="lock-overlay">🔒</div>' : ''}
+        <div class="unit-icon">${u.icon}</div>
           <h3>${u.title}</h3>
-          <p>${u.shortDesc}</p>
-          <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-          <div class="unit-meta">
+        <p>${u.shortDesc}</p>
+        <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <div class="unit-meta">
             <span>${pct}% 完成</span>
             <span class="stars">${starStr}</span>
-          </div>
-      ${locked
-        ? `<button class="unit-cta" style="background:rgba(255,255,255,.1);color:var(--text-dim);" disabled>先完成單元一解鎖</button>`
-        : `<button class="unit-cta" onclick="enterUnit('${u.id}')">${pct>0?'繼續冒險':'開始冒險'} →</button>`
-}
-    </div>
-  `;
-}
-
-/* ---- Unit flow controller ---- */
-function enterUnit(unitId){
-  const s = STATE.units[unitId];
-  let phase = 'hook';
-  if(s.hookSeen) phase='discovery';
-  if(s.discoveryDone) phase='formalize';
-  if(s.formalizeCheckDone) phase='practice';
-  if(s.practiceDone) phase='boss';
-  if(s.bossDone) phase='complete';
-  CURRENT_UNIT_PHASE = {unitId, phase};
-  renderUnitScreen();
-}
-function gotoPhase(phase){
+        </div>
+        ${locked
+            ? `<button class="unit-cta" style="background:rgba(255,255,255,.1);color:var(--text-dim);" disabled>先完成單元一解鎖</button>`
+            : `<button class="unit-cta" onclick="enterUnit('${u.id}')">${pct>0?'繼續冒險':'開始冒險'} →</button>`
+        }
+  </div>
+    `;
+  }
+    
+  /* ---- Unit flow controller ---- */
+  function enterUnit(unitId){
+      const s = STATE.units[unitId];
+      let phase = 'hook';
+    if(s.hookSeen) phase='discovery';
+      if(s.discoveryDone) phase='formalize';
+    if(s.formalizeCheckDone) phase='practice';
+    if(s.practiceDone) phase='boss';
+    if(s.bossDone) phase='complete';
+      CURRENT_UNIT_PHASE = {unitId, phase};
+    renderUnitScreen();
+  }
+    function gotoPhase(phase){
     CURRENT_UNIT_PHASE.phase = phase;
-  renderUnitScreen();
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-function renderUnitScreen(){
-    const {unitId, phase} = CURRENT_UNIT_PHASE;
-  const u = getUnit(unitId);
-  const app = document.getElementById('app');
-  const phases = ['hook','discovery','formalize','practice','boss'];
-  const currentIdx = phases.indexOf(phase==='complete'?'boss':phase);
-  const stepper = phases.map((p,i)=>{
-    let cls='phase-dot';
-    if(i<currentIdx || phase==='complete') cls+=' done';
-    else if(i===currentIdx) cls+=' active';
-    const labels={hook:'引子問題',discovery:'引導發現',formalize:'正式化',practice:'練習題',boss:'魔王挑戰'};
-    return `<div class="${cls}">${labels[p]}</div>`;
-}).join('');
-
-  app.innerHTML = `
-    <div class="screen">
-      <div class="unit-header">
-        <button class="back-btn" onclick="goHome()">← 回單元選單</button>
-        <h1 class="page-title" style="margin:0;">${u.icon} ${u.title}</h1>
-      </div>
-      <div class="phase-stepper">${stepper}</div>
-      <div id="phase-content"></div>
-    </div>
-  `;
-  const target = document.getElementById('phase-content');
-  if(phase==='hook') renderHookPhase(u, target);
-  else if(phase==='discovery') renderDiscoveryPhase(u, target);
-  else if(phase==='formalize') renderFormalizePhase(u, target);
-  else if(phase==='practice') renderPracticePhase(u, target);
-  else if(phase==='boss') renderBossPhase(u, target);
-  else if(phase==='complete') renderCompletePhase(u, target);
-}
-
-/* ---- Hook ---- */
-function renderHookPhase(u, target){
-  target.innerHTML = `
-    <div class="card">
-      <span class="tag hook">引子問題</span>
-      <div class="prompt-text">${u.hook.text}</div>
-      <button class="btn" onclick="finishHook('${u.id}')">${u.hook.cta}</button>
-    </div>
-  `;
-}
-function finishHook(unitId){
-  STATE.units[unitId].hookSeen = true;
-  saveProgress();
-  gotoPhase('discovery');
-}
-
-/* ---- Discovery ---- */
-function renderDiscoveryPhase(u, target){
-  const s = STATE.units[u.id];
-  if(s.discoveryIndex >= u.discovery.length){
-    s.discoveryDone = true; saveProgress();
-    awardBadge(u.id==='unit1'?'unit1_discoverer':'unit2_discoverer');
-    gotoPhase('formalize');
-    return;
-}
-  const step = u.discovery[s.discoveryIndex];
-  const total = u.discovery.length;
-  const idx = s.discoveryIndex;
-
-  let bodyHtml = '';
-  if(step.type === 'sieve'){
-    bodyHtml = `
-      <div class="prompt-text">${step.prompt}</div>
-      <div id="sieveContainer"></div>
-      <div id="sieveContinueWrap" class="hidden" style="margin-top:14px;">
-        <div class="feedback correct">${step.correctMsg}</div>
-        <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
-      </div>
+    renderUnitScreen();
+      window.scrollTo({top:0, behavior:'smooth'});
+  }
+    function renderUnitScreen(){
+      const {unitId, phase} = CURRENT_UNIT_PHASE;
+      const u = getUnit(unitId);
+      const app = document.getElementById('app');
+    const phases = ['hook','discovery','formalize','practice','boss'];
+    const currentIdx = phases.indexOf(phase==='complete'?'boss':phase);
+    const stepper = phases.map((p,i)=>{
+      let cls='phase-dot';
+      if(i<currentIdx || phase==='complete') cls+=' done';
+        else if(i===currentIdx) cls+=' active';
+      const labels={hook:'引子問題',discovery:'引導發現',formalize:'正式化',practice:'練習題',boss:'魔王挑戰'};
+        return `<div class="${cls}">${labels[p]}</div>`;
+  }).join('');
+    
+    app.innerHTML = `
+      <div class="screen">
+          <div class="unit-header">
+            <button class="back-btn" onclick="goHome()">← 回單元選單</button>
+            <h1 class="page-title" style="margin:0;">${u.icon} ${u.title}</h1>
+  </div>
+        <div class="phase-stepper">${stepper}</div>
+          <div id="phase-content"></div>
+  </div>
     `;
+      const target = document.getElementById('phase-content');
+      if(phase==='hook') renderHookPhase(u, target);
+      else if(phase==='discovery') renderDiscoveryPhase(u, target);
+    else if(phase==='formalize') renderFormalizePhase(u, target);
+    else if(phase==='practice') renderPracticePhase(u, target);
+      else if(phase==='boss') renderBossPhase(u, target);
+    else if(phase==='complete') renderCompletePhase(u, target);
+    }
+    
+  /* ---- Hook ---- */
+  function renderHookPhase(u, target){
     target.innerHTML = `
-      <div class="card">
-        <span class="tag discovery">引導發現</span>
-        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
-        ${bodyHtml}
-      </div>
-    `;
-    mountSieve('sieveContainer', step.min, step.max, function onComplete(){
-      document.getElementById('sieveContinueWrap').classList.remove('hidden');
-      addXp(15, '完成篩法探索');
-      if(step.max===20) {} // small badge reserved for boss sieve
-});
-    return;
-}
-
-  target.innerHTML = `
-    <div class="card">
-      <span class="tag discovery">引導發現</span>
-      <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
-      <div class="prompt-text">${step.prompt}</div>
-      <div id="qArea"></div>
+        <div class="card">
+        <span class="tag hook">引子問題</span>
+          <div class="prompt-text">${u.hook.text}</div>
+        <button class="btn" onclick="finishHook('${u.id}')">${u.hook.cta}</button>
     </div>
-  `;
-  renderQuestionInput(document.getElementById('qArea'), step, {
-    xpCorrect: 5,
-    onCorrect: ()=>{ advanceDiscovery(u.id); },
-    context:'discovery'
-});
-}
-function advanceDiscovery(unitId){
-  const s = STATE.units[unitId];
-  s.discoveryIndex += 1;
-  saveProgress();
-  renderUnitScreen();
-}
-
-/* ---- Formalize ---- */
-function renderFormalizePhase(u, target){
-  const s = STATE.units[u.id];
-  target.innerHTML = `
-    <div class="card">
-      <span class="tag formalize">正式化說明</span>
-      <div class="formalize-block">${u.formalize}</div>
-    </div>
-    <div class="card">
-      <div class="prompt-text">${u.formalizeCheck.prompt}</div>
-      <div id="fcArea"></div>
-    </div>
-  `;
-  renderQuestionInput(document.getElementById('fcArea'), u.formalizeCheck, {
-    xpCorrect: 3,
-    onCorrect: ()=>{
-      s.formalizeCheckDone = true; saveProgress();
-      setTimeout(()=>gotoPhase('practice'), 900);
-},
-    context:'formalize'
-});
-}
-
-/* ---- Practice ---- */
-function renderPracticePhase(u, target){
-  const s = STATE.units[u.id];
-  const answered = s.practiceAnswers;
-  const total = u.practice.length;
-  const correctCount = Object.values(answered).filter(a=>a.correct).length;
-
-  if(correctCount >= total){
-    s.practiceDone = true; saveProgress();
-    gotoPhase('boss');
-    return;
-}
-  // find next unanswered question
-  let nextQ = u.practice.find(q => !(answered[q.id] && answered[q.id].correct));
-  const qIndex = u.practice.indexOf(nextQ);
-
-  const chips = u.practice.map((q,i)=>{
-    let cls='qchip';
-    if(answered[q.id] && answered[q.id].correct) cls+=' correct';
-    else if(q.id===nextQ.id) cls+=' current';
-    return `<div class="${cls}">${i+1}</div>`;
-}).join('');
-
-  target.innerHTML = `
-    <div class="card">
-      <span class="tag practice">練習題</span>
-      <div class="step-progress-label">已完成 ${correctCount} / ${total} 題</div>
-      <div class="qchip-row">${chips}</div>
-      <div class="prompt-text">${nextQ.prompt}</div>
-      <div id="qArea"></div>
-    </div>
-  `;
-  renderQuestionInput(document.getElementById('qArea'), nextQ, {
-    xpCorrect: 10,
-    context:'practice',
-    unitId: u.id,
-    onCorrect: (hintsUsed)=>{
-      answered[nextQ.id] = {correct:true, hintsUsed};
+      `;
+  }
+  function finishHook(unitId){
+      STATE.units[unitId].hookSeen = true;
       saveProgress();
-      setTimeout(()=>renderUnitScreen(), 1100);
-}
-});
-}
-
-/* ---- Boss ---- */
-function renderBossPhase(u, target){
-  const s = STATE.units[u.id];
-  const boss = u.boss;
-
-  if(boss.sieveRange){
-    renderBossSieve(u, target);
-    return;
-}
-  // multi-part boss (unit1 style)
-  const parts = boss.parts;
-  const answered = s.bossState.partsAnswers;
-  const doneCount = Object.values(answered).filter(a=>a.correct).length;
-
-  if(doneCount >= parts.length){
-    completeBoss(u);
-    return;
-}
-  let nextPart = parts.find(p => !(answered[p.id] && answered[p.id].correct));
-  const idx = parts.indexOf(nextPart);
-
-  target.innerHTML = `
-    <div class="boss-frame">
-      <div class="boss-title">👹 ${boss.title}</div>
-      <p class="prompt-text" style="font-size:.95rem;">${boss.intro}</p>
-      <div class="boss-part">
-        <div class="boss-part-label">試煉 ${idx+1} / ${parts.length}</div>
-        <div class="prompt-text">${nextPart.prompt}</div>
-        <div id="qArea"></div>
-      </div>
-    </div>
-  `;
-  renderQuestionInput(document.getElementById('qArea'), nextPart, {
-    xpCorrect: 18,
-    context:'boss',
-    unitId: u.id,
-    onCorrect: (hintsUsed)=>{
-      answered[nextPart.id] = {correct:true, hintsUsed};
-      saveProgress();
-      setTimeout(()=>renderUnitScreen(), 1100);
-}
-});
-}
-
-function renderBossSieve(u, target){
-  const s = STATE.units[u.id];
-  const boss = u.boss;
-  if(!s.bossState.sievePassed){
-    target.innerHTML = `
-      <div class="boss-frame">
-        <div class="boss-title">👑 ${boss.title}</div>
-        <p class="prompt-text" style="font-size:.95rem;">${boss.intro}</p>
+      gotoPhase('discovery');
+    }
+    
+  /* ---- Discovery ---- */
+  function renderDiscoveryPhase(u, target){
+    const s = STATE.units[u.id];
+    if(s.discoveryIndex >= u.discovery.length){
+        s.discoveryDone = true; saveProgress();
+        awardBadge(u.id==='unit1'?'unit1_discoverer':'unit2_discoverer');
+        gotoPhase('formalize');
+      return;
+  }
+    const step = u.discovery[s.discoveryIndex];
+      const total = u.discovery.length;
+      const idx = s.discoveryIndex;
+    
+    let bodyHtml = '';
+    if(step.type === 'sieve'){
+        bodyHtml = `
+        <div class="prompt-text">${step.prompt}</div>
         <div id="sieveContainer"></div>
         <div id="sieveContinueWrap" class="hidden" style="margin-top:14px;">
-          <div class="feedback correct">全部篩選正確！你完成了 100 以內的完整質數篩法。</div>
-          <button class="btn" style="margin-top:10px;" onclick="passBossSieve('${u.id}')">繼續挑戰最終提問 →</button>
-        </div>
-      </div>
-    `;
-    mountSieve('sieveContainer', boss.sieveRange.min, boss.sieveRange.max, function onComplete(){
-      document.getElementById('sieveContinueWrap').classList.remove('hidden');
-      awardBadge('sieve_master');
-      addXp(30, '完成 100 以內質數篩選');
-});
-    return;
-}
-  // after sieve passed -> ask extra parts
-  const parts = boss.afterSieveParts;
-  const answered = s.bossState.partsAnswers;
-  const doneCount = Object.values(answered).filter(a=>a.correct).length;
-  if(doneCount >= parts.length){
-    completeBoss(u);
-    return;
-}
-  let nextPart = parts.find(p => !(answered[p.id] && answered[p.id].correct));
-  const idx = parts.indexOf(nextPart);
-  target.innerHTML = `
-    <div class="boss-frame">
-      <div class="boss-title">👑 ${boss.title}</div>
-      <div class="boss-part" style="border-top:none;margin-top:0;">
-        <div class="boss-part-label">最終提問 ${idx+1} / ${parts.length}</div>
-        <div class="prompt-text">${nextPart.prompt}</div>
-        <div id="qArea"></div>
-      </div>
+            <div class="feedback correct">${step.correctMsg}</div>
+            <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
     </div>
-  `;
-  renderQuestionInput(document.getElementById('qArea'), nextPart, {
-    xpCorrect: 20,
-    context:'boss',
-    unitId: u.id,
-    onCorrect: (hintsUsed)=>{
-      answered[nextPart.id] = {correct:true, hintsUsed};
-      saveProgress();
-      setTimeout(()=>renderUnitScreen(), 1100);
-}
-});
-}
-function passBossSieve(unitId){
-  STATE.units[unitId].bossState.sievePassed = true;
-  saveProgress();
-  renderUnitScreen();
-}
-
-function completeBoss(u){
-  const s = STATE.units[u.id];
-  s.bossDone = true;
-  s.bossState.cleared = true;
-  saveProgress();
-  awardBadge(u.id==='unit1' ? 'boss1' : 'boss2');
-  if(s.hintsUsedTotal === 0){
-    awardBadge(u.id==='unit1' ? 'perfect1' : 'perfect2');
-}
-  if(u.id==='unit1'){
-    STATE.units.unit2.unlocked = true;
-    saveProgress();
-}
-  celebrate(u.boss.victoryText, u.id);
-}
-
-function renderCompletePhase(u, target){
-  target.innerHTML = `
-    <div class="card" style="text-align:center;">
-      <div style="font-size:2.6rem;">🏆</div>
-      <h2 style="color:var(--accent-amber);">單元已通關！</h2>
-      <p style="color:var(--text-dim);">${u.boss.victoryText}</p>
-      <div class="stars" style="font-size:1.4rem;margin:10px 0;">${'★'.repeat(unitStars(u.id))}${'☆'.repeat(3-unitStars(u.id))}</div>
-      <button class="btn" onclick="goHome()">回到單元選單</button>
-    </div>
-  `;
-}
-
-/* ========================================================================
-   通用題目輸入元件 (number / expr / mc / list)
-   ======================================================================== */
-function renderQuestionInput(container, q, opts){
-  const state = { hintsUsed:0, resolved:false, selectedMc:null };
-
-  function renderBody(){
-    let inputHtml = '';
-    if(q.type==='mc'){
-      inputHtml = `<div class="mc-options">${q.options.map((opt,i)=>
-        `<button class="mc-btn" data-idx="${i}" onclick="window.__qHandlers['${q.id}'].pick(${i})">${opt}</button>`
-      ).join('')}</div>`;
-} else if(q.type==='number'){
-      inputHtml = `<div class="answer-row">
-        <input type="number" id="input_${q.id}" placeholder="輸入答案">
-        <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
-      </div>`;
-} else if(q.type==='expr'){
-      inputHtml = `<div class="answer-row">
-        <input type="text" id="input_${q.id}" placeholder="例如 3n-2">
-        <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
-      </div>
-      <div class="helper-note">可以用 n 代表項數，例如 3n-2 或 5n+2</div>`;
-} else if(q.type==='list'){
-      inputHtml = `<div class="answer-row">
-        <input type="text" id="input_${q.id}" placeholder="例如 1,2,3,6" style="max-width:400px;">
-        <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
-      </div>
-      <div class="helper-note">請用逗號或空格分隔多個數字</div>`;
-}
-
-    const hintsHtml = q.hints && q.hints.length ? `
-      <div class="hint-zone">
-        ${q.hints.map((h,i)=>`<button class="hint-btn" id="hintbtn_${q.id}_${i}" onclick="window.__qHandlers['${q.id}'].showHint(${i})">提示 ${i+1}（-2 XP）</button>`).join('')}
-        <div id="hintboxes_${q.id}"></div>
-      </div>
-    ` : '';
-
-    container.innerHTML = `
-      <div id="qbody_${q.id}">${inputHtml}</div>
-      ${hintsHtml}
-      <div id="feedback_${q.id}"></div>
-    `;
-
-    const inputEl = document.getElementById('input_'+q.id);
-    if(inputEl){
-      inputEl.addEventListener('keydown', (e)=>{ if(e.key==='Enter') window.__qHandlers[q.id].submit(); });
-}
-}
-
-  function showHint(i){
-    if(state.resolved) return;
-    const btn = document.getElementById(`hintbtn_${q.id}_${i}`);
-    if(btn.disabled) return;
-    btn.disabled = true;
-    state.hintsUsed = Math.max(state.hintsUsed, i+1);
-    const box = document.getElementById('hintboxes_'+q.id);
-    const div = document.createElement('div');
-    div.className = 'hint-box';
-    div.textContent = '💡 ' + q.hints[i];
-    box.appendChild(div);
-}
-
-  function evaluate(userAnswerRaw){
-    if(q.type==='number'){
-      const val = parseFloat(userAnswerRaw);
-      return !isNaN(val) && Math.abs(val - q.answer) < 1e-9;
-}
-    if(q.type==='expr'){
-      return checkExprEquivalent(userAnswerRaw, q.answer);
-}
-    if(q.type==='list'){
-      const arr = parseNumberList(userAnswerRaw);
-      return arraysEqual(arr, q.answer);
-}
-    return false;
-}
-
-  function finalizeCorrect(){
-    state.resolved = true;
-    const fb = document.getElementById('feedback_'+q.id);
-    let xp = opts.xpCorrect;
-    xp = Math.max(2, xp - state.hintsUsed*2);
-    fb.innerHTML = `<div class="feedback correct">✅ 答對了！${q.explain||q.correctMsg||''}</div>`;
-    // disable inputs
-    const body = document.getElementById('qbody_'+q.id);
-    body.querySelectorAll('input,button').forEach(el=>el.disabled=true);
-    if(q.hints){ q.hints.forEach((_,i)=>{ const b=document.getElementById(`hintbtn_${q.id}_${i}`); if(b) b.disabled=true; }); }
-
-    registerCorrect();
-    addXp(xp, opts.context==='discovery' ? '引導發現' : opts.context==='formalize' ? '正式化小測驗' : opts.context==='boss' ? '魔王試煉' : '練習題');
-    if(state.hintsUsed===0 && opts.context==='practice'){
-      awardBadge('no_hint_ace');
-}
-    if(opts.unitId){
-      STATE.units[opts.unitId].hintsUsedTotal = (STATE.units[opts.unitId].hintsUsedTotal||0) + state.hintsUsed;
-      saveProgress();
-}
-    if(opts.onCorrect) opts.onCorrect(state.hintsUsed);
-}
-
-  function markWrong(){
-    registerWrong();
-    const fb = document.getElementById('feedback_'+q.id);
-    fb.innerHTML = `<div class="feedback wrong">🤔 再想想看，不太對喔！可以試著使用下面的提示。</div>`;
-}
-
-  function submit(){
-    if(state.resolved) return;
-    const inputEl = document.getElementById('input_'+q.id);
-    const val = inputEl.value;
-    if(!val || !val.toString().trim()){ return; }
-    if(evaluate(val)) finalizeCorrect(); else markWrong();
-}
-  function pick(i){
-    if(state.resolved) return;
-    const body = document.getElementById('qbody_'+q.id);
-    body.querySelectorAll('.mc-btn').forEach(b=>b.classList.remove('selected'));
-    body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('selected');
-    const correct = (i === q.answer);
-    if(correct){
-      body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('correct');
-      finalizeCorrect();
-}else{
-      body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('wrong');
-      markWrong();
-}
-}
-
-  window.__qHandlers = window.__qHandlers || {};
-  window.__qHandlers[q.id] = { submit, pick, showHint };
-  renderBody();
-}
-
-/* ========================================================================
-   質數篩選互動元件 (Sieve of Eratosthenes)
-   ======================================================================== */
-function mountSieve(containerId, min, max, onComplete){
-  const container = document.getElementById(containerId);
-  const cellStates = {}; // num -> 'unset'|'prime'|'comp'
-  for(let n=min;n<=max;n++){ cellStates[n]='unset'; }
-  let completed = false;
-
-  function truth(n){ return isPrime(n); }
-
-  function render(){
-    const totalCells = max-min+1;
-    const setCount = Object.values(cellStates).filter(v=>v!=='unset').length;
-    container.innerHTML = `
-      <div class="sieve-wrap">
-        <div class="sieve-legend">
-          <span><span class="legend-dot unset"></span>尚未標記</span>
-          <span><span class="legend-dot prime"></span>質數</span>
-          <span><span class="legend-dot comp"></span>合數</span>
-        </div>
-        <div class="sieve-status">已標記 ${setCount} / ${totalCells} 個數字。點一下數字：第1下＝質數，第2下＝合數，第3下＝清空。全部標記正確才算過關。</div>
-        <div class="sieve-grid" id="${containerId}_grid">
-          ${Object.keys(cellStates).map(n=>{
-            const st = cellStates[n];
-            const cls = st==='prime' ? 'prime' : st==='comp' ? 'comp' : '';
-            return `<button class="sieve-cell ${cls}" data-n="${n}" onclick="window.__sieveHandlers['${containerId}'].cycle(${n})">${n}</button>`;
-}).join('')}
-        </div>
-        <div class="answer-row">
-          <button class="btn secondary" onclick="window.__sieveHandlers['${containerId}'].check()">🔍 檢查進度</button>
-        </div>
-        <div id="${containerId}_msg"></div>
-      </div>
-    `;
-}
-
-  function cycle(n){
-    if(completed) return;
-    const cur = cellStates[n];
-    cellStates[n] = cur==='unset' ? 'prime' : cur==='prime' ? 'comp' : 'unset';
-    render();
-}
-
-  function check(){
-    if(completed) return;
-    let wrongCells = [];
-    let unsetCount = 0;
-    let allCorrect = true;
-    for(const nStr of Object.keys(cellStates)){
-      const n = parseInt(nStr,10);
-      const st = cellStates[n];
-      if(st==='unset'){ unsetCount++; allCorrect=false; continue; }
-      const shouldBePrime = truth(n);
-      const isCorrect = (shouldBePrime && st==='prime') || (!shouldBePrime && st==='comp');
-      if(!isCorrect){ wrongCells.push(n); allCorrect=false; }
-}
-    const msgEl = document.getElementById(containerId+'_msg');
-    if(allCorrect){
-      completed = true;
-      msgEl.innerHTML = `<div class="feedback correct">🎉 全部正確！做得非常好！</div>`;
-      if(onComplete) onComplete();
+        `;
+        target.innerHTML = `
+        <div class="card">
+          <span class="tag discovery">引導發現</span>
+            <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+          ${bodyHtml}
+  </div>
+        `;
+      mountSieve('sieveContainer', step.min, step.max, function onComplete(){
+        document.getElementById('sieveContinueWrap').classList.remove('hidden');
+          addXp(15, '完成篩法探索');
+          if(step.max===20) {} // small badge reserved for boss sieve
+  });
       return;
-}
-    // visual feedback: pulse wrong ones, briefly
-    const grid = document.getElementById(containerId+'_grid');
-    wrongCells.forEach(n=>{
-      const cell = grid.querySelector(`.sieve-cell[data-n="${n}"]`);
-      if(cell){ cell.classList.add('pulse-wrong'); setTimeout(()=>cell.classList.remove('pulse-wrong'), 500); }
-});
-    let msg = '';
-    if(unsetCount>0) msg += `還有 ${unsetCount} 個數字尚未標記。`;
-    if(wrongCells.length>0) msg += ` 有 ${wrongCells.length} 個標記錯誤（已用紅色閃爍標示），再想想看！`;
-    msgEl.innerHTML = `<div class="feedback wrong">${msg}</div>`;
-}
-
-  window.__sieveHandlers = window.__sieveHandlers || {};
-  window.__sieveHandlers[containerId] = { cycle, check };
-  render();
-}
-
-/* ========================================================================
-   慶祝動畫 / 彩帶
-   ======================================================================== */
-function celebrate(text, unitId){
-  const overlay = document.createElement('div');
-  overlay.id = 'celebrate-overlay';
-  overlay.innerHTML = `
-    <div class="celebrate-card">
-      <div class="big-emoji">🏆</div>
-      <h2>恭喜通關！</h2>
-      <p>${text}</p>
-      <button class="btn" style="margin-top:14px;" onclick="closeCelebrate('${unitId}')">太棒了，繼續！</button>
-    </div>
-  `;
-  document.body.appendChild(overlay);
-  runConfetti();
-}
-function closeCelebrate(unitId){
-  const overlay = document.getElementById('celebrate-overlay');
-  if(overlay) overlay.remove();
-  gotoPhase('complete');
-}
-
-function runConfetti(){
-  const canvas = document.getElementById('confetti-canvas');
-  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-  let ctx = null;
-  try{ ctx = canvas.getContext('2d'); }catch(e){ ctx = null; }
-  if(!ctx) return; // 環境不支援 canvas 2d 時，安靜跳過彩帶動畫，不影響其餘功能
-  const colors = ['#2dd4bf','#fbbf24','#fb7185','#a78bfa','#4ade80'];
-  const particles = [];
-  for(let i=0;i<140;i++){
-    particles.push({
-            x: Math.random()*canvas.width,
-            y: -20 - Math.random()*canvas.height*0.5,
-            w: 6+Math.random()*6,
-            h: 8+Math.random()*10,
-            color: colors[Math.floor(Math.random()*colors.length)],
-            speedY: 2+Math.random()*3,
-            speedX: -1.5+Math.random()*3,
-      rot: Math.random()*360,
-      rotSpeed: -6+Math.random()*12
-});
-}
-  let frame = 0;
-  const maxFrames = 220;
-  function tick(){
-    frame++;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{
-      p.x += p.speedX; p.y += p.speedY; p.rot += p.rotSpeed;
-      ctx.save();
-      ctx.translate(p.x,p.y);
-      ctx.rotate(p.rot*Math.PI/180);
-      ctx.fillStyle = p.color;
-      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-      ctx.restore();
-});
-    if(frame < maxFrames){
-      requestAnimationFrame(tick);
-} else {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-}
-}
-  tick();
-}
-
-/* ========================================================================
-   Modals: 徽章 / 設定
-   ======================================================================== */
-function openBadgeModal(){
-  const backdrop = document.createElement('div');
-  backdrop.className = 'modal-backdrop';
-  backdrop.onclick = (e)=>{ if(e.target===backdrop) backdrop.remove(); };
-  backdrop.innerHTML = `
-    <div class="modal">
-      <h3>🏅 我的徽章</h3>
-      <p style="color:var(--text-dim);font-size:.85rem;">已獲得 ${STATE.badges.length} / ${Object.keys(BADGES).length} 個徽章</p>
-      <div class="badge-grid">
-        ${Object.values(BADGES).map(b=>{
-          const earned = STATE.badges.includes(b.id);
-          return `<div class="badge-tile ${earned?'earned':''}">
-            <span class="bicon">${earned?b.icon:'❔'}</span>
-            <div style="font-weight:700;">${earned?b.name:'尚未解鎖'}</div>
-            <div style="margin-top:4px;">${earned?b.desc:'完成挑戰以解鎖'}</div>
-          </div>`;
-}).join('')}
+    }
+    
+    target.innerHTML = `
+        <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+          <div class="prompt-text">${step.prompt}</div>
+        <div id="qArea"></div>
+  </div>
+    `;
+      renderQuestionInput(document.getElementById('qArea'), step, {
+      xpCorrect: 5,
+        onCorrect: ()=>{ advanceDiscovery(u.id); },
+        context:'discovery'
+      });
+    }
+    function advanceDiscovery(unitId){
+    const s = STATE.units[unitId];
+      s.discoveryIndex += 1;
+      saveProgress();
+    renderUnitScreen();
+  }
+  
+  /* ---- Formalize ---- */
+    function renderFormalizePhase(u, target){
+    const s = STATE.units[u.id];
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag formalize">正式化說明</span>
+          <div class="formalize-block">${u.formalize}</div>
+  </div>
+      <div class="card">
+        <div class="prompt-text">${u.formalizeCheck.prompt}</div>
+          <div id="fcArea"></div>
       </div>
-      <button class="btn secondary" style="margin-top:16px;width:100%;" onclick="this.closest('.modal-backdrop').remove()">關閉</button>
+    `;
+      renderQuestionInput(document.getElementById('fcArea'), u.formalizeCheck, {
+      xpCorrect: 3,
+      onCorrect: ()=>{
+        s.formalizeCheckDone = true; saveProgress();
+        setTimeout(()=>gotoPhase('practice'), 900);
+      },
+        context:'formalize'
+  });
+  }
+  
+    /* ---- Practice ---- */
+  function renderPracticePhase(u, target){
+    const s = STATE.units[u.id];
+    const answered = s.practiceAnswers;
+    const total = u.practice.length;
+      const correctCount = Object.values(answered).filter(a=>a.correct).length;
+    
+    if(correctCount >= total){
+      s.practiceDone = true; saveProgress();
+      gotoPhase('boss');
+      return;
+    }
+      // find next unanswered question
+    let nextQ = u.practice.find(q => !(answered[q.id] && answered[q.id].correct));
+    const qIndex = u.practice.indexOf(nextQ);
+  
+      const chips = u.practice.map((q,i)=>{
+      let cls='qchip';
+            if(answered[q.id] && answered[q.id].correct) cls+=' correct';
+            else if(q.id===nextQ.id) cls+=' current';
+            return `<div class="${cls}">${i+1}</div>`;
+      }).join('');
+    
+      target.innerHTML = `
+          <div class="card">
+                <span class="tag practice">練習題</span>
+                      <div class="step-progress-label">已完成 ${correctCount} / ${total} 題</div>
+                            <div class="qchip-row">${chips}</div>
+                                  <div class="prompt-text">${nextQ.prompt}</div>
+                                        <div id="qArea"></div>
+                                            </div>
+                                              `;
+      renderQuestionInput(document.getElementById('qArea'), nextQ, {
+            xpCorrect: 10,
+            context:'practice',
+            unitId: u.id,
+            onCorrect: (hintsUsed)=>{
+                    answered[nextQ.id] = {correct:true, hintsUsed};
+                    saveProgress();
+                    setTimeout(()=>renderUnitScreen(), 1100);
+            }
+      });
+  }
+    
+    /* ---- Boss ---- */
+    function renderBossPhase(u, target){
+        const s = STATE.units[u.id];
+        const boss = u.boss;
+      
+      if(boss.sieveRange){
+            renderBossSieve(u, target);
+            return;
+      }
+        // multi-part boss (unit1 style)
+      const parts = boss.parts;
+        const answered = s.bossState.partsAnswers;
+        const doneCount = Object.values(answered).filter(a=>a.correct).length;
+      
+      if(doneCount >= parts.length){
+            completeBoss(u);
+            return;
+      }
+        let nextPart = parts.find(p => !(answered[p.id] && answered[p.id].correct));
+        const idx = parts.indexOf(nextPart);
+      
+      target.innerHTML = `
+          <div class="boss-frame">
+                <div class="boss-title">👹 ${boss.title}</div>
+                      <p class="prompt-text" style="font-size:.95rem;">${boss.intro}</p>
+                            <div class="boss-part">
+                                    <div class="boss-part-label">試煉 ${idx+1} / ${parts.length}</div>
+                                            <div class="prompt-text">${nextPart.prompt}</div>
+                                                    <div id="qArea"></div>
+                                                          </div>
+                                                              </div>
+                                                                `;
+        renderQuestionInput(document.getElementById('qArea'), nextPart, {
+              xpCorrect: 18,
+              context:'boss',
+              unitId: u.id,
+              onCorrect: (hintsUsed)=>{
+                      answered[nextPart.id] = {correct:true, hintsUsed};
+                      saveProgress();
+                      setTimeout(()=>renderUnitScreen(), 1100);
+              }
+        });
+    }
+    
+    function renderBossSieve(u, target){
+        const s = STATE.units[u.id];
+        const boss = u.boss;
+        if(!s.bossState.sievePassed){
+              target.innerHTML = `
+                    <div class="boss-frame">
+                            <div class="boss-title">👑 ${boss.title}</div>
+                                    <p class="prompt-text" style="font-size:.95rem;">${boss.intro}</p>
+                                            <div id="sieveContainer"></div>
+                                                    <div id="sieveContinueWrap" class="hidden" style="margin-top:14px;">
+                                                              <div class="feedback correct">全部篩選正確！你完成了 100 以內的完整質數篩法。</div>
+                                                                        <button class="btn" style="margin-top:10px;" onclick="passBossSieve('${u.id}')">繼續挑戰最終提問 →</button>
+                                                                                </div>
+                                                                                      </div>
+                                                                                          `;
+              mountSieve('sieveContainer', boss.sieveRange.min, boss.sieveRange.max, function onComplete(){
+                      document.getElementById('sieveContinueWrap').classList.remove('hidden');
+                      awardBadge('sieve_master');
+                      addXp(30, '完成 100 以內質數篩選');
+              });
+              return;
+        }
+        // after sieve passed -> ask extra parts
+      const parts = boss.afterSieveParts;
+        const answered = s.bossState.partsAnswers;
+        const doneCount = Object.values(answered).filter(a=>a.correct).length;
+      if(doneCount >= parts.length){
+        completeBoss(u);
+        return;
+      }
+      let nextPart = parts.find(p => !(answered[p.id] && answered[p.id].correct));
+      const idx = parts.indexOf(nextPart);
+                      target.innerHTML = `
+      <div class="boss-frame">
+        <div class="boss-title">👑 ${boss.title}</div>
+          <div class="boss-part" style="border-top:none;margin-top:0;">
+            <div class="boss-part-label">最終提問 ${idx+1} / ${parts.length}</div>
+          <div class="prompt-text">${nextPart.prompt}</div>
+          <div id="qArea"></div>
+  </div>
+  </div>
+    `;
+    renderQuestionInput(document.getElementById('qArea'), nextPart, {
+      xpCorrect: 20,
+        context:'boss',
+      unitId: u.id,
+      onCorrect: (hintsUsed)=>{
+        answered[nextPart.id] = {correct:true, hintsUsed};
+          saveProgress();
+        setTimeout(()=>renderUnitScreen(), 1100);
+  }
+    });
+  }
+    function passBossSieve(unitId){
+      STATE.units[unitId].bossState.sievePassed = true;
+    saveProgress();
+    renderUnitScreen();
+  }
+  
+  function completeBoss(u){
+    const s = STATE.units[u.id];
+    s.bossDone = true;
+    s.bossState.cleared = true;
+    saveProgress();
+    awardBadge(u.id==='unit1' ? 'boss1' : 'boss2');
+    if(s.hintsUsedTotal === 0){
+      awardBadge(u.id==='unit1' ? 'perfect1' : 'perfect2');
+    }
+    if(u.id==='unit1'){
+        STATE.units.unit2.unlocked = true;
+      saveProgress();
+  }
+    celebrate(u.boss.victoryText, u.id);
+    }
+  
+    function renderCompletePhase(u, target){
+    target.innerHTML = `
+        <div class="card" style="text-align:center;">
+        <div style="font-size:2.6rem;">🏆</div>
+        <h2 style="color:var(--accent-amber);">單元已通關！</h2>
+              <p style="color:var(--text-dim);">${u.boss.victoryText}</p>
+        <div class="stars" style="font-size:1.4rem;margin:10px 0;">${'★'.repeat(unitStars(u.id))}${'☆'.repeat(3-unitStars(u.id))}</div>
+        <button class="btn" onclick="goHome()">回到單元選單</button>
     </div>
-  `;
-  document.body.appendChild(backdrop);
-}
-function openSettingsModal(){
-  const backdrop = document.createElement('div');
-  backdrop.className = 'modal-backdrop';
-  backdrop.onclick = (e)=>{ if(e.target===backdrop) backdrop.remove(); };
-  backdrop.innerHTML = `
-    <div class="modal">
-      <h3>⚙️ 設定</h3>
-      <p style="color:var(--text-dim);font-size:.85rem;">目前等級 Lv.${levelFromXp(STATE.xp)}，總經驗值 ${STATE.xp} XP，已獲得 ${STATE.badges.length} 個徽章。</p>
-      <p style="color:var(--text-dim);font-size:.85rem;">你的學習進度會自動儲存在這台裝置的瀏覽器中。</p>
-      <button class="btn warn" style="width:100%;margin-top:10px;" onclick="confirmReset()">🗑️ 重置所有進度</button>
-      <button class="btn secondary" style="margin-top:10px;width:100%;" onclick="this.closest('.modal-backdrop').remove()">關閉</button>
+      `;
+    }
+    
+  /* ========================================================================
+       通用題目輸入元件 (number / expr / mc / list)
+     ======================================================================== */
+  function renderQuestionInput(container, q, opts){
+    const state = { hintsUsed:0, resolved:false, selectedMc:null, wrongCount:0 };
+  
+    function renderBody(){
+      let inputHtml = '';
+      if(q.type==='mc'){
+          inputHtml = `<div class="mc-options">${q.options.map((opt,i)=>
+          `<button class="mc-btn" data-idx="${i}" onclick="window.__qHandlers['${q.id}'].pick(${i})">${opt}</button>`
+        ).join('')}</div>`;
+      } else if(q.type==='number'){
+          inputHtml = `<div class="answer-row">
+          <input type="number" id="input_${q.id}" placeholder="輸入答案">
+          <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
+        </div>`;
+        } else if(q.type==='expr'){
+        inputHtml = `<div class="answer-row">
+          <input type="text" id="input_${q.id}" placeholder="例如 3n-2">
+          <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
+  </div>
+        <div class="helper-note">可以用 n 代表項數，例如 3n-2 或 5n+2</div>`;
+        } else if(q.type==='list'){
+        inputHtml = `<div class="answer-row">
+          <input type="text" id="input_${q.id}" placeholder="例如 1,2,3,6" style="max-width:400px;">
+          <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
+  </div>
+        <div class="helper-note">請用逗號或空格分隔多個數字</div>`;
+  }
+  
+        const hintsHtml = q.hints && q.hints.length ? `
+        <div class="hint-zone">
+            ${q.hints.map((h,i)=>`<button class="hint-btn" id="hintbtn_${q.id}_${i}" onclick="window.__qHandlers['${q.id}'].showHint(${i})">提示 ${i+1}（-2 XP）</button>`).join('')}
+                    <div id="hintboxes_${q.id}"></div>
+          </div>
+              ` : '';
+                   
+      container.innerHTML = `
+        <div id="qbody_${q.id}">${inputHtml}</div>
+          ${hintsHtml}
+          <div id="feedback_${q.id}"></div>
+                     `;
+  
+                const inputEl = document.getElementById('input_'+q.id);
+        if(inputEl){
+          inputEl.addEventListener('keydown', (e)=>{ if(e.key==='Enter') window.__qHandlers[q.id].submit(); });
+      }
+      }
+    
+      function showHint(i){
+        if(state.resolved) return;
+        const btn = document.getElementById(`hintbtn_${q.id}_${i}`);
+        if(btn.disabled) return;
+        btn.disabled = true;
+        btn.classList.remove('pulse-attn');
+        state.hintsUsed = Math.max(state.hintsUsed, i+1);
+            const box = document.getElementById('hintboxes_'+q.id);
+                     const div = document.createElement('div');
+            div.className = 'hint-box';
+            div.textContent = '💡 ' + q.hints[i];
+            box.appendChild(div);
+      }
+    
+      function evaluate(userAnswerRaw){
+            if(q.type==='number'){
+                    const val = parseFloat(userAnswerRaw);
+                    return !isNaN(val) && Math.abs(val - q.answer) < 1e-9;
+            }
+            if(q.type==='expr'){
+                    return checkExprEquivalent(userAnswerRaw, q.answer);
+            }
+            if(q.type==='list'){
+                    const arr = parseNumberList(userAnswerRaw);
+                    return arraysEqual(arr, q.answer);
+            }
+            return false;
+      }
+    
+      function finalizeCorrect(){
+            state.resolved = true;
+            const fb = document.getElementById('feedback_'+q.id);
+            let xp = opts.xpCorrect;
+            xp = Math.max(2, xp - state.hintsUsed*2);
+            fb.innerHTML = `<div class="feedback correct">✅ 答對了！${q.explain||q.correctMsg||''}</div>`;
+            // disable inputs
+        const body = document.getElementById('qbody_'+q.id);
+            body.querySelectorAll('input,button').forEach(el=>el.disabled=true);
+            if(q.hints){ q.hints.forEach((_,i)=>{ const b=document.getElementById(`hintbtn_${q.id}_${i}`); if(b) b.disabled=true; }); }
+        
+        registerCorrect();
+            addXp(xp, opts.context==='discovery' ? '引導發現' : opts.context==='formalize' ? '正式化小測驗' : opts.context==='boss' ? '魔王試煉' : '練習題');
+            if(state.hintsUsed===0 && opts.context==='practice'){
+                    awardBadge('no_hint_ace');
+            }
+            if(opts.unitId){
+                    STATE.units[opts.unitId].hintsUsedTotal = (STATE.units[opts.unitId].hintsUsedTotal||0) + state.hintsUsed;
+                    saveProgress();
+            }
+            if(opts.onCorrect) opts.onCorrect(state.hintsUsed);
+      }
+    
+      function markWrong(){
+            registerWrong();
+            state.wrongCount = (state.wrongCount||0) + 1;
+            const fb = document.getElementById('feedback_'+q.id);
+              if(state.wrongCount >= 2 && q.hints && q.hints.length){
+                      fb.innerHTML = `<div class="feedback wrong">🤔 再想想看，不太對喔！別擔心，卡住是很正常的——按下面「提示」按鈕，會一步步帶你找到方向。</div>`;
+                      const nextHintIdx = Math.min(state.hintsUsed, q.hints.length-1);
+                      const nextBtn = document.getElementById(`hintbtn_${q.id}_${nextHintIdx}`);
+                      if(nextBtn && !nextBtn.disabled){ nextBtn.classList.add('pulse-attn'); }
+              } else {
+                      fb.innerHTML = `<div class="feedback wrong">🤔 再想想看，不太對喔！可以試著使用下面的提示。</div>`;
+              }
+      }
+    
+      function submit(){
+            if(state.resolved) return;
+            const inputEl = document.getElementById('input_'+q.id);
+            const val = inputEl.value;
+            if(!val || !val.toString().trim()){ return; }
+            if(evaluate(val)) finalizeCorrect(); else markWrong();
+      }
+      function pick(i){
+            if(state.resolved) return;
+      const body = document.getElementById('qbody_'+q.id);
+      body.querySelectorAll('.mc-btn').forEach(b=>b.classList.remove('selected'));
+      body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('selected');
+      const correct = (i === q.answer);
+      if(correct){
+        body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('correct');
+        finalizeCorrect();
+        }else{
+          body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('wrong');
+        markWrong();
+      }
+    }
+    
+    window.__qHandlers = window.__qHandlers || {};
+    window.__qHandlers[q.id] = { submit, pick, showHint };
+    renderBody();
+  }
+    
+    /* ========================================================================
+     質數篩選互動元件 (Sieve of Eratosthenes)
+     ======================================================================== */
+  function mountSieve(containerId, min, max, onComplete){
+        const container = document.getElementById(containerId);
+    const cellStates = {}; // num -> 'unset'|'prime'|'comp'
+      for(let n=min;n<=max;n++){ cellStates[n]='unset'; }
+    let completed = false;
+    
+    function truth(n){ return isPrime(n); }
+  
+      function render(){
+      const totalCells = max-min+1;
+        const setCount = Object.values(cellStates).filter(v=>v!=='unset').length;
+        container.innerHTML = `
+        <div class="sieve-wrap">
+          <div class="sieve-legend">
+            <span><span class="legend-dot unset"></span>尚未標記</span>
+            <span><span class="legend-dot prime"></span>質數</span>
+            <span><span class="legend-dot comp"></span>合數</span>
+  </div>
+          <div class="sieve-status">已標記 ${setCount} / ${totalCells} 個數字。點一下數字：第1下＝質數，第2下＝合數，第3下＝清空。全部標記正確才算過關。</div>
+          <div class="sieve-grid" id="${containerId}_grid">
+              ${Object.keys(cellStates).map(n=>{
+              const st = cellStates[n];
+              const cls = st==='prime' ? 'prime' : st==='comp' ? 'comp' : '';
+              return `<button class="sieve-cell ${cls}" data-n="${n}" onclick="window.__sieveHandlers['${containerId}'].cycle(${n})">${n}</button>`;
+              }).join('')}
+  </div>
+          <div class="answer-row">
+            <button class="btn secondary" onclick="window.__sieveHandlers['${containerId}'].check()">🔍 檢查進度</button>
+            <button class="btn secondary" onclick="window.__sieveHandlers['${containerId}'].hint()">💡 給我一個提示</button>
+  </div>
+          <div id="${containerId}_msg"></div>
+        </div>
+      `;
+    }
+  
+    function cycle(n){
+        if(completed) return;
+      const cur = cellStates[n];
+      cellStates[n] = cur==='unset' ? 'prime' : cur==='prime' ? 'comp' : 'unset';
+      render();
+    }
+  
+      function check(){
+      if(completed) return;
+      let wrongCells = [];
+      let unsetCount = 0;
+      let allCorrect = true;
+      for(const nStr of Object.keys(cellStates)){
+        const n = parseInt(nStr,10);
+        const st = cellStates[n];
+        if(st==='unset'){ unsetCount++; allCorrect=false; continue; }
+        const shouldBePrime = truth(n);
+        const isCorrect = (shouldBePrime && st==='prime') || (!shouldBePrime && st==='comp');
+        if(!isCorrect){ wrongCells.push(n); allCorrect=false; }
+      }
+      const msgEl = document.getElementById(containerId+'_msg');
+      if(allCorrect){
+        completed = true;
+        msgEl.innerHTML = `<div class="feedback correct">🎉 全部正確！做得非常好！</div>`;
+          if(onComplete) onComplete();
+        return;
+      }
+      // visual feedback: pulse wrong ones, briefly
+      const grid = document.getElementById(containerId+'_grid');
+      wrongCells.forEach(n=>{
+        const cell = grid.querySelector(`.sieve-cell[data-n="${n}"]`);
+        if(cell){ cell.classList.add('pulse-wrong'); setTimeout(()=>cell.classList.remove('pulse-wrong'), 500); }
+      });
+      let msg = '';
+        if(unsetCount>0) msg += `還有 ${unsetCount} 個數字尚未標記。`;
+        if(wrongCells.length>0) msg += ` 有 ${wrongCells.length} 個標記錯誤（已用紅色閃爍標示），再想想看！`;
+        msgEl.innerHTML = `<div class="feedback wrong">${msg}</div>`;
+  }
+  
+    function hint(){
+      if(completed) return;
+      const msgEl = document.getElementById(containerId+'_msg');
+        // 優先找還沒標記的數字；如果都標記了，找標記錯誤的數字
+      let target = null;
+      for(const nStr of Object.keys(cellStates)){
+        if(cellStates[nStr]==='unset'){ target = parseInt(nStr,10); break; }
+  }
+      if(target===null){
+        for(const nStr of Object.keys(cellStates)){
+          const n = parseInt(nStr,10);
+          const st = cellStates[n];
+          const shouldBePrime = truth(n);
+            const isCorrect = (shouldBePrime && st==='prime') || (!shouldBePrime && st==='comp');
+          if(!isCorrect){ target = n; break; }
+          }
+      }
+      if(target===null){
+          msgEl.innerHTML = `<div class="feedback correct">目前看起來都標記好囉，按「檢查進度」看看吧！</div>`;
+        return;
+        }
+      const grid = document.getElementById(containerId+'_grid');
+        const cell = grid.querySelector(`.sieve-cell[data-n="${target}"]`);
+          if(cell){ cell.classList.add('pulse-attn'); setTimeout(()=>cell.classList.remove('pulse-attn'), 2200); }
+                               if(target===1){
+            msgEl.innerHTML = `<div class="hint-box">💡 先想想 1 特別在哪裡：它只有自己一個因數，所以規定 1 既不是質數、也不是合數（通常篩選範圍會從2開始，你可以先跳過1）。</div>`;
+        return;
+        }
+                let divisorFound = null;
+          for(let d=2; d*d<=target; d++){
+                      if(target % d === 0){ divisorFound = d; break; }
+                }
+                     if(divisorFound){
+          msgEl.innerHTML = `<div class="hint-box">💡 試試看：${target} 可以被 ${divisorFound} 整除嗎？${target} ÷ ${divisorFound} = ${target/divisorFound}，剛好除盡，所以 ${target} 除了1和自己之外還有別的因數，是「合數」。</div>`;
+      } else {
+          msgEl.innerHTML = `<div class="hint-box">💡 試試看：把 ${target} 除以比它小的質數（2、3、5、7……），只要試到某個數字的平方剛好超過 ${target} 就可以停了。你會發現都除不盡，所以 ${target} 是「質數」。</div>`;
+  }
+    }
+    
+    window.__sieveHandlers = window.__sieveHandlers || {};
+    window.__sieveHandlers[containerId] = { cycle, check, hint };
+    render();
+  }
+  
+  /* ========================================================================
+       慶祝動畫 / 彩帶
+     ======================================================================== */
+  function celebrate(text, unitId){
+    const overlay = document.createElement('div');
+      overlay.id = 'celebrate-overlay';
+      overlay.innerHTML = `
+      <div class="celebrate-card">
+        <div class="big-emoji">🏆</div>
+        <h2>恭喜通關！</h2>
+        <p>${text}</p>
+        <button class="btn" style="margin-top:14px;" onclick="closeCelebrate('${unitId}')">太棒了，繼續！</button>
     </div>
-  `;
-  document.body.appendChild(backdrop);
-}
-function confirmReset(){
-  if(confirm('確定要清除所有學習進度、經驗值與徽章嗎？此動作無法復原。')){
-    localStorage.removeItem(STORAGE_KEY);
-    loadProgress();
+      `;
+    document.body.appendChild(overlay);
+    runConfetti();
+    }
+  function closeCelebrate(unitId){
+      const overlay = document.getElementById('celebrate-overlay');
+      if(overlay) overlay.remove();
+      gotoPhase('complete');
+  }
+  
+    function runConfetti(){
+      const canvas = document.getElementById('confetti-canvas');
+      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    let ctx = null;
+      try{ ctx = canvas.getContext('2d'); }catch(e){ ctx = null; }
+    if(!ctx) return; // 環境不支援 canvas 2d 時，安靜跳過彩帶動畫，不影響其餘功能
+    const colors = ['#2dd4bf','#fbbf24','#fb7185','#a78bfa','#4ade80'];
+    const particles = [];
+    for(let i=0;i<140;i++){
+      particles.push({
+          x: Math.random()*canvas.width,
+        y: -20 - Math.random()*canvas.height*0.5,
+        w: 6+Math.random()*6,
+        h: 8+Math.random()*10,
+          color: colors[Math.floor(Math.random()*colors.length)],
+          speedY: 2+Math.random()*3,
+        speedX: -1.5+Math.random()*3,
+        rot: Math.random()*360,
+        rotSpeed: -6+Math.random()*12
+        });
+      }
+      let frame = 0;
+    const maxFrames = 220;
+      function tick(){
+      frame++;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{
+        p.x += p.speedX; p.y += p.speedY; p.rot += p.rotSpeed;
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot*Math.PI/180);
+              ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+        ctx.restore();
+        });
+      if(frame < maxFrames){
+        requestAnimationFrame(tick);
+        } else {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+    }
+    tick();
+  }
+          
+  /* ========================================================================
+     Modals: 徽章 / 設定
+     ======================================================================== */
+    function openBadgeModal(){
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop';
+    backdrop.onclick = (e)=>{ if(e.target===backdrop) backdrop.remove(); };
+      backdrop.innerHTML = `
+        <div class="modal">
+          <h3>🏅 我的徽章</h3>
+        <p style="color:var(--text-dim);font-size:.85rem;">已獲得 ${STATE.badges.length} / ${Object.keys(BADGES).length} 個徽章</p>
+        <div class="badge-grid">
+          ${Object.values(BADGES).map(b=>{
+            const earned = STATE.badges.includes(b.id);
+            return `<div class="badge-tile ${earned?'earned':''}">
+                <span class="bicon">${earned?b.icon:'❔'}</span>
+              <div style="font-weight:700;">${earned?b.name:'尚未解鎖'}</div>
+              <div style="margin-top:4px;">${earned?b.desc:'完成挑戰以解鎖'}</div>
+  </div>`;
+            }).join('')}
+  </div>
+        <button class="btn secondary" style="margin-top:16px;width:100%;" onclick="this.closest('.modal-backdrop').remove()">關閉</button>
+  </div>
+    `;
+    document.body.appendChild(backdrop);
+    }
+  function openSettingsModal(){
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop';
+    backdrop.onclick = (e)=>{ if(e.target===backdrop) backdrop.remove(); };
+      backdrop.innerHTML = `
+        <div class="modal">
+          <h3>⚙️ 設定</h3>
+          <p style="color:var(--text-dim);font-size:.85rem;">目前等級 Lv.${levelFromXp(STATE.xp)}，總經驗值 ${STATE.xp} XP，已獲得 ${STATE.badges.length} 個徽章。</p>
+        <p style="color:var(--text-dim);font-size:.85rem;">你的學習進度會自動儲存在這台裝置的瀏覽器中。</p>
+        <button class="btn warn" style="width:100%;margin-top:10px;" onclick="confirmReset()">🗑️ 重置所有進度</button>
+        <button class="btn secondary" style="margin-top:10px;width:100%;" onclick="this.closest('.modal-backdrop').remove()">關閉</button>
+      </div>
+    `;
+    document.body.appendChild(backdrop);
+    }
+  function confirmReset(){
+    if(confirm('確定要清除所有學習進度、經驗值與徽章嗎？此動作無法復原。')){
+      localStorage.removeItem(STORAGE_KEY);
+      loadProgress();
+      updateHeaderStats();
+      document.querySelectorAll('.modal-backdrop').forEach(m=>m.remove());
+        goHome();
+      showToast('已重置所有進度', 'info');
+  }
+  }
+  
+    /* ========================================================================
+       Init
+       ======================================================================== */
+  window.addEventListener('DOMContentLoaded', ()=>{
+      loadProgress();
     updateHeaderStats();
-    document.querySelectorAll('.modal-backdrop').forEach(m=>m.remove());
-    goHome();
-    showToast('已重置所有進度', 'info');
-}
-}
-
-/* ========================================================================
-   Init
-   ======================================================================== */
-window.addEventListener('DOMContentLoaded', ()=>{
-  loadProgress();
-  updateHeaderStats();
-  renderHome();
-});
-</script>
-</body>
+    renderHome();
+    });</script>
+  </body>
 </html>
