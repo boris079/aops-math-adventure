@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<title>數學冒險島｜國一代數與數論探索</title>
-<style>
-:root{
-  --bg-1:#151233;
+  <html lang="zh-Hant">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>數學冒險島｜國一代數與數論探索</title>
+  <style>
+  :root{
+    --bg-1:#151233;
   --bg-2:#1d1a45;
   --panel:#242058;
   --panel-2:#2b276b;
   --panel-light:#33308a;
   --border:#4a45a3;
   --text:#f1efff;
-  --text-dim:#b8b3e8;
-  --accent-teal:#2dd4bf;
+      --text-dim:#b8b3e8;
+      --accent-teal:#2dd4bf;
   --accent-amber:#fbbf24;
-  --accent-coral:#fb7185;
-  --accent-purple:#a78bfa;
-  --accent-green:#4ade80;
+      --accent-coral:#fb7185;
+      --accent-purple:#a78bfa;
+      --accent-green:#4ade80;
   --accent-red:#f87171;
-  --radius:16px;
-  --shadow: 0 4px 18px rgba(0,0,0,0.25);
+      --radius:16px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.35);
 }
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
   background: radial-gradient(circle at 20% 0%, #2a2570 0%, var(--bg-1) 55%) fixed;
   color:var(--text);
   min-height:100vh;
@@ -48,9 +48,9 @@ header.topbar{
 }
 .topbar .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.05rem;letter-spacing:.5px;cursor:pointer;flex-shrink:0;}
 .topbar .brand .logo-emoji{font-size:1.4rem;}
-.topbar .spacer{flex:1;}
-.stat-pill{
-  display:flex;align-items:center;gap:6px;
+  .topbar .spacer{flex:1;}
+  .stat-pill{
+      display:flex;align-items:center;gap:6px;
   background:rgba(255,255,255,.06);
   border:1px solid var(--border);
   border-radius:999px;
@@ -58,7 +58,7 @@ header.topbar{
   font-size:.82rem;font-weight:700;white-space:nowrap;
 }
 .level-badge{
-  background:linear-gradient(135deg,var(--accent-purple),#7c3aed);
+    background:linear-gradient(135deg,var(--accent-purple),#7c3aed);
   border-radius:999px;width:30px;height:30px;
   display:flex;align-items:center;justify-content:center;
   font-weight:800;font-size:.78rem;flex-shrink:0;
@@ -70,37 +70,37 @@ header.topbar{
 .streak-pill.hot{animation:pulseHot 1s infinite;}
 @keyframes pulseHot{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
 .icon-btn{
-  background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:10px;
+    background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:10px;
   width:36px;height:36px;display:flex;align-items:center;justify-content:center;
   font-size:1.1rem;color:var(--text);flex-shrink:0;
-}
+  }
 .icon-btn:hover{background:rgba(255,255,255,.14);}
 
 /* ---------- Layout / Cards ---------- */
-.screen{padding-top:20px;animation:fadeIn .35s ease;}
+  .screen{padding-top:20px;animation:fadeIn .35s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-h1.page-title{font-size:1.5rem;margin:6px 0 4px;}
+  h1.page-title{font-size:1.5rem;margin:6px 0 4px;}
 p.page-sub{color:var(--text-dim);margin:0 0 20px;font-size:.95rem;}
 
 .unit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-@media (max-width:680px){.unit-grid{grid-template-columns:1fr;}}
+  @media (max-width:680px){.unit-grid{grid-template-columns:1fr;}}
 .unit-card{
-  background:linear-gradient(160deg,var(--panel),var(--panel-2));
+    background:linear-gradient(160deg,var(--panel),var(--panel-2));
   border:1px solid var(--border);border-radius:var(--radius);
   padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden;
-  transition:transform .15s ease;
+    transition:transform .15s ease;
 }
-.unit-card:not(.locked):hover{transform:translateY(-3px);}
+  .unit-card:not(.locked):hover{transform:translateY(-3px);}
 .unit-card.locked{opacity:.55;filter:grayscale(.4);}
-.unit-card .unit-icon{font-size:2.2rem;}
+    .unit-card .unit-icon{font-size:2.2rem;}
 .unit-card h3{margin:10px 0 4px;font-size:1.15rem;}
 .unit-card p{color:var(--text-dim);font-size:.87rem;margin:0 0 14px;line-height:1.5;}
 .progress-track{height:10px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-bottom:8px;}
-.progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent-teal),var(--accent-green));transition:width .4s ease;}
+  .progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent-teal),var(--accent-green));transition:width .4s ease;}
 .unit-meta{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text-dim);}
 .stars{color:var(--accent-amber);letter-spacing:2px;font-size:.9rem;}
 .unit-cta{
-  margin-top:14px;display:inline-flex;align-items:center;gap:6px;
+    margin-top:14px;display:inline-flex;align-items:center;gap:6px;
   background:linear-gradient(135deg,var(--accent-teal),#0ea5a5);
   color:#062a28;font-weight:800;border:none;border-radius:10px;
   padding:9px 16px;font-size:.88rem;
@@ -110,7 +110,7 @@ p.page-sub{color:var(--text-dim);margin:0 0 20px;font-size:.95rem;}
 
 .badges-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
 .badge-chip{
-  display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);
+    display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);
   border:1px solid var(--border);border-radius:999px;padding:6px 12px;font-size:.8rem;color:var(--text-dim);
 }
 .badge-chip.earned{color:var(--text);border-color:var(--accent-amber);background:rgba(251,191,36,.08);}
@@ -118,13 +118,13 @@ p.page-sub{color:var(--text-dim);margin:0 0 20px;font-size:.95rem;}
 /* ---------- Unit flow ---------- */
 .unit-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
 .back-btn{
-  background:none;border:1px solid var(--border);color:var(--text-dim);
+    background:none;border:1px solid var(--border);color:var(--text-dim);
   border-radius:8px;padding:6px 10px;font-size:.82rem;
 }
 .back-btn:hover{color:var(--text);}
 .phase-stepper{display:flex;gap:6px;margin:14px 0 22px;flex-wrap:wrap;}
 .phase-dot{
-  flex:1;min-width:60px;text-align:center;padding:8px 4px;border-radius:10px;
+    flex:1;min-width:60px;text-align:center;padding:8px 4px;border-radius:10px;
   font-size:.72rem;font-weight:700;background:rgba(255,255,255,.05);
   color:var(--text-dim);border:1px solid transparent;
 }
@@ -132,13 +132,12 @@ p.page-sub{color:var(--text-dim);margin:0 0 20px;font-size:.95rem;}
 .phase-dot.done{color:var(--accent-green);}
 
 .card{
-  background:linear-gradient(160deg,var(--panel),var(--panel-2));
+    background:linear-gradient(160deg,var(--panel),var(--panel-2));
   border:1px solid var(--border);border-radius:var(--radius);
   padding:22px;box-shadow:var(--shadow);margin-bottom:18px;
-  position:relative;overflow:hidden;
 }
 .tag{
-  display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.5px;
+    display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.5px;
   padding:4px 10px;border-radius:999px;margin-bottom:12px;
 }
 .tag.hook{background:rgba(251,113,133,.15);color:var(--accent-coral);}
@@ -158,7 +157,7 @@ input[type=text],input[type=number]{
 }
 input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--accent-teal);}
 .btn{
-  border:none;border-radius:10px;padding:10px 18px;font-weight:800;font-size:.9rem;
+    border:none;border-radius:10px;padding:10px 18px;font-weight:800;font-size:.9rem;
   background:linear-gradient(135deg,var(--accent-teal),#0ea5a5);color:#062a28;
 }
 .btn:hover{filter:brightness(1.08);}
@@ -168,7 +167,7 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
 .btn.warn{background:linear-gradient(135deg,var(--accent-coral),#e11d48);color:#3a0512;}
 .mc-options{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
 .mc-btn{
-  text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--border);
+    text-align:left;background:rgba(255,255,255,.04);border:1.5px solid var(--border);
   border-radius:12px;padding:12px 16px;color:var(--text);font-size:.95rem;
 }
 .mc-btn:hover{border-color:var(--accent-teal);}
@@ -177,7 +176,7 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
 .mc-btn.wrong{border-color:var(--accent-red);background:rgba(248,113,113,.14);}
 
 .feedback{
-  margin-top:12px;padding:12px 16px;border-radius:12px;font-size:.9rem;line-height:1.6;
+    margin-top:12px;padding:12px 16px;border-radius:12px;font-size:.9rem;line-height:1.6;
   animation:fadeIn .25s ease;
 }
 .feedback.correct{background:rgba(74,222,128,.12);border:1px solid var(--accent-green);color:#c9f7d5;}
@@ -186,15 +185,15 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
 
 .hint-zone{margin-top:14px;}
 .hint-btn{
-  background:rgba(251,191,36,.1);border:1px dashed var(--accent-amber);color:var(--accent-amber);
+    background:rgba(251,191,36,.1);border:1px dashed var(--accent-amber);color:var(--accent-amber);
   border-radius:10px;padding:8px 14px;font-size:.82rem;margin:4px 6px 0 0;
-}
+               }
 .hint-btn:hover{background:rgba(251,191,36,.2);}
 .hint-btn:disabled{opacity:.35;}
 .hint-box{
-  background:rgba(255,255,255,.05);border-left:3px solid var(--accent-amber);
+    background:rgba(255,255,255,.05);border-left:3px solid var(--accent-amber);
   padding:10px 14px;border-radius:8px;margin-top:8px;font-size:.86rem;color:var(--text-dim);
-}
+                 }
 
 .step-progress-label{font-size:.78rem;color:var(--text-dim);margin-bottom:10px;}
 .formalize-block h4{color:var(--accent-purple);margin:18px 0 6px;font-size:1rem;}
@@ -206,17 +205,17 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
 
 /* ---------- Sieve grid ---------- */
 .sieve-wrap{margin-top:10px;}
-.sieve-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--text-dim);margin-bottom:12px;}
+  .sieve-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--text-dim);margin-bottom:12px;}
 .sieve-legend span{display:inline-flex;align-items:center;gap:5px;}
 .legend-dot{width:14px;height:14px;border-radius:50%;display:inline-block;}
 .legend-dot.prime{background:var(--accent-green);}
 .legend-dot.comp{background:var(--accent-red);}
 .legend-dot.unset{background:rgba(255,255,255,.2);}
 .sieve-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px;margin-bottom:14px;
-}
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px;margin-bottom:14px;
+                                                                         }
 .sieve-cell{
-  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+    aspect-ratio:1;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.06);border:1.5px solid var(--border);border-radius:8px;
   font-size:.82rem;font-weight:700;color:var(--text);position:relative;
 }
@@ -227,12 +226,10 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
 @keyframes shakeWrong{0%,100%{transform:translateX(0);}25%{transform:translateX(-3px);}75%{transform:translateX(3px);}}
 @keyframes popRight{0%{transform:scale(1);}50%{transform:scale(1.15);}100%{transform:scale(1);}}
 .sieve-status{font-size:.85rem;color:var(--text-dim);margin-bottom:10px;}
-.pulse-attn{animation:pulseAttn 1s ease-in-out 3;box-shadow:0 0 0 3px rgba(251,191,36,.6);}
-@keyframes pulseAttn{0%,100%{transform:scale(1);filter:brightness(1);}50%{transform:scale(1.08);filter:brightness(1.25);}}
 
 /* ---------- Boss ---------- */
 .boss-frame{
-  border:2px solid var(--accent-red);border-radius:var(--radius);
+    border:2px solid var(--accent-red);border-radius:var(--radius);
   background:radial-gradient(circle at 30% 0%,rgba(248,113,113,.12),transparent 60%),linear-gradient(160deg,var(--panel),var(--panel-2));
   padding:24px;
 }
@@ -251,7 +248,7 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
 /* ---------- Toast ---------- */
 #toast-stack{position:fixed;top:70px;right:16px;z-index:200;display:flex;flex-direction:column;gap:8px;max-width:280px;}
 .toast{
-  background:linear-gradient(135deg,#242058,#33308a);border:1px solid var(--accent-teal);
+    background:linear-gradient(135deg,#242058,#33308a);border:1px solid var(--accent-teal);
   border-radius:12px;padding:10px 14px;font-size:.85rem;box-shadow:var(--shadow);
   animation:toastIn .3s ease, toastOut .3s ease 2.7s forwards;
 }
@@ -262,18 +259,18 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
 
 /* ---------- Modal ---------- */
 .modal-backdrop{
-  position:fixed;inset:0;background:rgba(10,8,30,.75);z-index:300;
+    position:fixed;inset:0;background:rgba(10,8,30,.75);z-index:300;
   display:flex;align-items:center;justify-content:center;padding:20px;
 }
 .modal{
-  background:linear-gradient(160deg,var(--panel),var(--panel-2));border:1px solid var(--border);
+    background:linear-gradient(160deg,var(--panel),var(--panel-2));border:1px solid var(--border);
   border-radius:var(--radius);padding:24px;max-width:480px;width:100%;max-height:85vh;overflow:auto;
   box-shadow:var(--shadow);
 }
 .modal h3{margin-top:0;}
 .badge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px;}
 .badge-tile{
-  background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;
+    background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;
   padding:12px;text-align:center;font-size:.78rem;color:var(--text-dim);
 }
 .badge-tile.earned{border-color:var(--accent-amber);color:var(--text);background:rgba(251,191,36,.08);}
@@ -285,13 +282,13 @@ input[type=text]:focus,input[type=number]:focus{outline:none;border-color:var(--
   background:rgba(8,6,24,.85);
 }
 .celebrate-card{
-  text-align:center;background:linear-gradient(160deg,#2b276b,#1d1a45);border:2px solid var(--accent-amber);
+    text-align:center;background:linear-gradient(160deg,#2b276b,#1d1a45);border:2px solid var(--accent-amber);
   border-radius:20px;padding:36px 30px;max-width:420px;width:92%;box-shadow:0 0 60px rgba(251,191,36,.25);
   animation:celebratePop .4s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes celebratePop{from{transform:scale(.7);opacity:0;}to{transform:scale(1);opacity:1;}}
 .celebrate-card .big-emoji{font-size:3.2rem;}
-.celebrate-card h2{margin:8px 0 4px;color:var(--accent-amber);}
+  .celebrate-card h2{margin:8px 0 4px;color:var(--accent-amber);}
 .celebrate-card p{color:var(--text-dim);font-size:.9rem;}
 #confetti-canvas{position:fixed;inset:0;z-index:399;pointer-events:none;}
 
@@ -300,151 +297,181 @@ footer.site-footer{text-align:center;color:var(--text-dim);font-size:.75rem;padd
 @media (max-width:520px){
   .stat-pill{padding:4px 8px;font-size:.74rem;}
   .xp-bar-wrap{width:70px;}
-  .celebrate-card{padding:26px 18px;}
+      .celebrate-card{padding:26px 18px;}
 }
 
-/* ========================================================================
-   Brilliant-style additions: 學習路徑地圖 / 拖曳點選互動元件 / 視覺化回饋
-   ======================================================================== */
+.numberline-wrap{margin-top:10px;}
+.numberline-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:10px 0 16px;}
+.numberline-cell{min-width:38px;height:38px;padding:0 6px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;font-weight:700;color:var(--text);cursor:pointer;transition:all .15s ease;}
+.numberline-cell:hover{background:rgba(167,139,250,.15);border-color:var(--accent-purple);}
+.numberline-cell.zero{border-color:var(--accent-amber);color:var(--accent-amber);}
+.numberline-cell.correct-pick{background:rgba(74,222,128,.22);border-color:var(--accent-green);color:#c9f7d5;transform:translateY(-4px);}
+.numberline-cell.wrong-pick{animation:shakeWrong .4s ease;}
+.chip-wrap{margin-top:10px;}
+.chip-piles{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin:14px 0 6px;min-height:50px;}
+.chip-pile{display:flex;flex-wrap:wrap;gap:8px;max-width:260px;justify-content:center;align-content:flex-start;}
+.chip{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem;cursor:pointer;transition:transform .15s ease,opacity .25s ease;user-select:none;}
+.chip:hover{transform:scale(1.1);}
+.chip.pos{background:rgba(74,222,128,.18);border:2px solid var(--accent-green);color:#c9f7d5;}
+.chip.neg{background:rgba(248,113,113,.15);border:2px solid var(--accent-red);color:#ffd7d5;}
+.chip-result{text-align:center;font-size:1.35rem;font-weight:800;margin:8px 0 4px;color:var(--accent-amber);}
+.chip-hint-note{text-align:center;color:var(--text-dim);font-size:.82rem;margin-top:6px;}
 
-/* ---------- Path map (learning journey, replaces plain phase-stepper) ---------- */
-.path-map{display:flex;align-items:flex-start;gap:0;margin:14px 0 34px;overflow-x:auto;padding:6px 2px 0;}
-.path-node-wrap{display:flex;align-items:center;flex-shrink:0;}
-.path-node{
-  width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:1.05rem;background:rgba(255,255,255,.05);border:2px solid var(--border);
-  color:var(--text-dim);flex-shrink:0;position:relative;
-}
-.path-node .path-label{position:absolute;top:46px;left:50%;transform:translateX(-50%);font-size:.62rem;color:var(--text-dim);white-space:nowrap;font-weight:700;}
-.path-node.done{background:linear-gradient(135deg,var(--accent-green),#22a35a);border-color:var(--accent-green);color:#04220f;}
-.path-node.active{background:linear-gradient(135deg,var(--accent-teal),#0ea5a5);border-color:var(--accent-teal);color:#062a28;transform:scale(1.15);animation:pathPulse 1.6s ease-in-out infinite;}
-.path-node.active .path-label,.path-node.done .path-label{color:var(--text);}
-@keyframes pathPulse{0%,100%{box-shadow:0 0 0 0 rgba(45,212,191,.5);}50%{box-shadow:0 0 0 8px rgba(45,212,191,0);}}
-.path-line{width:24px;height:3px;background:var(--border);flex-shrink:0;border-radius:2px;margin-top:19px;}
+.achv-section-title{font-size:.82rem;font-weight:800;color:var(--accent-teal);margin:16px 0 8px;}
+.achv-section-title:first-of-type{margin-top:6px;}
+.badge-tile.rarity-rare.earned{border-color:var(--accent-purple);box-shadow:0 0 12px rgba(167,139,250,.25);}
+.badge-tile.rarity-epic.earned{border-color:var(--accent-amber);box-shadow:0 0 16px rgba(251,191,36,.35);background:linear-gradient(160deg,rgba(251,191,36,.14),rgba(255,255,255,.04));}
+.badge-tile.locked{opacity:.6;}
+.badge-tile .unlock-date{margin-top:6px;font-size:.7rem;color:var(--text-dim);}
+.badge-chip.rarity-epic.earned{border-color:var(--accent-amber);box-shadow:0 0 8px rgba(251,191,36,.3);}
+.badge-chip.rarity-rare.earned{border-color:var(--accent-purple);}
+
+.tile-choices{flex-direction:row !important;flex-wrap:wrap;}
+.tile-btn{flex:0 0 auto;min-width:68px;text-align:center;font-weight:800;}
+
+.lineup-wrap{margin-top:10px;}
+.lineup-progress{font-size:.82rem;color:var(--text-dim);margin-bottom:8px;}
+.lineup-slots{display:flex;gap:8px;justify-content:center;margin-bottom:14px;}
+.lineup-slot{width:46px;height:46px;border:2px dashed var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--text-dim);}
+.lineup-slot.filled{border-style:solid;border-color:var(--accent-teal);background:rgba(45,212,191,.12);color:var(--text);}
+.lineup-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;}
+.lineup-tile{width:50px;height:50px;border-radius:10px;border:1.5px solid var(--border);background:rgba(255,255,255,.06);font-size:1.35rem;}
+.lineup-tile:hover{border-color:var(--accent-teal);}
+.lineup-tile.used{opacity:.25;}
+.lineup-gallery{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;justify-content:center;}
+.lineup-found-item{background:rgba(74,222,128,.12);border:1px solid var(--accent-green);border-radius:8px;padding:6px 10px;font-size:1rem;}
+
+.ratio-slider-wrap{margin-top:10px;text-align:center;}
+.ratio-visual{margin-bottom:14px;font-size:1rem;line-height:1.6;}
+.ratio-slider-wrap input[type=range]{width:100%;max-width:360px;accent-color:var(--accent-teal);}
+.ratio-slider-value{margin-top:8px;font-size:.85rem;color:var(--text-dim);}
+.pizza-wrap{margin-top:10px;text-align:center;}
+.pizza-slices{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px;}
+.pizza-slice{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--border);background:rgba(255,255,255,.06);font-size:1.4rem;}
+.pizza-slice:hover{border-color:var(--accent-teal);}
+.pizza-slice.eaten{opacity:.45;border-color:var(--accent-red);}
+.pizza-count{font-size:.85rem;color:var(--text-dim);}
+
+.angle-wrap{margin-top:10px;text-align:center;}
+.angle-svg{width:100%;max-width:280px;height:auto;}
+.angle-readout{margin:8px 0;font-size:.95rem;color:var(--text);font-weight:700;}
+.triangle-wrap{margin-top:10px;text-align:center;}
+.triangle-svg{width:100%;max-width:260px;height:auto;margin-bottom:10px;}
+.triangle-controls{display:flex;flex-direction:column;gap:8px;align-items:center;margin-bottom:8px;}
+.triangle-ctrl-row{display:flex;align-items:center;gap:10px;font-size:.9rem;}
+.triangle-ctrl-row .btn{padding:4px 12px;}
+.triangle-sum{margin-top:6px;font-weight:800;color:var(--accent-amber);}
+
+.percent-grid-wrap{margin-top:10px;text-align:center;}
+.percent-grid{display:grid;grid-template-columns:repeat(20,1fr);gap:2px;max-width:320px;margin:0 auto 10px;}
+.percent-cell{aspect-ratio:1;border:1px solid var(--border);border-radius:2px;background:rgba(255,255,255,.05);padding:0;}
+.percent-cell:hover{border-color:var(--accent-teal);}
+.percent-cell.filled{background:var(--accent-teal);border-color:var(--accent-teal);}
+.percent-count{font-size:.85rem;color:var(--text-dim);}
+
+.coord-wrap{margin-top:10px;overflow-x:auto;}
+.coord-grid{display:inline-flex;flex-direction:column;gap:1px;margin:0 auto;}
+.coord-row{display:flex;gap:1px;align-items:center;}
+.coord-row-label{width:22px;font-size:.68rem;color:var(--text-dim);text-align:right;padding-right:3px;flex-shrink:0;}
+.coord-cell{width:22px;height:22px;border:1px solid var(--border);background:rgba(255,255,255,.04);padding:0;flex-shrink:0;}
+.coord-cell:hover{border-color:var(--accent-teal);}
+.coord-cell.origin{background:rgba(251,191,36,.15);border-color:var(--accent-amber);}
+.coord-cell.correct-pick{background:rgba(74,222,128,.3);border-color:var(--accent-green);}
+.coord-cell.wrong-pick{animation:shakeWrong .4s ease;}
+.coord-x-label{width:22px;font-size:.68rem;color:var(--text-dim);text-align:center;flex-shrink:0;}
+.coord-xlabels{margin-top:2px;}
+
+.path-map-wrap{overflow-x:auto;margin:4px 0 24px;padding-bottom:8px;}
+.path-map{display:flex;align-items:center;min-width:max-content;padding:10px 4px;}
+.path-node{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;width:64px;}
+.path-node-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:2px solid var(--border);background:var(--panel-2);cursor:pointer;transition:transform .15s ease;}
+.path-node-circle:hover{transform:scale(1.08);}
+.path-node.locked .path-node-circle{opacity:.4;filter:grayscale(1);cursor:not-allowed;}
+.path-node.done .path-node-circle{border-color:var(--accent-green);background:rgba(74,222,128,.15);}
+.path-node.current .path-node-circle{border-color:var(--accent-teal);box-shadow:0 0 0 3px rgba(45,212,191,.25);}
+.path-node-label{font-size:.66rem;color:var(--text-dim);text-align:center;white-space:nowrap;}
+.path-line{flex-shrink:0;width:28px;height:3px;background:var(--border);margin:0 -2px;}
 .path-line.done{background:var(--accent-green);}
-
-/* mini path preview on unit card */
-.mini-path{display:flex;align-items:center;gap:3px;margin:2px 0 10px;}
-.mini-node{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.15);flex-shrink:0;}
-.mini-node.done{background:var(--accent-green);}
-.mini-node.active{background:var(--accent-teal);box-shadow:0 0 0 3px rgba(45,212,191,.3);}
-.mini-line{flex:1;height:2px;background:rgba(255,255,255,.1);}
-.mini-line.done{background:var(--accent-green);}
-
-/* ---------- Tile picker (tap/drag number tiles instead of typing) ---------- */
-.tile-picker-wrap{margin-bottom:10px;}
-.tile-blank{
-  display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:48px;
-  border:2px dashed var(--accent-teal);border-radius:12px;font-size:1.25rem;font-weight:800;
-  color:var(--accent-teal);margin:0 0 14px;padding:0 10px;background:rgba(45,212,191,.06);
-}
-.tile-blank.filled{border-style:solid;background:rgba(45,212,191,.16);color:var(--text);animation:tileDropIn .3s ease;}
-@keyframes tileDropIn{0%{transform:scale(1.4);opacity:0;}100%{transform:scale(1);opacity:1;}}
-.tile-options{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px;}
-.num-tile{
-  min-width:52px;height:52px;padding:0 12px;border-radius:14px;font-size:1.15rem;font-weight:800;
-  background:linear-gradient(160deg,var(--panel-light),var(--panel-2));border:2px solid var(--border);
-  color:var(--text);display:flex;align-items:center;justify-content:center;
-  transition:transform .15s ease,border-color .15s ease;cursor:grab;
-}
-.num-tile:hover{transform:translateY(-3px);border-color:var(--accent-teal);}
-.num-tile:active{cursor:grabbing;transform:scale(.94);}
-.num-tile.used{opacity:.25;pointer-events:none;}
-.num-tile.wrong-pick{animation:flashWrongShake .4s ease;border-color:var(--accent-red);}
-
-/* ---------- Factor grid picker (tap cells instead of typing a list) ---------- */
-.factor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;margin:10px 0 14px;}
-.factor-cell{
-  aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:8px;
-  background:rgba(255,255,255,.05);border:1.5px solid var(--border);color:var(--text-dim);
-  font-size:.8rem;font-weight:700;transition:all .15s ease;
-}
-.factor-cell:hover{border-color:var(--accent-teal);}
-.factor-cell.picked{background:rgba(45,212,191,.22);border-color:var(--accent-teal);color:var(--text);transform:scale(1.08);}
-
-/* ---------- Balance scale interactive (drag/tap weights) ---------- */
-.scale-wrap{display:flex;flex-direction:column;align-items:center;margin:16px 0 6px;}
-.scale-beam-area{position:relative;width:100%;max-width:420px;height:190px;}
-.scale-pivot{position:absolute;left:50%;bottom:44px;width:0;height:0;
-  border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:26px solid var(--panel-light);
-  transform:translateX(-50%);}
-.scale-beam{
-  position:absolute;left:50%;bottom:68px;width:78%;height:6px;background:var(--accent-purple);
-  border-radius:4px;transform:translateX(-50%);
-}
-.scale-pan{
-  position:absolute;bottom:-64px;width:120px;min-height:56px;
-  border:2px solid var(--border);border-radius:12px;background:rgba(255,255,255,.05);
-  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:4px;padding:8px;
-}
-.scale-pan.left{left:6%;}
-.scale-pan.right{right:6%;}
-.weight-tile{
-  width:26px;height:22px;border-radius:5px;background:linear-gradient(160deg,var(--accent-amber),#d97706);
-  display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#3a2405;
-  cursor:pointer;transition:transform .15s ease;
-}
-.weight-tile:hover{transform:scale(1.15) translateY(-2px);}
-.scale-box{
-  width:34px;height:32px;border-radius:6px;background:linear-gradient(160deg,var(--accent-purple),#7c3aed);
-  display:flex;align-items:center;justify-content:center;font-size:1rem;
-  box-shadow:0 0 0 2px rgba(167,139,250,.3);
-}
-.scale-box.solved{animation:pathPulse 1s ease-in-out 2;box-shadow:0 0 0 3px rgba(74,222,128,.6);}
-.scale-hint{text-align:center;font-size:.85rem;color:var(--text-dim);margin-top:78px;line-height:1.6;}
-.scale-controls{margin-top:14px;text-align:center;}
-
-/* ---------- Answer feedback: visual, not just text ---------- */
-.answer-flash-correct{animation:flashCorrectRing .55s ease;}
-.answer-flash-wrong{animation:flashWrongShake .45s ease;}
-@keyframes flashCorrectRing{0%{box-shadow:0 0 0 0 rgba(74,222,128,.7);}60%{box-shadow:0 0 0 14px rgba(74,222,128,0);}100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}}
-@keyframes flashWrongShake{0%,100%{transform:translateX(0);}20%{transform:translateX(-6px);}40%{transform:translateX(6px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
-.burst-pop{position:absolute;pointer-events:none;font-size:1.7rem;z-index:5;animation:burstUp .8s ease forwards;}
-@keyframes burstUp{0%{transform:translateY(0) scale(.6);opacity:1;}100%{transform:translateY(-46px) scale(1.3);opacity:0;}}
 </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<header class="topbar">
-  <div class="brand" onclick="goHome()"><span class="logo-emoji">🎓</span><span>數學冒險島</span></div>
-  <div class="spacer"></div>
-  <div class="stat-pill streak-pill" id="streakPill">🔥 0</div>
-  <div class="stat-pill"><div class="level-badge" id="levelBadge">Lv1</div><div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div></div></div>
-  <button class="icon-btn" title="我的徽章" onclick="openBadgeModal()">🏅</button>
-  <button class="icon-btn" title="設定" onclick="openSettingsModal()">⚙️</button>
-</header>
+  <header class="topbar">
+    <div class="brand" onclick="goHome()"><span class="logo-emoji">🎓</span><span>數學冒險島</span></div>
+    <div class="spacer"></div>
+    <div class="stat-pill streak-pill" id="streakPill">🔥 0</div>
+    <div class="stat-pill"><div class="level-badge" id="levelBadge">Lv1</div><div class="xp-bar-wrap"><div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div></div></div>
+    <button class="icon-btn" title="成就牆／獎盃室" onclick="openBadgeModal()">🏆</button>
+    <button class="icon-btn" title="設定" onclick="openSettingsModal()">⚙️</button>
+  </header>
 
-<div id="app"></div>
-<div id="toast-stack"></div>
+  <div id="app"></div>
+  <div id="toast-stack"></div>
 
-<footer class="site-footer">為國一數學打基礎而生・引導式發現學習法</footer>
+  <footer class="site-footer">為國一數學打基礎而生・引導式發現學習法</footer>
 
-<canvas id="confetti-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
 
-<script>
-/* ========================================================================
-   數學冒險島 - 資料層 (Data Layer)
-   ======================================================================== */
+  <script>
+  /* ========================================================================
+     數學冒險島 - 資料層 (Data Layer)
+     ======================================================================== */
 
 const STORAGE_KEY = 'mathAdventureProgress_v1';
 
-const BADGES = {
-  unit1_discoverer: {id:'unit1_discoverer', name:'代數探險家', desc:'完成單元一的引導發現', icon:'🧭'},
-  unit2_discoverer: {id:'unit2_discoverer', name:'數論偵探', desc:'完成單元二的引導發現', icon:'🔎'},
-  no_hint_ace:       {id:'no_hint_ace', name:'免提示達人', desc:'不看提示答對一題', icon:'💡'},
-  streak5:           {id:'streak5', name:'五連勝', desc:'連續答對 5 題', icon:'🔥'},
-  streak10:          {id:'streak10', name:'十連勝火焰', desc:'連續答對 10 題', icon:'⚡'},
-  boss1:             {id:'boss1', name:'代數魔王擊破', desc:'通過單元一魔王挑戰', icon:'🏆'},
-  boss2:             {id:'boss2', name:'質數魔王擊破', desc:'通過單元二魔王挑戰', icon:'👑'},
-  sieve_master:      {id:'sieve_master', name:'篩法大師', desc:'完成 100 以內的質數篩選', icon:'🕸️'},
-  perfect1:          {id:'perfect1', name:'單元一・完美通關', desc:'單元一全程零提示', icon:'🌟'},
-  perfect2:          {id:'perfect2', name:'單元二・完美通關', desc:'單元二全程零提示', icon:'🌟'}
-};
+  const BADGES = {
+    unit1_discoverer: {id:'unit1_discoverer', name:'代數探險家', desc:'完成單元一的引導發現', icon:'🧭', rarity:'common'},
+    unit2_discoverer: {id:'unit2_discoverer', name:'數論偵探', desc:'完成單元二的引導發現', icon:'🔎', rarity:'common'},
+    unit3_discoverer: {id:'unit3_discoverer', name:'整數探索家', desc:'完成單元三的引導發現', icon:'🌡️', rarity:'common'},
+    no_hint_ace:       {id:'no_hint_ace', name:'免提示達人', desc:'不看提示答對一題', icon:'💡', rarity:'common'},
+    boss1:             {id:'boss1', name:'代數魔王擊破', desc:'通過單元一魔王挑戰', icon:'🏆', rarity:'common'},
+    boss2:             {id:'boss2', name:'質數魔王擊破', desc:'通過單元二魔王挑戰', icon:'👑', rarity:'common'},
+    boss3:             {id:'boss3', name:'整數魔王擊破', desc:'通過單元三魔王挑戰', icon:'⛰️', rarity:'common'},
+    sieve_master:      {id:'sieve_master', name:'篩法大師', desc:'完成 100 以內的質數篩選', icon:'🕸️', rarity:'rare'},
+    perfect1:          {id:'perfect1', name:'單元一・完美通關', desc:'單元一全程零提示', icon:'🌟', rarity:'rare'},
+    perfect2:          {id:'perfect2', name:'單元二・完美通關', desc:'單元二全程零提示', icon:'🌟', rarity:'rare'},
+    perfect3:          {id:'perfect3', name:'單元三・完美通關', desc:'單元三全程零提示', icon:'🌟', rarity:'rare'},
+
+    streak_bronze: {id:'streak_bronze', name:'連勝新星（銅）', desc:'連續答對 5 題', icon:'🔥', rarity:'common', family:'連續答對'},
+    streak_silver: {id:'streak_silver', name:'連勝高手（銀）', desc:'連續答對 10 題', icon:'⚡', rarity:'rare', family:'連續答對'},
+    streak_gold:   {id:'streak_gold', name:'連勝傳說（金）', desc:'連續答對 20 題', icon:'💥', rarity:'epic', family:'連續答對'},
+
+    nohint_bronze: {id:'nohint_bronze', name:'獨立思考者（銅）', desc:'累計 5 次不看提示答對', icon:'🧠', rarity:'common', family:'免提示累計'},
+    nohint_silver: {id:'nohint_silver', name:'思路清晰（銀）', desc:'累計 15 次不看提示答對', icon:'🧠', rarity:'rare', family:'免提示累計'},
+    nohint_gold:   {id:'nohint_gold', name:'解題大師（金）', desc:'累計 30 次不看提示答對', icon:'🧠', rarity:'epic', family:'免提示累計'},
+
+    xp_bronze: {id:'xp_bronze', name:'嶄露頭角（銅）', desc:'累積 150 XP', icon:'✨', rarity:'common', family:'經驗值'},
+    xp_silver: {id:'xp_silver', name:'穩紮穩打（銀）', desc:'累積 400 XP', icon:'💫', rarity:'rare', family:'經驗值'},
+    xp_gold:   {id:'xp_gold', name:'數學之星（金）', desc:'累積 800 XP', icon:'🌠', rarity:'epic', family:'經驗值'},
+
+    all_boss_cleared:   {id:'all_boss_cleared', name:'全能冒險家', desc:'完成所有單元的魔王挑戰', icon:'🗺️', rarity:'epic'},
+    all_perfect:        {id:'all_perfect', name:'零提示傳奇', desc:'所有單元都以零提示完美通關', icon:'👑', rarity:'epic'},
+    explorer_all_units: {id:'explorer_all_units', name:'好奇心旺盛', desc:'造訪過每一個單元的引子問題', icon:'🧭', rarity:'rare'},
+
+    hidden_login_streak:  {id:'hidden_login_streak', name:'常來的朋友', desc:'連續三天回來學習數學', icon:'📅', rarity:'epic', hidden:true},
+    hidden_speed_demon:   {id:'hidden_speed_demon', name:'閃電腦袋', desc:'在題目出現的 4 秒內就答對', icon:'⚡', rarity:'epic', hidden:true},
+    hidden_sieve_toucher: {id:'hidden_sieve_toucher', name:'篩子摸透大師', desc:'把質數篩選網格的每一格都點過一次', icon:'🕸️', rarity:'epic', hidden:true},
+    unit4_discoverer: {id:'unit4_discoverer', name:'計數探險家', desc:'完成單元四的引導發現', icon:'🎲', rarity:'common'},
+    boss4:             {id:'boss4', name:'計數魔王擊破', desc:'通過單元四魔王挑戰', icon:'🎯', rarity:'common'},
+    perfect4:          {id:'perfect4', name:'單元四・完美通關', desc:'單元四全程零提示', icon:'🌟', rarity:'rare'},
+    unit5_discoverer: {id:'unit5_discoverer', name:'比例探險家', desc:'完成單元五的引導發現', icon:'🍕', rarity:'common'},
+    boss5:             {id:'boss5', name:'比例魔王擊破', desc:'通過單元五魔王挑戰', icon:'🗺️', rarity:'common'},
+    perfect5:          {id:'perfect5', name:'單元五・完美通關', desc:'單元五全程零提示', icon:'🌟', rarity:'rare'},
+    unit6_discoverer: {id:'unit6_discoverer', name:'幾何探險家', desc:'完成單元六的引導發現', icon:'📐', rarity:'common'},
+    boss6:             {id:'boss6', name:'幾何魔王擊破', desc:'通過單元六魔王挑戰', icon:'🔺', rarity:'common'},
+    perfect6:          {id:'perfect6', name:'單元六・完美通關', desc:'單元六全程零提示', icon:'🌟', rarity:'rare'},
+    unit7_discoverer: {id:'unit7_discoverer', name:'百分比探險家', desc:'完成單元七的引導發現', icon:'💯', rarity:'common'},
+    boss7:             {id:'boss7', name:'百分比魔王擊破', desc:'通過單元七魔王挑戰', icon:'🏷️', rarity:'common'},
+    perfect7:          {id:'perfect7', name:'單元七・完美通關', desc:'單元七全程零提示', icon:'🌟', rarity:'rare'},
+    unit8_discoverer: {id:'unit8_discoverer', name:'座標探險家', desc:'完成單元八的引導發現', icon:'🧭', rarity:'common'},
+    boss8:             {id:'boss8', name:'座標魔王擊破', desc:'通過單元八魔王挑戰', icon:'🗝️', rarity:'common'},
+    perfect8:          {id:'perfect8', name:'單元八・完美通關', desc:'單元八全程零提示', icon:'🌟', rarity:'rare'}
+  };
 
 // ---- 工具：算式檢查 (以數值代入比對，容忍各種等價寫法) ----
 function safeEvalExpr(expr, n){
-  const cleaned = expr.replace(/\s+/g,'').replace(/×/g,'*').replace(/x/gi,'n');
-  if(!/^[0-9n+\-*/().]+$/i.test(cleaned)) return null;
+    const cleaned = expr.replace(/\s+/g,'').replace(/×/g,'*').replace(/x/gi,'n');
+        if(!/^[0-9n+\-*/().]+$/i.test(cleaned)) return null;
   // 支援 3n 這種省略乘號寫法 -> 3*n
   const withMul = cleaned.replace(/(\d)(n)/gi,'$1*$2').replace(/(n)(\d)/gi,'$1*$2').replace(/(n)\(/gi,'$1*(').replace(/\)(n)/gi,')*$1').replace(/\)(\d)/g,')*$1').replace(/(\d)\(/g,'$1*(');
   try{
@@ -455,400 +482,1149 @@ function safeEvalExpr(expr, n){
   }catch(e){ return null; }
 }
 function checkExprEquivalent(userExpr, expectedExpr){
-  if(!userExpr || !userExpr.trim()) return false;
+    if(!userExpr || !userExpr.trim()) return false;
   const testPoints = [1,2,5,7,11];
   for(const n of testPoints){
-    const a = safeEvalExpr(userExpr, n);
+        const a = safeEvalExpr(userExpr, n);
     const b = safeEvalExpr(expectedExpr, n);
     if(a===null || b===null) return false;
     if(Math.abs(a-b) > 1e-9) return false;
-  }
+}
   return true;
 }
 function parseNumberList(str){
-  if(!str) return [];
+    if(!str) return [];
   return str.split(/[,，、\s]+/).map(s=>s.trim()).filter(s=>s.length>0).map(Number).filter(n=>!isNaN(n)).sort((a,b)=>a-b);
 }
 function arraysEqual(a,b){
-  if(a.length!==b.length) return false;
+    if(a.length!==b.length) return false;
   for(let i=0;i<a.length;i++){ if(a[i]!==b[i]) return false; }
   return true;
 }
 function isPrime(num){
-  if(num < 2) return false;
+    if(num < 2) return false;
   for(let i=2;i*i<=num;i++){ if(num % i === 0) return false; }
   return true;
 }
 
 /* ========================================================================
-   單元一：代數式與變數的探索
-   ======================================================================== */
+     單元一：代數式與變數的探索
+     ======================================================================== */
 const UNIT1 = {
-  id:'unit1',
-  title:'代數式與變數的探索',
-  icon:'🔢',
-  shortDesc:'從數列規律出發，發現「變數」的意義，學會用代數式表達規律，並理解方程式其實是天秤的平衡遊戲。',
-  hook:{
-    text:'小美開始存零用錢：<br>第1週存 <b>1</b> 元，第2週存 <b>4</b> 元，第3週存 <b>7</b> 元，第4週存 <b>10</b> 元……<br>她每一週存的錢，都比前一週多存一樣多。<br><br>小美很好奇：「如果照這樣存下去，<b>第 100 週</b>我會存多少錢？」<br><br>先別擔心會不會算，我們會一小步一小步慢慢找出來，你一定做得到！',
-    cta:'好，我們先從簡單的開始 →'
-  },
-  discovery:[
-    {
-      id:'d1', type:'number', tileChoices:[5,6,7,8],
-      prompt:'小美第1週存1元，第2週存4元。<b>第3週</b>她存了多少元？（提示：題目裡就有寫喔，點一下正確的數字方塊）',
-      answer:7,
-      hints:['再往上看一次數列：1, 4, 7, 10……','第3個數字是多少？'],
-      correctMsg:'對！第3週存了7元。'
-    },
-    {
-      id:'d2', type:'number', tileChoices:[8,9,10,11],
-      prompt:'很好！那<b>第4週</b>呢？點一下正確的數字方塊。',
-      answer:10,
-      hints:['數列是 1, 4, 7, 10……第4個數字是多少？'],
-      correctMsg:'沒錯，第4週存了10元，跟題目說的一樣！'
-    },
-    {
-      id:'d3', type:'number', tileChoices:[2,3,4,5],
-      prompt:'我們來找找規律。從第1週到第2週，錢從1元變成4元，增加了多少元？（算算看 4 − 1，點一下答案方塊）',
-      answer:3,
-      hints:['4 − 1 = ?','用手指頭算算看，4比1多多少。'],
-      correctMsg:'對，增加了3元！'
-    },
-    {
-      id:'d4', type:'number', tileChoices:[2,3,4,5],
-      prompt:'再檢查一次：從第2週到第3週，錢從4元變成7元，也是增加3元嗎？請點選 7 − 4 的答案來確認。',
-      answer:3,
-      hints:['7 − 4 = ?'],
-      correctMsg:'完全正確！每次都固定增加3元，這叫做「公差」。'
-    },
-    {
-      id:'d5', type:'number', tileChoices:[11,12,13,14],
-      prompt:'照這個規律（每次+3），<b>第5週</b>會存多少元？（用第4週的10元加3元，點一下答案）',
-      answer:13,
-      hints:['10 + 3 = ?'],
-      correctMsg:'太棒了！第5週是13元。'
-    },
-    {
-      id:'d6', type:'number', tileChoices:[14,15,16,17],
-      prompt:'那<b>第6週</b>呢？（用第5週的13元加3元，點一下答案）',
-      answer:16,
-      hints:['13 + 3 = ?'],
-      correctMsg:'沒錯！第6週是16元。'
-    },
-    {
-      id:'d7', type:'mc',
-      prompt:'如果要一路算到「第100週」，你覺得哪一種做法比較聰明？',
-      options:['把第1週到第100週，一週一週慢慢加出來','找出「第幾週」和「每次增加多少」之間的規律，直接用算式算出答案，不用全部加'],
-      answer:1,
-      hints:['想像一下，如果是「第100000週」呢？一個一個加還算得完嗎？'],
-      correctMsg:'完全正確！這就是數學家的思考方式——找出規律，用式子代表它，而不是蠻力硬算。'
-    },
-    {
-      id:'d8', type:'number',
-      prompt:'我們換個方式來看規律：<br>第1週 = 1 + 3×0　　第2週 = 1 + 3×1　　第3週 = 1 + 3×2<br>照這個規律，<b>第4週</b> = 1 + 3×多少？',
-      answer:3,
-      hints:['看看「週數」和「乘的數字」的關係：第1週乘0，第2週乘1，第3週乘2……','乘的數字，好像都比「第幾週」少1。第4週要乘的數字，就是 4 − 1 = ?'],
-      correctMsg:'對！第4週 = 1 + 3×3 = 10，符合我們前面算的答案。'
-    },
-    {
-      id:'d9', type:'number',
-      prompt:'很好！照這個規律，如果是<b>第10週</b>，要乘的數字是多少？（提示：週數 − 1）',
-      answer:9,
-      hints:['乘的數字 = 週數 − 1。','10 − 1 = ?'],
-      correctMsg:'沒錯！第10週 = 1 + 3×9 = 28。'
-    },
-    {
-      id:'d10', type:'mc',
-      prompt:'如果用<b>n</b>代表「第幾週」，下面哪一個式子可以代表「第 n 週存的錢」？',
-      options:['1 + 3(n − 1)','1 + 3n','3 + 1×n','n + 3'],
-      answer:0,
-      hints:['你剛剛發現，乘的數字都是「週數 − 1」。如果週數用 n 代表，乘的數字要怎麼寫？','試試看把 n 代入 n=1：算出來應該要等於第1週的1元。'],
-      correctMsg:'太棒了！你剛剛自己「發現」了代數式：第 n 週 = 1 + 3(n − 1)。這裡的 n 就是<b>變數</b>——它可以代表任何一週的編號。'
-    },
-    {
-      id:'d11', type:'mc',
-      prompt:'換個新遊戲：一個天秤，兩邊一樣重的時候就會保持平衡。<br>如果天秤左邊是「一個神秘箱子 + 2公斤砝碼」，右邊是「9公斤砝碼」，而且天秤是平衡的，你覺得神秘箱子會比9公斤重還是輕？',
-      options:['比9公斤輕','比9公斤重'],
-      answer:0,
-      hints:['箱子那一邊還多放了2公斤的砝碼，兩邊卻一樣重，所以箱子自己一定比較輕還是比較重呢？'],
-      correctMsg:'答對了，箱子一定比較輕，因為它那邊還多了2公斤的砝碼卻還是一樣重。'
-    },
-    {
-      id:'d12', type:'mc',
-      prompt:'如果天秤兩邊「同時拿掉一樣重的東西」（例如兩邊都拿掉2公斤），天秤還會平衡嗎？',
-      options:['還會平衡','不會平衡了'],
-      answer:0,
-      hints:['兩邊本來就一樣重，如果兩邊都拿走同樣多的重量，會不會失去平衡呢？'],
-      correctMsg:'沒錯！兩邊同時做同一件事，平衡不會被打破。這是解方程式最重要的規則！'
-    },
-    {
-      id:'d13', type:'scale', leftExtra:2, rightWeight:9,
-      prompt:'那麼，來實際操作看看！點一下天秤上任何一個砝碼，兩邊會「同時各拿掉一個」1公斤砝碼（記得規則：兩邊要一起做同一件事）。一直點到左邊只剩下箱子為止。',
-      correctMsg:'看！兩邊同時拿掉2公斤，天秤還是平衡的，箱子單獨留下來了。'
-    },
-    {
-      id:'d14', type:'number', tileChoices:[5,6,7,9],
-      prompt:'剛剛你親手操作天秤，看到箱子單獨留下時，右邊還剩幾公斤？那就是箱子的重量 x！點一下答案方塊。',
-      answer:7,
-      hints:['剛剛天秤右邊最後留下的砝碼數量，就是箱子的重量。','兩邊平衡，所以左邊的箱子重量 = 右邊剩下的公斤數。'],
-      correctMsg:'沒錯，x = 7！你剛剛已經學會解方程式的核心概念了。'
-    }
+    id:'unit1',
+        title:'代數式與變數的探索',
+        icon:'🔢',
+        shortDesc:'從數列規律出發，發現「變數」的意義，學會用代數式表達規律，並理解方程式其實是天秤的平衡遊戲。',
+        hook:{
+    text:'老師心裡想了一個數列：<b>1, 4, 7, 10, 13, …</b><br>它會一直照規律增加下去。<br><br>老師問全班：「這個數列的<b>第 100 項</b>是多少？」<br><br>全班同學都埋頭一個一個往下加……你覺得，有沒有更聰明的辦法，不用一直加到第 100 個？',
+          cta:'先別急，我們一步一步來找出聰明的方法 →'
+      },
+        discovery:[
+{
+      id:'d1', type:'number',
+              prompt:'別急著挑戰第 100 項，我們先從簡單的開始。數列 1, 4, 7, 10, 13, … 的<b>第 6 項</b>是多少？',
+              answer:16,
+              hints:['試著把數列繼續往後寫：1, 4, 7, 10, 13, ?','每次都在前一項的基礎上，加上同一個數字。'],
+              correctMsg:'沒錯！第 6 項是 16。'
+        },
+          {
+                id:'d2', type:'number',
+                        prompt:'很好。那麼從第 1 項到第 2 項、第 2 項到第 3 項……每一次，數字都增加了多少？',
+                        answer:3,
+                        hints:['拿第2項減去第1項看看：4 − 1 = ?','再檢查一次 7 − 4 是不是也一樣？'],
+                        correctMsg:'對！每次都固定增加 3，這叫做「公差」。'
+                  },
+{
+      id:'d3', type:'mc',
+              prompt:'如果要直接算出「第 100 項」，你覺得哪一種做法比較聰明？',
+              options:['把第 1 項到第 100 項，一項一項慢慢加出來','找出「第幾項」和「每次增加多少」之間的規律，直接用算式算出答案，不用全部加'],
+              answer:1,
+              hints:['想像一下，如果是「第 100000 項」呢？一個一個加還可行嗎？'],
+              correctMsg:'完全正確！這就是數學家的思考方式——找出規律，用式子代表它，而不是蠻力硬算。'
+        },
+{
+      id:'d4', type:'mc',
+              prompt:'我們來排排看規律：<br>第1項 = 1 + 3×0　　第2項 = 1 + 3×1　　第3項 = 1 + 3×2 …<br>如果用<b>n</b>代表「第幾項」，下面哪一個式子可以代表「第 n 項」？',
+              options:['1 + 3(n − 1)','1 + 3n','3 + 1×n','n + 3'],
+              answer:0,
+              hints:['看看規律裡「3」後面乘的數字：0, 1, 2……跟 n 差了多少？','第1項時 n=1，此時乘的是0，也就是 n−1。'],
+              correctMsg:'太棒了！你剛剛自己「發現」了代數式：第 n 項 = 1 + 3(n − 1)。這裡的 n 就是<b>變數</b>——它可以代表任何一項的編號。'
+        },
+{
+      id:'d5', type:'number',
+              prompt:'換個情境：一個天秤兩邊保持平衡。<br>左邊放著一個裝了神秘重量的箱子（重量是 <b>x</b> 公斤）和一個 2 公斤的砝碼；右邊放著一個 9 公斤的砝碼。<br><br>如果兩邊「同時拿掉 2 公斤」，天秤還會平衡嗎？拿掉之後，箱子的重量 x 是多少？',
+              answer:7,
+              hints:['天秤的規則：兩邊同時做一樣的事，平衡不會被打破。','原本兩邊相等：x + 2 = 9。兩邊同時減去 2，會變成什麼？'],
+              correctMsg:'沒錯，天秤仍然平衡！x = 7。你剛剛已經在用「解方程式」的核心概念了。'
+        }
   ],
-  formalize:`
-    <h4>📐 什麼是代數式和變數？</h4>
-    <p>剛剛我們發現的規律，用數學符號寫出來就是：</p>
-    <div class="formula-box">第 n 週 = 1 + 3(n − 1) = 3n − 2</div>
-    <p>這裡的 <b>n</b> 叫做「變數」，它其實就是一個「代替品」——因為我們不想每次都寫「第幾週」這麼長，就用一個字母 n 來代替。你要算第幾週，就把 n 換成那個數字。</p>
-    <p>舉個例子：如果要算第6週，就把 n 換成6：3×6 − 2 = 16，跟我們前面一步一步算出來的答案一樣！再舉一個例子：第10週呢？3×10 − 2 = 28，也跟我們剛才算的一樣！</p>
-    <p>現在回到一開始的問題：第100週會存多少錢？<b>3×100 − 2 = 298</b> 元。不用一週一週慢慢加，代數式讓我們馬上就找到答案！</p>
-    <h4>⚖️ 方程式其實就是天秤遊戲</h4>
-    <p>方程式（例如 x + 2 = 9）就是在說「這個天秤是平衡的」。要找出 x 是多少，只要記住一個規則：</p>
-    <div class="formula-box">兩邊同時做同一件事（一起加、一起減、一起乘、一起除同一個數），天秤還是會平衡</div>
-    <p>解 x + 2 = 9 的時候，我們兩邊「一起減2」：x = 9 − 2 = 7。<br>再舉一個例子：解 x + 5 = 12，兩邊一起減5：x = 12 − 5 = 7。<br>這就是課本上「移項要變號」規則背後真正的意思——並不是什麼神秘規則，只是兩邊同時做同一件事而已，完全不需要死背！</p>
-  `,
-  formalizeCheck:{
+          formalize:`
+    <h4>📐 代數式與變數</h4>
+          <p>剛剛你發現的規律，用數學的方式寫出來就是：</p>
+          <div class="formula-box">第 n 項 = 1 + 3(n − 1) = 3n − 2</div>
+                <p>這裡的 <b>n</b> 就是「變數」（variable）——它不是固定的一個數字，而是可以代表「任何一項的編號」的符號。當我們把 n 換成不同的數字，就能算出對應那一項的值。例如驗證第 6 項：3×6 − 2 = 16，跟你剛才算的一樣！</p>
+                <p>現在回到一開始的問題：第 100 項是多少？<b>3×100 − 2 = 298</b>。不用一個一個加，代數式讓我們瞬間找到答案！</p>
+                <h4>⚖️ 方程式：維持平衡的遊戲</h4>
+                <p>方程式（例如 x + 2 = 9）代表一個「平衡的天秤」。要找出 x 是多少，核心原則只有一個：</p>
+                <div class="formula-box">兩邊同時做同一件事（加、減、乘、除同一個數），天秤依然平衡</div>
+                <p>所以解 x + 2 = 9 時，我們兩邊同時「減 2」：x = 9 − 2 = 7。這就是為什麼你在課本上會看到「移項要變號」的規則——它的本質其實就是兩邊同時做同一個運算而已，不需要死背。</p>
+              `,
+              formalizeCheck:{
     id:'fc1', type:'number',
-    prompt:'小測驗：方程式 2x = 10（天秤兩邊同時除以 2），x 是多少？',
-    answer:5,
-    hints:['兩邊同時除以 2 試試看。','2x 代表 2乘以x；如果2乘以某個數字等於10，那個數字是多少？'],
-    correctMsg:'完全正確！準備好進入練習關卡了。'
-  },
-  practice:[
-    {id:'u1p1', type:'number', prompt:'數列 2, 5, 8, 11, … 的第 10 項是多少？', answer:29,
-      hints:['試著先把數列往後多寫幾項：2, 5, 8, 11, 14……','每次增加多少？（公差是多少？）','公差是3，所以可以用 3×n 再做一點調整。','公式是 3n − 1，把 n 換成10算算看。'],
-      explain:'公差為 3，第 n 項 = 3n − 1，所以第 10 項 = 3×10 − 1 = 29。'},
-    {id:'u1p2', type:'expr', prompt:'承上題，這個數列（2, 5, 8, 11, …）的第 n 項，請用含 n 的代數式表示。（可直接輸入，例如 3n-1）', answer:'3n-1',
-      hints:['先想想公差是多少（每次增加多少）？','公差是3，所以式子裡會有 3n。','用第1項檢查：3×1=3，但實際第一項是2，所以要調整多少？','答案的形式類似 3n 加或減一個數字，試試看 3n-1。'],
-      explain:'公差是 3，所以式子裡有 3n；再用第1項驗證：3×1=3，但實際第1項是2，所以要減1，答案是 3n − 1。'},
-    {id:'u1p3', type:'mc', prompt:'下列哪一個代數式，代表「某數的 2 倍再加 5」？', options:['2x + 5','x + 2 + 5','2(x + 5)','5x + 2'], answer:0,
-      hints:['先想「某數的2倍」要怎麼寫成式子。','2倍就是「2乘以那個數」，寫成 2x。','再把「加5」接在 2x 後面試試看。'],
-      explain:'「某數的2倍」是 2x，再加5，就是 2x + 5。'},
-    {id:'u1p4', type:'number', prompt:'解方程式：x + 7 = 15，x 是多少？', answer:8,
-      hints:['想像天秤：兩邊要同時做同一件事才能維持平衡。','題目是 x + 7 = 15，你想讓左邊只剩下 x，可以兩邊同時做什麼？','兩邊同時減去7。','15 − 7 = ?'],
-      explain:'兩邊同減 7：x = 15 − 7 = 8。'},
-    {id:'u1p5', type:'number', prompt:'解方程式：3x = 21，x 是多少？', answer:7,
-      hints:['3x 代表 3 乘以 x。','你想讓左邊只剩下 x，可以兩邊同時做什麼運算？','兩邊同時除以3。','21 ÷ 3 = ?'],
-      explain:'兩邊同除以 3：x = 21 ÷ 3 = 7。'},
-    {id:'u1p6', type:'number', prompt:'解方程式：2x + 5 = 17，x 是多少？（這題要做兩個步驟）', answer:6,
-      hints:['這題要分兩步驟，先處理「+5」。','兩邊同時減5，會得到 2x = ?','2x = 12，接下來兩邊同時除以2。','12 ÷ 2 = ?'],
-      explain:'兩邊同減5：2x = 12；再同除以2：x = 6。'},
-    {id:'u1p7', type:'number', prompt:'應用題：小明比小華大 3 歲，兩人的年齡和是 27 歲。小華幾歲？', answer:12,
-      hints:['先設小華的年齡為 x。','小明比小華大3歲，所以小明是 x + 3。','兩人年齡和是27，寫成式子：x + (x + 3) = 27。','化簡後是 2x + 3 = 27，先兩邊減3，再除以2。'],
-      explain:'x + (x+3) = 27 → 2x + 3 = 27 → 2x = 24 → x = 12，小華 12 歲（小明 15 歲）。'},
-    {id:'u1p8', type:'number', prompt:'解方程式：4x − 3 = 13，x 是多少？', answer:4,
-      hints:['這題要分兩步驟，先處理「−3」。','兩邊同時加3，會得到 4x = ?','4x = 16，接下來兩邊同時除以4。','16 ÷ 4 = ?'],
-      explain:'兩邊同加3：4x = 16；再同除以4：x = 4。'}
+          prompt:'小測驗：方程式 2x = 10（天秤兩邊同時除以 2），x 是多少？',
+          answer:5,
+          hints:['兩邊同時除以 2 試試看。'],
+          correctMsg:'完全正確！準備好進入練習關卡了。'
+      },
+        practice:[
+{id:'u1p1', type:'number', prompt:'數列 2, 5, 8, 11, … 的第 10 項是多少？', answer:29,
+        hints:['先找出每次增加多少（公差）。','試著寫出第 n 項的代數式：3n + 常數。','公式是 3n − 1，代入 n = 10。'],
+        explain:'公差為 3，第 n 項 = 3n − 1，所以第 10 項 = 3×10 − 1 = 29。'},
+          {id:'u1p2', type:'expr', prompt:'承上題，這個數列（2, 5, 8, 11, …）的第 n 項，請用含 n 的代數式表示。（可直接輸入，例如 3n-1）', answer:'3n-1',
+                hints:['第一項是 2，每次增加 3。','試試看 3×n 再做調整：3n = 3, 6, 9, 12…比原數列多了多少？','把 3n 減掉多的那個數，就是答案。'],
+                explain:'公差是 3，所以式子裡有 3n；再用第1項驗證：3×1=3，但實際第1項是2，所以要減1，答案是 3n − 1。'},
+{id:'u1p3', type:'mc', prompt:'下列哪一個代數式，代表「某數的 2 倍再加 5」？', options:['2x + 5','x + 2 + 5','2(x + 5)','5x + 2'], answer:0,
+        hints:['「某數的 2 倍」先寫成 2 乘以那個數。','再把「加 5」接在後面。'],
+        explain:'「某數的2倍」是 2x，再加5，就是 2x + 5。'},
+{id:'u1p4', type:'number', prompt:'解方程式：x + 7 = 15，x 是多少？', answer:8,
+        hints:['想像天秤：兩邊要同時做同一件事才能維持平衡。','兩邊同時減去 7。'],
+        explain:'兩邊同減 7：x = 15 − 7 = 8。'},
+{id:'u1p5', type:'number', prompt:'解方程式：3x = 21，x 是多少？', answer:7,
+        hints:['3x 代表 3 乘以 x。','兩邊同時除以 3。'],
+        explain:'兩邊同除以 3：x = 21 ÷ 3 = 7。'},
+{id:'u1p6', type:'number', prompt:'解方程式：2x + 5 = 17，x 是多少？（這題要做兩個步驟）', answer:6,
+        hints:['先把「+5」處理掉：兩邊同時減 5。','會得到 2x = 12。','再兩邊同除以 2。'],
+        explain:'兩邊同減5：2x = 12；再同除以2：x = 6。'},
+{id:'u1p7', type:'number', prompt:'應用題：小明比小華大 3 歲，兩人的年齡和是 27 歲。小華幾歲？', answer:12,
+        hints:['設小華的年齡為 x。','那麼小明的年齡就是 x + 3。','兩人年齡和：x + (x + 3) = 27，先化簡再解。'],
+        explain:'x + (x+3) = 27 → 2x + 3 = 27 → 2x = 24 → x = 12，小華 12 歲（小明 15 歲）。'},
+{id:'u1p8', type:'number', prompt:'解方程式：4x − 3 = 13，x 是多少？', answer:4,
+        hints:['先處理「−3」：兩邊同時加 3。','會得到 4x = 16。','再兩邊同除以 4。'],
+        explain:'兩邊同加3：4x = 16；再同除以4：x = 4。'}
   ],
-  boss:{
+    boss:{
     title:'代數魔王：數列指揮官',
-    intro:'魔王甩出一串神秘數列：<b>7, 12, 17, 22, …</b> 它要求你完成幾個小試煉，才願意讓路！別擔心，一步一步來。',
-    parts:[
-      {id:'b1_0', type:'number', prompt:'暖身試煉：魔王的數列是 7, 12, 17, 22, … 每次增加多少？（公差是多少？）', answer:5,
-        hints:['12 − 7 = ?'],
-        explain:'公差是5。'},
+          intro:'魔王甩出一串神秘數列：<b>7, 12, 17, 22, …</b> 它要求你完成三個試煉，才願意讓路！',
+          parts:[
       {id:'b1a', type:'expr', prompt:'試煉一：寫出這個數列第 n 項的代數式。', answer:'5n+2',
-        hints:['你剛剛找到公差是5，所以式子裡會有 5n。','用第1項檢查：n=1時，5×1=5，但實際第一項是7，要調整多少？','試試看 5n 加上一個數字。'],
-        explain:'公差為5，且第1項要等於7，所以是 5n + 2。'},
-      {id:'b1b', type:'number', prompt:'試煉二：這個數列的第 15 項是多少？', answer:77,
-        hints:['用剛剛的式子 5n + 2，代入 n = 15。','5×15 = ?然後再加2。'],
-        explain:'5×15 + 2 = 77。'},
-      {id:'b1c', type:'number', prompt:'試煉三：數列中「哪一項」的值是 97？（也就是解方程式 5n + 2 = 97）', answer:19,
-        hints:['列出方程式：5n + 2 = 97。','兩邊同減 2，變成 5n = ?','95 ÷ 5 = ?'],
-        explain:'5n+2=97 → 5n=95 → n=19，也就是第19項的值是97。'}
+              hints:['公差是多少？','用第1項驗證：n=1時代入你的式子，應該要等於7。'],
+              explain:'公差為5，且第1項要等於7，所以是 5n + 2。'},
+{id:'b1b', type:'number', prompt:'試煉二：這個數列的第 15 項是多少？', answer:77,
+          hints:['用剛剛的式子 5n + 2，代入 n = 15。'],
+          explain:'5×15 + 2 = 77。'},
+{id:'b1c', type:'number', prompt:'試煉三：數列中「哪一項」的值是 97？（也就是解方程式 5n + 2 = 97）', answer:19,
+          hints:['列出方程式：5n + 2 = 97。','兩邊同減 2，再同除以 5。'],
+          explain:'5n+2=97 → 5n=95 → n=19，也就是第19項的值是97。'}
     ],
-    victoryText:'魔王低頭認輸：「你已經完全掌握了規律、代數式與方程式之間的關係！」'
-  }
+      victoryText:'魔王低頭認輸：「你已經完全掌握了規律、代數式與方程式之間的關係！」'
+        }
 };
 
 /* ========================================================================
-   單元二：因數、倍數與質數的秘密
-   ======================================================================== */
+     單元二：因數、倍數與質數的秘密
+     ======================================================================== */
 const UNIT2 = {
-  id:'unit2',
-  title:'因數、倍數與質數的秘密',
-  icon:'🍬',
-  shortDesc:'從分糖果的情境出發，發現因數與倍數的關係，並親手用篩法找出質數的秘密。',
-  hook:{
-    text:'老師有 <b>24 顆糖果</b>，想要平分給班上同學，讓每個人分到的顆數<b>一樣多</b>，而且<b>不能有剩下</b>。<br><br>老師問：「班上可能剛好有幾位同學呢？」（不只一種答案喔！）<br><br>先不用急著找出全部答案，我們會一步一步慢慢找。',
-    cta:'先從簡單的開始 →'
-  },
-  discovery:[
-    {
-      id:'e0a', type:'number', tileChoices:[10,11,12,14],
-      prompt:'我們先試試看：如果每個人分到 <b>2顆</b> 糖果，24顆可以分給幾個人？（24 ÷ 2，點一下答案方塊）',
-      answer:12,
-      hints:['24 ÷ 2 = ?'],
-      correctMsg:'對！可以分給12個人，剛好分完，沒有剩下。'
-    },
-    {
-      id:'e0b', type:'number', tileChoices:[6,7,8,9],
-      prompt:'如果每個人分到 <b>3顆</b> 呢？（24 ÷ 3）可以分給幾個人？點一下答案。',
-      answer:8,
-      hints:['24 ÷ 3 = ?'],
-      correctMsg:'沒錯，可以分給8個人。'
-    },
-    {
-      id:'e0c', type:'mc',
-      prompt:'那如果每個人分到 <b>5顆</b> 呢？24 ÷ 5 = 4 餘 4，會不會剛好分完，沒有剩下？',
-      options:['會剛好分完','不會，會有剩下'],
-      answer:1,
-      hints:['24 ÷ 5 等於4餘4，「餘」代表還有剩下沒分完。'],
-      correctMsg:'答對了！24 ÷ 5 有剩下，所以「5個人」這個答案不能用（不能讓每人分到的顆數一樣多、又剛好分完）。'
-    },
-    {
-      id:'e1', type:'list', gridMax:24,
-      prompt:'請點選所有「可能的同學人數」——也就是所有能整除 24、讓糖果剛好分完的數字。你已經知道 2、3 可以，5 不行，把其他的也找出來吧！（在下面的數字格子中，點選你覺得對的數字）',
-      answer:[1,2,3,4,6,8,12,24],
-      hints:['從 1 開始試：24÷1=24（整除），1可以。24÷2=12，2也可以……剛剛我們也確認過3可以、5不行。','繼續試 4, 6, 7, 8……一路試到24。','別忘了 24 本身也算一個答案（一個人獨得全部）。','完整答案共有 8 個數字：1, 2, 3, 4, 6, 8, 12, 24。'],
-      correctMsg:'太厲害了！你剛剛找出的，就是 24 的「所有因數」。'
-    },
-    {
-      id:'e2', type:'mc',
-      prompt:'下列哪一個數字，是 24 的因數？',
-      options:['5','6','7','9'],
-      answer:1,
-      hints:['因數的意思是「能整除24、沒有餘數」的數字。','24÷6 = ?','算出來如果沒有餘數，6就是24的因數。'],
-      correctMsg:'沒錯，24÷6=4，整除！6 是 24 的因數。'
-    },
-    {
-      id:'e3a', type:'number', tileChoices:[2,3,4,5],
-      prompt:'我們來練習找倍數。3 的「第1個倍數」是 3×1，等於多少？點一下答案。',
-      answer:3,
-      hints:['3 × 1 = ?'],
-      correctMsg:'對，3×1=3。'
-    },
-    {
-      id:'e3b', type:'number', tileChoices:[4,5,6,7],
-      prompt:'3 的「第2個倍數」是 3×2，等於多少？點一下答案。',
-      answer:6,
-      hints:['3 × 2 = ?'],
-      correctMsg:'沒錯，3×2=6。'
-    },
-    {
+    id:'unit2',
+        title:'因數、倍數與質數的秘密',
+        icon:'🍬',
+        shortDesc:'從分糖果的情境出發，發現因數與倍數的關係，並親手用篩法找出質數的秘密。',
+        hook:{
+    text:'老師有 <b>24 顆糖果</b>，想要平分給班上同學，讓每個人分到的顆數<b>一樣多</b>，而且<b>不能有剩下</b>。<br><br>老師問：「班上可能剛好有幾位同學呢？」（不只一種答案喔！）',
+          cta:'一起把所有可能找出來 →'
+      },
+        discovery:[
+{
+      id:'e1', type:'list',
+              prompt:'請列出所有「可能的同學人數」——也就是所有能整除 24、讓糖果剛好分完的數字。（請用逗號分開，例如 1,2,3）',
+              answer:[1,2,3,4,6,8,12,24],
+              hints:['從 1 開始試：24÷1=24（整除），1可以。24÷2=12，2也可以……一路試到24。','別忘了 24 本身也算一個答案（一個人獨得全部）。','完整答案共有 8 個數字。'],
+              correctMsg:'太厲害了！你剛剛找出的，就是 24 的「所有因數」。'
+        },
+          {
+                id:'e2', type:'mc',
+                        prompt:'下列哪一個數字，是 24 的因數？',
+                        options:['5','6','7','9'],
+                        answer:1,
+                        hints:['因數的意思是「能整除24、沒有餘數」的數字。','24÷6 = ?'],
+                        correctMsg:'沒錯，24÷6=4，整除！6 是 24 的因數。'
+                  },
+{
       id:'e3', type:'list',
-      prompt:'換個角度想：3 的倍數有哪些？請由小到大列出<b>前 5 個</b>（不包含0），你已經算出前兩個了。',
-      answer:[3,6,9,12,15],
-      hints:['倍數就是「3乘以1、2、3、4、5……」得到的數字，你剛剛已經算出前兩個了。','3×1=3, 3×2=6, 3×3=?, 3×4=?, 3×5=?','由小到大列出：3, 6, 9, 12, 15。'],
-      correctMsg:'完全正確！3, 6, 9, 12, 15 都是 3 的倍數。'
-    },
-    {
+              prompt:'換個角度想：3 的倍數有哪些？請由小到大列出<b>前 5 個</b>（不包含0）。',
+              answer:[3,6,9,12,15],
+              hints:['倍數就是「3乘以1、2、3、4、5……」得到的數字。','3×1=3, 3×2=6, 3×3=?'],
+              correctMsg:'完全正確！3, 6, 9, 12, 15 都是 3 的倍數。'
+        },
+{
       id:'e4', type:'mc',
-      prompt:'因為 24 ÷ 6 = 4，剛好整除，所以我們可以說：',
-      options:['6 是 24 的因數，24 是 6 的倍數','6 是 24 的倍數，24 是 6 的因數'],
-      answer:0,
-      hints:['「因數」通常是比較小、能整除大數的那個。','24 比較大，6 能整除它——誰是誰的因數？','把小的數放在「因數」，大的數放在「倍數」。'],
-      correctMsg:'答對了！因數與倍數是一體兩面的關係：小的是大的的因數，大的是小的的倍數。'
-    },
-    {
-      id:'e4b', type:'sieve', min:2, max:10,
-      prompt:'在正式挑戰找質數之前，先用一個小一點的範圍練習看看：在剛剛找因數的過程中，你有沒有發現有些數字「只有 1 和自己」兩個因數（例如 7：只有1和7能整除它）？這種數字非常特別，叫做<b>質數</b>。<br><br>請動手操作下方的表格：點一下數字圈出你認為的「質數」（綠色），再點一下變成「合數」（紅色），點第三下清空重來。先找出 2～10 之間所有的質數！',
-      correctMsg:'太棒了！2～10之間的質數是 2, 3, 5, 7。你已經抓到訣竅了，接下來我們挑戰更大的範圍！'
-    },
-    {
+              prompt:'因為 24 ÷ 6 = 4，剛好整除，所以我們可以說：',
+              options:['6 是 24 的因數，24 是 6 的倍數','6 是 24 的倍數，24 是 6 的因數'],
+              answer:0,
+              hints:['「因數」通常是比較小、能整除大數的那個。','24 比較大，6 能整除它——誰是誰的因數？'],
+              correctMsg:'答對了！因數與倍數是一體兩面的關係：小的是大的的因數，大的是小的的倍數。'
+        },
+{
       id:'e5', type:'sieve', min:2, max:20,
-      prompt:'現在挑戰稍微大一點的範圍：找出 2～20 之間所有的質數！方法跟剛剛一樣，點一下圈出質數，再點一下變成合數。如果卡住了，可以按「給我一個提示」。',
-      correctMsg:'太厲害了，你剛剛親手完成了「質數篩選」！2～20之間共有 8 個質數：2, 3, 5, 7, 11, 13, 17, 19。'
-    }
+              prompt:'現在來挑戰一個更深的問題：在剛剛找因數的過程中，你有沒有發現有些數字「只有 1 和自己」兩個因數（例如 7：只有1和7能整除它）？這種數字非常特別，叫做<b>質數</b>。<br><br>請動手操作下方的表格：點一下數字圈出你認為的「質數」（綠色），再點一下變成「合數」（紅色，代表有兩個以上非1的因數 / 可整除），點第三下清空重來。找出 2～20 之間所有的質數！',
+              correctMsg:'太厲害了，你剛剛親手完成了「質數篩選」！2～20之間共有 8 個質數：2, 3, 5, 7, 11, 13, 17, 19。'
+        }
   ],
-  formalize:`
-    <h4>🧩 因數和倍數，其實很簡單</h4>
-    <p>如果一個數字可以「整除」另一個數字（除完剛剛好，沒有餘數），我們就說：</p>
-    <div class="formula-box">小的那個是大的的「因數」　　大的那個是小的的「倍數」</div>
-    <p>例如 24 ÷ 6 = 4，剛好除完，所以 6 是 24 的因數，24 是 6 的倍數。再舉一個例子：18 ÷ 3 = 6，剛好除完，所以 3 是18的因數，18是3的倍數。</p>
-    <p>一個數字的因數是「找得完」的（例如24的因數只有8個），但倍數可以一直乘下去，是「找不完」的（3的倍數有3,6,9,12……可以一直乘到無限大）。</p>
-    <h4>💎 質數：數字世界裡的「獨行俠」</h4>
-    <p>如果一個大於1的數字，只能被 1 和自己整除（別的數字都除不盡），這種數字就叫<b>質數</b>。像 7 這個數字，只有 1 和 7 能整除它，所以7是質數。如果因數不只1和自己（例如6可以被1,2,3,6整除），這種數字就叫<b>合數</b>。</p>
-    <div class="formula-box">質數：只有 1 和自己這兩個因數，沒有別的了</div>
-    <p>特別要記住兩件事：<b>1 不算質數也不算合數</b>（因為它只有自己一個因數）；<b>2 是最小的質數，也是唯一的偶數質數</b>（除了2以外，所有質數都是奇數，因為偶數都能被2整除）。你剛剛親手篩出的 2、3、5、7、11、13、17、19，就是20以內全部的質數！</p>
-  `,
-  formalizeCheck:{
+          formalize:`
+    <h4>🧩 因數與倍數</h4>
+          <p>如果 <b>a ÷ b</b> 能夠整除（沒有餘數），我們就說：</p>
+                <div class="formula-box">b 是 a 的「因數」　　a 是 b 的「倍數」</div>
+                <p>例如 24 ÷ 6 = 4 整除，所以 6 是 24 的因數，24 是 6 的倍數。一個數字的因數是有限個（找得完），但倍數有無限多個（可以一直乘下去）。</p>
+                <h4>💎 質數的秘密</h4>
+                <p>如果一個大於 1 的數字，<b>只能被 1 和自己整除</b>（也就是只有 1 和自己兩個因數），這個數字就叫做<b>質數</b>。如果因數超過兩個，就叫做<b>合數</b>。</p>
+                <div class="formula-box">質數：恰好只有 1 和自己這兩個因數</div>
+                <p>特別注意：<b>1 既不是質數也不是合數</b>（它只有一個因數）；<b>2 是最小的質數，也是唯一的偶數質數</b>（其他質數都是奇數）。你剛剛用篩法親手篩出的 2、3、5、7、11、13、17、19，就是 20 以內的全部質數。</p>
+              `,
+              formalizeCheck:{
     id:'fc2', type:'mc',
-    prompt:'小測驗：15 是質數還是合數？',
-    options:['質數','合數（因為 15 = 3 × 5，因數不只1和自己）'],
-    answer:1,
-    hints:['試試看 15 除以 3。','15 ÷ 3 = 5，剛好整除，代表15還有別的因數，不只1和自己。'],
-    correctMsg:'答對了！15 = 3×5，除了1和15之外還有3和5這兩個因數，所以是合數。'
-  },
-  practice:[
-    {id:'u2p1', type:'list', prompt:'請列出 36 的所有因數。（用逗號分開，由小到大）', answer:[1,2,3,4,6,9,12,18,36],
-      hints:['從1開始一個一個試除到36：1, 2, 3……','記得檢查 1, 2, 3, 4, 6, 9, 12, 18, 36 這些數字能不能整除36。','36 = 4×9 = 6×6，這些關係可以幫你找到更多因數。','完整答案：1, 2, 3, 4, 6, 9, 12, 18, 36，共9個。'],
-      explain:'36 的因數：1, 2, 3, 4, 6, 9, 12, 18, 36，共9個。'},
-    {id:'u2p2', type:'mc', prompt:'51 是質數嗎？', options:['是質數','不是質數'], answer:1,
-      hints:['質數只能被1和自己整除，試試看51能不能被小一點的質數整除。','試試看用 3 去除 51。','51 ÷ 3 = 17，整除了嗎？'],
-      explain:'51 = 3 × 17，除了1和51還有其他因數，所以不是質數。'},
-    {id:'u2p3', type:'list', gridMax:20, prompt:'列出 20 以內（含20）的所有質數。（點選數字格子）', answer:[2,3,5,7,11,13,17,19],
-      hints:['回想你剛剛做過的篩法結果。','別忘了 2 是最小的質數，也是唯一的偶數質數。','質數們是：2, 3, 5, 7, 11, 13, 17, 19。'],
-      explain:'20以內的質數：2, 3, 5, 7, 11, 13, 17, 19，共8個。'},
-    {id:'u2p4', type:'number', prompt:'應用題：有 18 顆糖果和 24 片餅乾，要平分給幾位小朋友，讓每人分到的糖果數一樣多、餅乾數也一樣多（都不能剩）。最多可以分給幾位小朋友？', answer:6,
-      hints:['先分別列出18和24的所有因數。','18的因數：1,2,3,6,9,18。24的因數：1,2,3,4,6,8,12,24。','找出兩者「共同」的因數：1, 2, 3, 6。','人數要「最多」，所以選共同因數中最大的：6。'],
-      explain:'18的因數:1,2,3,6,9,18；24的因數:1,2,3,4,6,8,12,24。共同因數有1,2,3,6，最大是6。每人分3顆糖、4片餅乾。'},
-    {id:'u2p5', type:'mc', prompt:'97 是質數嗎？', options:['是質數','不是質數'], answer:0,
-      hints:['質數只需要檢查到大約 10 以內的數字能不能整除它（因為10×10=100已經超過97）。','試試看 2、3、5、7 分別除97。','都不能整除，所以97是質數。'],
-      explain:'97不能被2,3,5,7整除，且下一個要檢查的11×11=121已經超過97，所以97是質數。'},
-    {id:'u2p6', type:'list', prompt:'請列出 60 的所有因數。', answer:[1,2,3,4,5,6,10,12,15,20,30,60],
-      hints:['先從小的開始：1,2,3,4,5,6都能整除60。','60 = 6×10 = 4×15 = 5×12，這些關係可以幫你找到更多因數。','記得60本身也是因數。','完整答案：1,2,3,4,5,6,10,12,15,20,30,60，共12個。'],
-      explain:'60的因數：1,2,3,4,5,6,10,12,15,20,30,60，共12個。'},
-    {id:'u2p7', type:'mc', prompt:'91 是質數嗎？（小心，這題有陷阱！）', options:['是質數','不是質數'], answer:1,
-      hints:['91看起來像質數，但要小心陷阱！','試試看用7去除91。','91 ÷ 7 = 13，整除了嗎？'],
-      explain:'91 = 7 × 13，雖然看起來像質數，但其實是合數！這是常見的陷阱數字。'},
-    {id:'u2p8', type:'number', prompt:'24 和 36 的最大公因數是多少？', answer:12,
-      hints:['列出24的因數：1,2,3,4,6,8,12,24。','列出36的因數：1,2,3,4,6,9,12,18,36。','找出兩者共同的因數中最大的一個：12。'],
-      explain:'24的因數:1,2,3,4,6,8,12,24；36的因數:1,2,3,4,6,9,12,18,36。共同的最大因數是12。'}
+          prompt:'小測驗：15 是質數還是合數？',
+          options:['質數','合數（因為 15 = 3 × 5，因數不只1和自己）'],
+          answer:1,
+          hints:['試試看 15 除以 3。'],
+          correctMsg:'答對了！15 = 3×5，除了1和15之外還有3和5這兩個因數，所以是合數。'
+      },
+        practice:[
+{id:'u2p1', type:'list', prompt:'請列出 36 的所有因數。（用逗號分開，由小到大）', answer:[1,2,3,4,6,9,12,18,36],
+        hints:['從1開始一個一個試除到36。','記得檢查 1, 2, 3, 4, 6, 9, 12, 18, 36 這些數字。'],
+        explain:'36 的因數：1, 2, 3, 4, 6, 9, 12, 18, 36，共9個。'},
+          {id:'u2p2', type:'mc', prompt:'51 是質數嗎？', options:['是質數','不是質數'], answer:1,
+                hints:['試試看用 3 去除 51。','51 ÷ 3 = 17，整除了嗎？'],
+                explain:'51 = 3 × 17，除了1和51還有其他因數，所以不是質數。'},
+{id:'u2p3', type:'list', prompt:'列出 20 以內（含20）的所有質數。', answer:[2,3,5,7,11,13,17,19],
+        hints:['回想你剛剛做過的篩法結果。','別忘了 2 是最小的質數。'],
+        explain:'20以內的質數：2, 3, 5, 7, 11, 13, 17, 19，共8個。'},
+{id:'u2p4', type:'number', prompt:'應用題：有 18 顆糖果和 24 片餅乾，要平分給幾位小朋友，讓每人分到的糖果數一樣多、餅乾數也一樣多（都不能剩）。最多可以分給幾位小朋友？', answer:6,
+        hints:['先分別列出18和24的所有因數。','找出兩者「共同」的因數。','人數要「最多」，所以要選共同因數中最大的那個。'],
+        explain:'18的因數:1,2,3,6,9,18；24的因數:1,2,3,4,6,8,12,24。共同因數有1,2,3,6，最大是6。每人分3顆糖、4片餅乾。'},
+{id:'u2p5', type:'mc', prompt:'97 是質數嗎？', options:['是質數','不是質數'], answer:0,
+        hints:['只需要檢查到約 10 以內的數字能不能整除它（因為10×10=100已經超過97）。','試試看 2、3、5、7 分別除97，都不能整除。'],
+        explain:'97不能被2,3,5,7整除，且下一個要檢查的11×11=121已經超過97，所以97是質數。'},
+{id:'u2p6', type:'list', prompt:'請列出 60 的所有因數。', answer:[1,2,3,4,5,6,10,12,15,20,30,60],
+        hints:['先從小的開始：1,2,3,4,5,6都能整除60。','記得60本身也是因數。'],
+        explain:'60的因數：1,2,3,4,5,6,10,12,15,20,30,60，共12個。'},
+{id:'u2p7', type:'mc', prompt:'91 是質數嗎？（小心，這題有陷阱！）', options:['是質數','不是質數'], answer:1,
+        hints:['試試看用7去除91。','91 ÷ 7 = 13，整除了嗎？'],
+        explain:'91 = 7 × 13，雖然看起來像質數，但其實是合數！這是常見的陷阱數字。'},
+{id:'u2p8', type:'number', prompt:'24 和 36 的最大公因數是多少？', answer:12,
+        hints:['列出24的因數和36的因數。','找出兩者共同的因數中最大的一個。'],
+        explain:'24的因數:1,2,3,4,6,8,12,24；36的因數:1,2,3,4,6,9,12,18,36。共同的最大因數是12。'}
   ],
-  boss:{
+    boss:{
     title:'質數魔王：篩法試煉場',
-    intro:'魔王在你面前展開一張 2～100 的巨大數字網，宣稱：「找出所有質數，證明你是真正的數論高手！」別擔心，卡住了可以按提示。',
-    sieveRange:{min:2,max:100},
-    afterSieveParts:[
+          intro:'魔王在你面前展開一張 2～100 的巨大數字網，宣稱：「找出所有質數，證明你是真正的數論高手！」',
+          sieveRange:{min:2,max:100},
+          afterSieveParts:[
       {id:'b2a', type:'mc', prompt:'完成篩法後回答：89 是質數嗎？', options:['是質數','不是質數'], answer:0,
-        hints:['先檢查89能不能被2整除（89是奇數，不能被2整除）。','再檢查能不能被3、5、7整除。','都不能整除，而且下一個要檢查的11×11=121已經超過89，所以89是質數。'],
-        explain:'89無法被2,3,5,7整除，是質數。'},
-      {id:'b2b', type:'number', prompt:'魔王的終極提問：根據你剛剛篩出的結果，100 以內總共有幾個質數？', answer:25,
-        hints:['數一數你篩選網格中，被標記為「質數」（綠色）的數字總共有幾個。','如果不確定，可以重新數一次2到100之間所有綠色的格子。'],
-        explain:'100以內共有25個質數：2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97。'}
+              hints:['檢查89能不能被2,3,5,7整除。','都不能整除，而且下一個要檢查的11×11=121已超過89。'],
+              explain:'89無法被2,3,5,7整除，是質數。'},
+{id:'b2b', type:'number', prompt:'魔王的終極提問：根據你剛剛篩出的結果，100 以內總共有幾個質數？', answer:25,
+          hints:['數一數你篩選網格中，被標記為「質數」（綠色）的數字總共有幾個。'],
+          explain:'100以內共有25個質數：2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97。'}
     ],
-    victoryText:'魔王徹底臣服：「你親手篩出了100以內所有的質數，這是真正的數論力量！」'
+      victoryText:'魔王徹底臣服：「你親手篩出了100以內所有的質數，這是真正的數論力量！」'
+        }
+};
+
+
+const UNIT3 = {
+  id: 'unit3',
+  title: '整數與負數的世界',
+  icon: '🌡️',
+  shortDesc: '從溫度變化出發，用數線與籌碼直覺理解正負數的加減規律，破解「負負得正」背後的道理。',
+  hook: {
+    text: '今天早上溫度是 <b>-3°C</b>，中午升到了 <b>5°C</b>。<br><br>老師問：「溫度總共上升了幾度？」<br><br>先別急著計算，憑直覺猜猜看——你覺得答案是多少？',
+    cta: '先別急，我們用數線和籌碼一步步找出答案 →'
+  },
+  discovery: [
+    { id:'d1', type:'numberline', min:-6, max:6, answer:-3,
+      prompt:'正負數其實就是活在一條「數線」上：0 是分界點，右邊是正數，左邊是負數。請點一下數線上代表「溫度是 -3°C」的位置。',
+      correctMsg:'沒錯！-3 在 0 的左邊 3 格。數字前面的負號，代表「往左邊數過去」。' },
+    { id:'d2', type:'numberline', min:-6, max:6, answer:5,
+      prompt:'很好！那中午的溫度 5°C，在數線上是哪個位置呢？點一下看看。',
+      correctMsg:'對，5 在 0 的右邊 5 格。' },
+    { id:'d3', type:'mc', prompt:'在數線上，愈往右邊的數字愈大，愈往左邊愈小。那麼 -3 和 5，哪一個比較大？',
+      options:['-3 比較大','5 比較大'], answer:1,
+      hints:['看看數線上誰的位置比較靠右邊。'],
+      correctMsg:'沒錯！在數線上比較位置，愈右邊就愈大，跟數字本身「看起來」的大小不太一樣，要小心喔。' },
+    { id:'d4', type:'number', answer:8,
+      prompt:'現在來看溫度變化：從 -3°C 移動到 5°C，在數線上總共要往右移動幾格？（提示：直接在數線上數一數）',
+      hints:['從 -3 開始，一格一格往右數到 5，數數看總共數了幾格。','-3, -2, -1, 0, 1, 2, 3, 4, 5 —— 總共數了幾次？'],
+      correctMsg:'答對了！從 -3 移動到 5，總共上升了 8 度。這就是一開始問題的答案！' },
+    { id:'d5', type:'chips', posCount:0, negCount:5,
+      prompt:'換個情境：小美這週的零用錢，星期一虧了 3 元（記作 -3），星期二又虧了 2 元（記作 -2）。每個紅色籌碼代表虧 1 元，這裡已經把兩天的籌碼合在一起了。請點一下「繼續」，看看兩天總共虧了多少元。',
+      correctMsg:'全部都是「虧錢」籌碼，沒有東西可以互相抵消，直接數一數：共 5 個，也就是 -5 元。這告訴我們：同號相加時，兩個量會直接合併！' },
+    { id:'d6', type:'number', answer:-5,
+      prompt:'所以 (-3) + (-2) = ?',
+      hints:['兩次都是虧錢，兩次的量直接加在一起。','同號相加，就是把數字部分加起來，符號不變。'],
+      correctMsg:'沒錯！同號相加，符號不變，數字部分直接相加。' },
+    { id:'d7', type:'chips', posCount:5, negCount:3,
+      prompt:'這次不一樣了：小美星期一虧了 3 元（-3，紅色籌碼），但星期二賺了 5 元（+5，綠色籌碼）！請點一下籌碼，讓紅色和綠色籌碼一對一「互相抵消」，看看最後剩下什麼？',
+      correctMsg:'太棒了！3 對紅綠籌碼互相抵消歸零，剩下 2 個綠色籌碼，也就是 +2。這就是「異號相加」：用大的減小的，符號跟著數字比較大的那邊。' },
+    { id:'d8', type:'number', answer:2,
+      prompt:'所以 (-3) + 5 = ?',
+      hints:['異號相加，用數字比較大的減去比較小的：5 − 3 = 2。','符號要跟數字比較大的那個一致，5 比較大，5 是正的，所以答案是正的。'],
+      correctMsg:'完全正確！(-3) + 5 = 2。' },
+    { id:'d9', type:'chips', posCount:2, negCount:6,
+      prompt:'再試一次：這次小美星期一賺了 2 元（+2），星期二虧了 6 元（-6）。點一下籌碼讓正負一對一抵消，看看最後剩下什麼？',
+      correctMsg:'沒錯！2 對籌碼互相抵消，剩下 4 個紅色籌碼，也就是 -4。因為虧的比賺的多，所以答案是負的。' },
+    { id:'d10', type:'number', answer:-4,
+      prompt:'所以 2 + (-6) = ?',
+      hints:['異號相加，用數字比較大的減去比較小的：6 − 2 = 4。','符號跟數字比較大的那邊一致，-6 的數字部分 6 比較大，6 是負的，所以答案是負的。'],
+      correctMsg:'答對了！2 + (-6) = -4。' },
+    { id:'d11', type:'numberline', min:-2, max:10, answer:8,
+      prompt:'換個角度想「減法」：昨天溫度是 5°C，如果我們說「減少了 -3 度」（也就是 5 − (−3)），你覺得溫度最後應該落在數線上的哪個位置？點一下看看。',
+      hints:['「減少負的」聽起來很奇怪，其實跟「增加正的」效果一樣。','5 − (−3) 其實等於 5 + 3。'],
+      correctMsg:'沒錯！5 − (−3) = 5 + 3 = 8。減去一個負數，效果等於加上它的相反數！' },
+    { id:'d12', type:'mc',
+      prompt:'根據剛剛的發現，「減去一個數」可以怎麼理解？',
+      options:['減去一個數，等於加上它的相反數','減去一個數，永遠會讓結果變小','減法跟加法完全沒有關係'], answer:0,
+      hints:['回想剛剛：5 − (−3) 算出來跟 5 + 3 一樣。'],
+      correctMsg:'完全正確！這是整數運算最重要的規則之一：a − b = a + (−b)。' },
+    { id:'d13', type:'number', answer:-4,
+      prompt:'練習看看：3 − 7 = ?（提示：可以想成 3 + (−7)）',
+      hints:['3 − 7 等於 3 + (−7)。','異號相加：7 − 3 = 4，符號跟著數字較大的一邊（−7），所以是負的。'],
+      correctMsg:'答對了！3 − 7 = 3 + (−7) = −4。' },
+    { id:'d14', type:'mc',
+      prompt:'最後，我們稍微看一下「正負數相乘」的規律：(−2) × 3 = −6，(−2) × (−3) = 6。你覺得下面哪一句話比較符合這個規律？',
+      options:['同號相乘得正，異號相乘得負','正負數相乘沒有固定規律，要每次都重新想'], answer:0,
+      hints:['(−2)×3 是異號相乘，結果是負的；(−2)×(−3) 是同號相乘，結果是正的。'],
+      correctMsg:'沒錯！正負數乘法規律：同號得正，異號得負。之後練習題會有更多機會熟悉這個規律。' }
+  ],
+  formalize: `
+    <h4>🌡️ 正負數加法：同號相加、異號相減</h4>
+    <p>想像每個正數是一個「綠色籌碼」，每個負數是一個「紅色籌碼」。一個綠色籌碼和一個紅色籌碼放在一起，會互相抵消變成 0。</p>
+    <div class="formula-box">同號相加：數字部分相加，符號不變　　異號相加：用大的數字減小的數字，符號跟著數字較大的那邊</div>
+    <p>例如 (−3) + (−2)：兩個都是紅色籌碼，直接合併 → −5。(−3) + 5：3 個紅籌碼和 3 個綠籌碼互相抵消，剩下 2 個綠籌碼 → 2。</p>
+    <h4>➖ 減法的秘密：減去一個數 = 加上它的相反數</h4>
+    <p>在數線上，「減去一個負數」其實是往右移動（跟加正數一樣的方向）。所以：</p>
+    <div class="formula-box">a − b = a + (−b)</div>
+    <p>例如 5 − (−3) = 5 + 3 = 8。這個規則可以把所有的減法，都變成你已經很熟悉的加法！</p>
+    <h4>✖️ 小提醒：乘法規律</h4>
+    <p>正負數相乘：<b>同號得正，異號得負</b>。例如 (−2)×3 = −6（異號，負），(−2)×(−3) = 6（同號，正）。</p>
+  `,
+  formalizeCheck: {
+    id:'fc3', type:'number', answer:-10,
+    prompt:'小測驗：(−4) + (−6) = ?',
+    hints:['同號相加，數字部分直接相加，符號不變。'],
+    correctMsg:'完全正確！準備好進入練習關卡了。'
+  },
+  practice: [
+    { id:'u3p1', type:'number', tileChoices:[-8,-2,8,2], answer:-8,
+      prompt:'(−5) + (−3) = ?',
+      hints:['同號相加，符號不變，數字部分相加。','5+3=8，兩個都是負的，所以答案是負的。'],
+      explain:'同號相加：5+3=8，符號不變（負），所以是 −8。' },
+    { id:'u3p2', type:'number', tileChoices:[-3,3,-11,11], answer:-3,
+      prompt:'(−7) + 4 = ?',
+      hints:['異號相加，用大的減小的：7−4=3。','符號跟數字比較大的那邊一致，−7 的 7 比較大，7 是負的，所以答案是負的。'],
+      explain:'異號相加：7−4=3，符號跟著−7（因為7>4），答案是 −3。' },
+    { id:'u3p3', type:'number', tileChoices:[5,-5,11,-11], answer:5,
+      prompt:'8 + (−3) = ?',
+      hints:['異號相加，用大的減小的：8−3=5。','符號跟數字比較大的那邊一致，8比較大，8是正的，所以答案是正的。'],
+      explain:'異號相加：8−3=5，符號跟著8（正的），答案是 5。' },
+    { id:'u3p4', type:'number', answer:-13,
+      prompt:'(−9) + (−4) = ?',
+      hints:['同號相加，數字部分相加，符號不變。'],
+      explain:'9+4=13，兩個都是負的，答案是 −13。' },
+    { id:'u3p5', type:'number', answer:-3,
+      prompt:'6 − 9 = ?（提示：可以想成 6 + (−9)）',
+      hints:['減去一個數 = 加上它的相反數：6 − 9 = 6 + (−9)。','異號相加：9−6=3，符號跟著−9（負的），答案是負的。'],
+      explain:'6 − 9 = 6 + (−9)，異號相加得 −3。' },
+    { id:'u3p6', type:'number', tileChoices:[-7,-17,7,17], answer:-7,
+      prompt:'(−12) − (−5) = ?',
+      hints:['減去負數 = 加上正數：(−12) − (−5) = (−12) + 5。','異號相加：12−5=7，符號跟著−12（負的），答案是負的。'],
+      explain:'(−12) − (−5) = (−12) + 5 = −7。' },
+    { id:'u3p7', type:'mc',
+      prompt:'氣溫從 −8°C 上升到 −2°C，總共上升了幾度？',
+      options:['6度','10度','−6度','−10度'], answer:0,
+      hints:['在數線上，從−8走到−2，總共移動了幾格？','−8, −7, −6, −5, −4, −3, −2，數數看移動了幾次。'],
+      explain:'從−8到−2，在數線上往右移動了6格，所以上升了6度。' },
+    { id:'u3p8', type:'number', tileChoices:[-5,5,45,-45], answer:-5,
+      prompt:'應用題：小華的銀行帳戶原本有 20 元，他先領出 35 元，再存入 10 元。現在帳戶餘額是多少元？',
+      hints:['領出35元記作 −35，存入10元記作 +10。','列式：20 + (−35) + 10，先算前兩項：20−35=−15，再加10。'],
+      explain:'20 + (−35) + 10 = −15 + 10 = −5，帳戶變成負的，表示還透支5元。' }
+  ],
+  boss: {
+    title: '整數魔王：登山高度紀錄員',
+    intro: '魔王帶你來到一座山，給你一份「每日高度變化紀錄」，要求你完成三個試煉，才願意放你通過！起點的高度是海拔 <b>0 公尺</b>（山腳下的基準點）。',
+    parts: [
+      { id:'b3a', type:'number', answer:75,
+        prompt:'試煉一：第一天，你往上爬升了 120 公尺，然後又下降了 45 公尺（下降記作負數）。第一天結束時，你在海拔多少公尺？',
+        hints:['上升120公尺記作 +120，下降45公尺記作 −45。','列式：120 + (−45)，異號相加，用大減小：120−45=75，符號跟著120（正的）。'],
+        explain:'120 + (−45) = 75，第一天結束在海拔75公尺。' },
+      { id:'b3b', type:'number', answer:-35,
+        prompt:'試煉二：第二天，你從海拔75公尺開始，先下降了 130 公尺，又上升了 20 公尺。第二天結束時，你在海拔多少公尺？（提示：這次答案可能是負的，代表在基準點下方的山谷）',
+        hints:['下降130公尺記作 −130，上升20公尺記作 +20。','列式：75 + (−130) + 20，先算 75+(−130) = −55，再加20。'],
+        explain:'75 + (−130) + 20 = −55 + 20 = −35，第二天結束在海拔−35公尺（基準點下方的山谷）。' },
+      { id:'b3c', type:'number', tileChoices:[-35,35,-75,110], answer:-35,
+        prompt:'試煉三（終極提問）：從第一天開始到第二天結束，你的高度總共「淨變化」是多少公尺？（也就是：最終位置 − 起始位置）',
+        hints:['起始高度是海拔0公尺，最終高度是第二天結束時的−35公尺。','淨變化 = 最終位置 − 起始位置 = (−35) − 0。'],
+        explain:'淨變化 = (−35) − 0 = −35，也就是整體來說下降了35公尺，最終停在海拔−35公尺的山谷中。' }
+    ],
+    victoryText: '魔王心服口服：「你已經完全掌握了整數的加減運算，不管是上山下山，正數負數都難不倒你了！」'
   }
 };
 
-const UNITS = [UNIT1, UNIT2];
+
+const UNIT4 = {
+  id: 'unit4',
+  title: '計數與機率入門',
+  icon: '🎲',
+  shortDesc: '從排隊拍照與點餐組合出發，發現乘法原理，並學會分辨「排列」與「組合」的差別。',
+  hook: {
+    text: '學校要拍畢業紀念照，老師想讓 <b>小美、小華、小明</b> 三人站成一排拍照。<br><br>老師突然問：「你們知道總共有幾種不同的排隊方式嗎？」<br><br>先別急著用手指頭一個一個排排看——你覺得會有很多種嗎？',
+    cta: '先別急，我們一步一步找出所有的排法 →'
+  },
+  discovery: [
+    { id:'d1', type:'number', answer:6,
+      prompt:'先想一個更簡單的情況：小美有 <b>2 件上衣</b>（紅色、藍色）和 <b>3 件褲子</b>（黑、灰、卡其）。如果每次穿一件上衣配一件褲子，總共可以搭配出幾種不同的穿法？',
+      hints:['紅色上衣可以配3種褲子，藍色上衣也可以配3種褲子。','2件上衣 × 3件褲子 = ?'],
+      correctMsg:'沒錯！2種上衣、3種褲子，共有 2×3=6 種穿法。' },
+    { id:'d2', type:'mc', answer:0,
+      prompt:'你剛剛用「相乘」而不是「相加」算出穿搭數量，你覺得為什麼要用乘法呢？',
+      options:['因為每一件上衣，都可以「獨立地」搭配任何一件褲子，所以要把兩邊的選擇數相乘','因為上衣和褲子都是衣服，所以直接相加比較快'],
+      hints:['想想看：如果用加法 2+3=5，比對一下你剛剛數出來的6種，符合嗎？'],
+      correctMsg:'完全正確！這就是「乘法原理」的核心：每個階段的選擇互相獨立時，把各階段的選項數相乘。' },
+    { id:'d3', type:'lineup', items:['😀','🐱','🐶'], target:['🐱','😀','🐶'],
+      prompt:'現在換成排隊的情境。這裡有三位好朋友：😀、🐱、🐶。請依序點選方塊，把他們排成「🐱、😀、🐶」這個順序。',
+      correctMsg:'排對了！你剛剛做的，就是幫三個人「排出一種順序」，這叫做排列。' },
+    { id:'d4', type:'number', answer:6,
+      prompt:'排隊的時候，第一個位置可以從 3 位朋友中選 1 位站；選完後，第二個位置只剩 2 位朋友可以選；第三個位置就只剩下最後 1 位了。照乘法原理，總共有幾種排法？',
+      hints:['第一位置3種選擇，第二位置2種選擇，第三位置1種選擇。','3 × 2 × 1 = ?'],
+      correctMsg:'沒錯！3×2×1=6種排法。這就是一開始問題的答案！' },
+    { id:'d5', type:'lineupcollect', items:['😀','🐱','🐶'],
+      prompt:'厲害！現在來挑戰蒐集所有排法：請反覆排出三位朋友的所有可能順序，直到把全部 6 種排法都蒐集齊全！（提示：試著系統性地換掉第一個位置的人）',
+      correctMsg:'太棒了！你親手找出了三個人的全部 6 種排列方式，一個都沒有漏掉！' },
+    { id:'d6', type:'number', answer:24,
+      prompt:'如果換成 4 位朋友排隊拍照，第一位置有4種選擇、第二位置剩3種、第三位置剩2種、第四位置剩1種。總共有幾種排法？',
+      hints:['4 × 3 × 2 × 1 = ?'],
+      correctMsg:'答對了！4×3×2×1=24種排法。人數愈多，排法數量增加得非常快！' },
+    { id:'d7', type:'mc', answer:0,
+      prompt:'像 4×3×2×1 這種「從某個數字開始，一路乘到1」的計算，數學上有個專門的名字，你聽過嗎？',
+      options:['階乘（例如 4! = 4×3×2×1）','平方（例如 4² = 4×4）'],
+      hints:['提示：符號是驚嘆號「!」，例如 4! 就代表 4×3×2×1。'],
+      correctMsg:'沒錯！這叫做「階乘」，寫作 4!，唸作「4的階乘」。之後你會常常看到這個符號。' },
+    { id:'d8', type:'number', answer:6,
+      prompt:'換個情境：餐廳菜單有 3 種主餐、2 種飲料，每人選一種主餐搭配一種飲料，共有幾種不同的組合？',
+      hints:['3種主餐 × 2種飲料 = ?'],
+      correctMsg:'沒錯，3×2=6種組合。不管是穿搭還是點餐，只要是「各階段獨立選擇」，都可以用乘法原理！' },
+    { id:'d9', type:'mc', answer:0,
+      prompt:'現在想像不一樣的情境：從 😀、🐱、🐶 三位好朋友中，選出 <b>2 位</b>一起去買飲料（誰先誰後不重要，只要是「這兩位」就算同一種選法）。你覺得這跟剛剛的「排隊」問題一樣嗎？',
+      options:['不一樣，這裡「順序不重要」，選出{😀,🐱}跟選出{🐱,😀}算同一種','一樣，因為都是從3位朋友裡面做選擇'],
+      hints:['排隊時，🐱排在前面和😀排在前面是不同的排法；但「一起去買飲料」不分前後，只要是同一組人就算同一種。'],
+      correctMsg:'完全正確！這種「不管順序，只在乎選了誰」的選法，叫做「組合」，跟排列不一樣。' },
+    { id:'d10', type:'number', answer:3,
+      prompt:'請仔細想想：從 😀、🐱、🐶 三位朋友中選出 2 位一起去買飲料，把所有可能的組合都列出來想一想（提示：😀🐱、😀🐶、🐱🐶），總共有幾種不同的選法？',
+      hints:['試著把所有可能的兩人組合都寫出來看看。','總共只有 😀🐱、😀🐶、🐱🐶 這3種組合（順序不重要）。'],
+      correctMsg:'沒錯，共有3種選法！雖然是從3人中選2人，但因為不計較順序，所以比「排列」的方法數少很多。' },
+    { id:'d11', type:'mc', answer:0,
+      prompt:'如果同樣是「從3位朋友中選2位」，但改成「選正、副班長各一位」（也就是要分清楚誰是正的、誰是副的），你覺得選法數量會跟剛剛一樣嗎？',
+      options:['不一樣，這時候順序（正副）有差別，答案會變多','一樣，反正都是選2個人'],
+      hints:['正副班長要分順序，跟單純「選出2人一起去買飲料」不同——這其實比較接近「排列」的概念。'],
+      correctMsg:'完全正確！選正副班長要考慮「誰是正、誰是副」，所以是排列的概念（3×2=6種），跟不分順序的組合（3種）不一樣！這正是排列和組合最大的差別。' },
+    { id:'d12', type:'number', answer:6,
+      prompt:'練習一下組合的概念：如果有 4 種口味的冰淇淋（香草、巧克力、草莓、抹茶），要選 2 種口味做成雙球冰淇淋（不分先後，同樣的兩種口味只算一種），總共有幾種選法？',
+      hints:['試著把4種口味兩兩配對列出來：香草-巧克力、香草-草莓、香草-抹茶、巧克力-草莓、巧克力-抹茶、草莓-抹茶。','數一數你列出的組合總共有幾個？'],
+      correctMsg:'答對了！共有6種組合。' },
+    { id:'d13', type:'mc', answer:0,
+      prompt:'最後，回到一開始的問題。老師是要「三人排成一排拍照」（要分清楚誰站中間、誰站兩邊），這是「排列」還是「組合」問題？',
+      options:['排列，因為位置（順序）不一樣就算不同的排法','組合，因為都是同樣的三個人'],
+      hints:['站的位置不同，看起來就不一樣，所以順序很重要。'],
+      correctMsg:'沒錯！排隊拍照要看順序，是排列問題，答案是 3×2×1=6 種排法。恭喜你已經學會分辨排列和組合的差別了！' }
+  ],
+  formalize: `
+    <h4>✖️ 乘法原理</h4>
+    <p>當一件事情要分成好幾個「獨立階段」完成，每個階段的選擇不會互相影響時，總共的方法數，就是把每個階段的選項數<b>相乘</b>。</p>
+    <div class="formula-box">總方法數 = 第一階段選項數 × 第二階段選項數 × ...</div>
+    <p>例如：2件上衣 × 3件褲子 = 6種穿法；3種主餐 × 2種飲料 = 6種餐點組合。</p>
+    <h4>🔢 排列：考慮順序的排法</h4>
+    <p>把 n 個不同的東西「全部排成一列」，方法數就是：</p>
+    <div class="formula-box">n × (n−1) × (n−2) × ... × 1　　（稱為「n 的階乘」，寫作 n!）</div>
+    <p>例如 3 個人排隊：3×2×1=6 種；4 個人排隊：4×3×2×1=24 種。位置越多，排法數量會爆炸性成長！</p>
+    <h4>🧺 組合：不考慮順序的選法</h4>
+    <p>如果只是「從一群東西裡選出幾個」，不在乎順序（例如選出哪幾個人一起去，而不是誰站前面），這叫做<b>組合</b>。因為不計較順序，同一組東西不同的排法都算「同一種」，所以組合的方法數會比排列少。</p>
+    <p>例如從3人選2人一起去買飲料：只有3種選法，比排列的6種少了一半——因為每組人有2種排法（誰先誰後），但組合只算1種。</p>
+  `,
+  formalizeCheck: {
+    id:'fc4', type:'number', answer:15,
+    prompt:'小測驗：5 種口味的果汁，搭配 3 種杯子中的 1 種，共有幾種選擇？',
+    hints:['5種果汁 × 3種杯子 = ?'],
+    correctMsg:'完全正確！準備好進入練習關卡了。'
+  },
+  practice: [
+    { id:'u4p1', type:'number', tileChoices:[12,7,24,20], answer:12,
+      prompt:'小華有 3 頂帽子、4 副眼鏡，每次戴一頂帽子配一副眼鏡，共有幾種造型？',
+      hints:['3種帽子 × 4種眼鏡 = ?'],
+      explain:'3×4=12種造型。' },
+    { id:'u4p2', type:'number', answer:120,
+      prompt:'5個人排成一列拍照，共有幾種不同的排法？',
+      hints:['5×4×3×2×1=?'],
+      explain:'5!=5×4×3×2×1=120種。' },
+    { id:'u4p3', type:'mc', answer:0,
+      prompt:'從4本不同的書中「選出2本放在書架的左右兩格」（要分清楚哪本放左邊、哪本放右邊），這是排列還是組合問題？',
+      options:['排列','組合'],
+      hints:['要分左右位置，代表順序有差別。'],
+      explain:'因為要分左右位置（順序），是排列問題。' },
+    { id:'u4p4', type:'number', answer:12,
+      prompt:'承上題，從4本書中選2本、分左右擺放，共有幾種排法？（提示：第一格4種選擇，第二格剩3種選擇）',
+      hints:['4×3=?'],
+      explain:'4×3=12種（這是部分排列，只排2個位置）。' },
+    { id:'u4p5', type:'number', answer:6,
+      prompt:'從4位同學中選出2位一起去合作完成一份報告（不分工作內容，只是選出這一組人），共有幾種選法？',
+      hints:['試著列出所有兩人配對：AB,AC,AD,BC,BD,CD。','數一數共有幾組？'],
+      explain:'共6種配對組合（不分順序）。' },
+    { id:'u4p6', type:'mc', answer:0,
+      prompt:'為什麼「選2位一起做報告」的答案（6種）比「選2位分左右站」的答案（12種）少？',
+      options:['因為做報告的選法不分順序，同一組人不同排法會被算成同一種','因為做報告的人數比較少'],
+      hints:['12和6之間差了幾倍？跟2個人之間可能的排列數有沒有關係？'],
+      explain:'不分順序時，每組會被排列算兩次（如AB和BA），所以組合數是排列數的一半。' },
+    { id:'u4p7', type:'number', tileChoices:[12,24,7,4], answer:12,
+      prompt:'班上要選出「班長、副班長」各一位（4位候選人），共有幾種選法？（提示：這是要分職位的，屬於排列）',
+      hints:['第一個職位（班長）4種選擇，第二個職位（副班長）剩3種選擇。','4×3=?'],
+      explain:'4×3=12種（這是排列，因為職位不同）。' },
+    { id:'u4p8', type:'number', answer:12,
+      prompt:'應用題：早餐店有3種蛋餅口味、2種飲料、2種是否加辣的選擇，每人各選一種蛋餅、一種飲料、決定是否加辣，共有幾種不同的早餐組合？',
+      hints:['3種蛋餅 × 2種飲料 × 2種辣度 = ?'],
+      explain:'3×2×2=12種組合。' }
+  ],
+  boss: {
+    title: '計數魔王：排列組合擂台主',
+    intro: '魔王出了三道題，考驗你是否真正搞懂了乘法原理、排列與組合的差別！',
+    parts: [
+      { id:'b4a', type:'number', tileChoices:[12,7,24,10], answer:12,
+        prompt:'試煉一：運動會要選出「大隊接力」的第一棒和最後一棒（4位候選人，兩個棒次不同），共有幾種安排方式？',
+        hints:['第一棒4種選擇，最後一棒剩3種選擇。','4×3=?'],
+        explain:'4×3=12種（排列，因為棒次不同）。' },
+      { id:'b4b', type:'number', answer:120,
+        prompt:'試煉二：5位同學要排成一列拍團體照，共有幾種不同的排法？',
+        hints:['5×4×3×2×1=?'],
+        explain:'5!=120種。' },
+      { id:'b4c', type:'number', answer:10,
+        prompt:'試煉三（終極提問）：從5位候選人中選出3位組成代表隊，不分隊長，只看選出哪3位。你能算出共有幾種選法嗎？',
+        hints:['先想「排列」：從5人中選3人排成一列（例如決定隊長、副隊長、隊員），共有 5×4×3=60種排法。','但因為不分職位，同樣的3個人不管怎麼排都算「同一組」。3個人彼此之間可以有 3×2×1=6 種排法。','所以要把排列數60除以「同一組內部的排法數」6，也就是 60÷6=?'],
+        explain:'先算排列：5×4×3=60。再除以3人內部排列數3!=6：60÷6=10。所以從5人選3人，共有10種選法。' }
+    ],
+    victoryText: '魔王心服口服：「你已經完全搞懂乘法原理、排列與組合的差別了，真正的計數高手！」'
+  }
+};
+
+
+const UNIT5 = {
+  id: 'unit5',
+  title: '分數與比例的探索',
+  icon: '🍕',
+  shortDesc: '從食譜份量調整與地圖比例尺出發，發現「比」的本質，並學會等比放大縮小與化簡最簡比。',
+  hook: {
+    text: '媽媽本來要煮「4人份」的義大利麵，食譜寫著：麵條200克、番茄醬100克。<br><br>突然阿姨一家4口也要來吃，變成8人份！<br><br>你要怎麼調整食材份量，讓味道還是一樣好吃？',
+    cta: '先別急，我們一步一步搞懂「比例」的秘密 →'
+  },
+  discovery: [
+    { id:'d1', type:'number', answer:2,
+      prompt:'原本4人份要用200克麵條和100克番茄醬。如果把番茄醬看成1份，麵條是番茄醬的幾倍？',
+      hints:['200 ÷ 100 = ?'],
+      correctMsg:'沒錯！麵條是番茄醬的2倍，也就是麵條:番茄醬 = 2:1。' },
+    { id:'d2', type:'mc', answer:0,
+      prompt:'如果要做8人份（是原本的2倍），麵條和番茄醬的用量會怎麼變化？',
+      options:['兩種食材都變成2倍，比例(2:1)保持不變','只有麵條變成2倍，番茄醬不變'],
+      hints:['如果只有一種食材變多，味道還會一樣嗎？'],
+      correctMsg:'完全正確！等比例放大時，所有相關的量都要一起變成相同倍數，比例關係才會保持不變。' },
+    { id:'d3', type:'ratioslider', min:1, max:2, step:0.5, target:2,
+      renderVisual: function(v){
+        const flour = Math.round(200*v);
+        const sauce = Math.round(100*v);
+        const servings = Math.round(4*v);
+        return '<div style="font-size:2rem;">🍝</div><div>麵條：'+flour+' 克　番茄醬：'+sauce+' 克　（'+servings+'人份）</div>';
+      },
+      prompt:'請拖曳下方滑桿，把食譜從「4人份」放大到「8人份」，看看食材份量怎麼跟著變化！',
+      correctMsg:'太棒了！你把倍數調到2，食材份量也跟著變成2倍，比例完全沒有改變。' },
+    { id:'d4', type:'number', answer:400,
+      prompt:'放大到8人份後，麵條變成多少克？',
+      hints:['200 × 2 = ?'],
+      correctMsg:'沒錯，麵條變成400克，番茄醬變成200克，比例還是2:1。' },
+    { id:'d5', type:'mc', answer:0,
+      prompt:'2:1 放大2倍變成4:2，這兩個比「2:1」和「4:2」，你覺得？',
+      options:['是相等的比，只是用不同的數字表達同一個比例關係','是不一樣的比，因為數字不同'],
+      hints:['4÷2和2÷1的結果一樣嗎？'],
+      correctMsg:'完全正確！這種數字不同、但代表同一個比例關係的比，叫做「等比」。' },
+    { id:'d6', type:'pizzaslices', total:8, target:4,
+      prompt:'這裡有一個切成8片的披薩🍕。請點選4片代表「吃掉的部分」，看看4/8是不是就是我們常說的「一半」？',
+      correctMsg:'沒錯！4/8 和 1/2 其實是同一個比例，只是切得比較細而已——這就是「等值分數」！' },
+    { id:'d7', type:'number', answer:2,
+      prompt:'如果披薩切成4片，同樣代表「一半」的話，要吃掉幾片？',
+      hints:['4片中的一半是幾片？'],
+      correctMsg:'沒錯，2/4 也等於 1/2，這又是一個等值分數的例子。' },
+    { id:'d8', type:'mc', answer:0,
+      prompt:'4/8、2/4、1/2 都代表同一個比例。如果要用「最簡單」的方式來表達，你覺得哪一個最好？',
+      options:['1/2，因為分子分母已經沒辦法再同時除以相同的數字化簡','4/8，因為原始的披薩片數比較多，比較準確'],
+      hints:['1和2之間，除了1以外還有沒有共同的因數？'],
+      correctMsg:'沒錯！1/2 已經是「最簡分數」，分子分母沒有大於1的公因數了。' },
+    { id:'d9', type:'number', answer:3,
+      prompt:'來化簡一個比：有一杯果汁用了6份濃縮液和9份水調成。6和9的最大公因數是多少？（提示：這是單元二學過的概念！）',
+      hints:['試試看6和9同時能被哪些數整除。','3可以同時整除6和9嗎？'],
+      correctMsg:'沒錯，6和9的最大公因數是3！' },
+    { id:'d10', type:'number', answer:2,
+      prompt:'把6和9都除以剛剛找到的最大公因數3，濃縮液的份數變成幾份？',
+      hints:['6 ÷ 3 = ?'],
+      correctMsg:'答對了！濃縮液變成2份、水變成3份，最簡整數比是2:3。' },
+    { id:'d11', type:'ratioslider', min:1, max:6, step:1, target:3,
+      renderVisual: function(v){
+        return '<div style="font-size:2rem;">🗺️</div><div>地圖距離：'+v+' 公分　→　實際距離：'+(v*2)+' 公里</div>';
+      },
+      prompt:'地圖比例尺是1:200000（地圖上1公分等於實際200000公分，也就是2公里）。請拖曳滑桿，把「地圖公分數」調整到3，看看實際距離會變成多少公里？',
+      correctMsg:'沒錯！地圖上3公分，實際距離就是6公里。比例尺就是一種固定的縮小比！' },
+    { id:'d12', type:'number', answer:6,
+      prompt:'所以地圖上3公分，實際距離是幾公里？',
+      hints:['3 × 2 = ?'],
+      correctMsg:'完全正確！' },
+    { id:'d13', type:'mc', answer:0,
+      prompt:'不管是食譜份量、披薩片數，還是地圖比例尺，這些情境有什麼共同點？',
+      options:['都是「等比例放大或縮小」——只要保持原本的比例關係，數量怎麼變都不影響「味道」或「準確度」','沒有共同點，這些是完全不同的數學問題'],
+      hints:['想想看，這幾個情境是不是都用到了「兩個數同時乘以或除以同一個數」？'],
+      correctMsg:'太棒了！這就是「比例」的核心概念：只要關係不變，數字可以自由放大縮小。' }
+  ],
+  formalize: `
+    <h4>⚖️ 比與比例：關係不變，數字一起變</h4>
+    <p>「比」描述兩個量之間的關係，例如麵條:番茄醬 = 200:100 = 2:1。當我們「等比例放大或縮小」時，兩個數字會一起變成相同的倍數，但彼此的關係（比）保持不變。</p>
+    <div class="formula-box">a : b = (a×k) : (b×k)　　（k 是放大或縮小的倍數）</div>
+    <h4>🍕 等值分數</h4>
+    <p>1/2、2/4、4/8 看起來數字不一樣，但代表的其實是「同一個比例」——分子分母同時乘以（或除以）同一個數字，分數的值不會改變。</p>
+    <div class="formula-box">最簡分數：分子分母已經沒有大於1的公因數（例如 4/8 化簡成 1/2）</div>
+    <h4>🗺️ 比例尺的應用</h4>
+    <p>地圖上的比例尺（例如1:200000）就是一種「比」，代表地圖上的距離和實際距離之間固定的縮小關係。只要知道比例尺，就能用「地圖距離 × 縮小倍數」算出實際距離。</p>
+  `,
+  formalizeCheck: {
+    id:'fc5', type:'number', answer:3,
+    prompt:'小測驗：食譜要從「4人份」放大到「12人份」，是原本的幾倍？',
+    hints:['12 ÷ 4 = ?'],
+    correctMsg:'完全正確！準備好進入練習關卡了。'
+  },
+  practice: [
+    { id:'u5p1', type:'number', answer:9,
+      prompt:'原本用3杯麵粉、1杯糖做餅乾。如果要做成原本的3倍份量，需要幾杯麵粉？',
+      hints:['3 × 3 = ?'],
+      explain:'3×3=9杯麵粉。' },
+    { id:'u5p2', type:'number', tileChoices:[3,1,9,4], answer:3,
+      prompt:'承上題，需要幾杯糖？',
+      hints:['1 × 3 = ?'],
+      explain:'1×3=3杯糖。' },
+    { id:'u5p3', type:'mc', answer:0,
+      prompt:'12/16 化簡成最簡分數是多少？',
+      options:['3/4','6/8','1/2','2/3'],
+      hints:['先找12和16的最大公因數。','12和16的最大公因數是4。'],
+      explain:'12和16的最大公因數是4，12÷4=3、16÷4=4，所以是3/4。' },
+    { id:'u5p4', type:'number', answer:6,
+      prompt:'18和24的最大公因數是多少？（化簡18:24這個比會用到）',
+      hints:['試試看18和24同時能被哪些數整除。'],
+      explain:'18和24的最大公因數是6。' },
+    { id:'u5p5', type:'number', answer:3,
+      prompt:'承上題，把18:24化簡成最簡整數比，比較小的那個數字是多少？（18÷6和24÷6中較小的）',
+      hints:['18 ÷ 6 = ?　24 ÷ 6 = ?'],
+      explain:'18÷6=3、24÷6=4，最簡整數比是3:4，比較小的數字是3。' },
+    { id:'u5p6', type:'number', answer:2,
+      prompt:'地圖比例尺是1:50000（地圖1公分=實際50000公分=0.5公里）。地圖上量到2個地點距離是4公分，實際距離是幾公里？',
+      hints:['4 × 0.5 = ?'],
+      explain:'4×0.5=2公里。' },
+    { id:'u5p7', type:'mc', answer:0,
+      prompt:'一杯檸檬汁用「2份檸檬原汁、5份水」調成。如果只用「1份檸檬原汁」，需要幾份水才能維持一樣的味道？',
+      options:['2.5份','3份','5份','7份'],
+      hints:['2:5 化簡成「1份原汁」對應多少水，等於5÷2。'],
+      explain:'2:5 = 1:2.5，所以需要2.5份水。' },
+    { id:'u5p8', type:'number', answer:100,
+      prompt:'應用題：食譜4人份要用200克麵條，如果只招待2人，麵條要準備幾克？',
+      hints:['2人是4人的一半，麵條也要用一半。','200 ÷ 2 = ?'],
+      explain:'200÷2=100克。' }
+  ],
+  boss: {
+    title: '比例魔王：食譜與地圖大挑戰',
+    intro: '魔王擺出一份神秘食譜和一張藏寶地圖，考驗你是否真正掌握了比例縮放的規律！',
+    parts: [
+      { id:'b5a', type:'number', answer:450,
+        prompt:'試煉一：蛋糕食譜原本是6人份，需要300克麵粉。如果要做給9人吃（原本的1.5倍），需要多少克麵粉？',
+        hints:['300 × 1.5 = ?'],
+        explain:'300×1.5=450克。' },
+      { id:'b5b', type:'number', answer:2,
+        prompt:'試煉二：有一杯特調飲料用「4份果汁、6份汽水」調成。化簡成最簡整數比後，果汁比汽水是多少比多少？請輸入果汁的份數（較小的那個數字）。',
+        hints:['先找4和6的最大公因數。','4和6的最大公因數是2。'],
+        explain:'4和6的最大公因數是2，4÷2=2、6÷2=3，最簡整數比是2:3。' },
+      { id:'b5c', type:'number', answer:7.5,
+        prompt:'試煉三（終極提問）：藏寶圖比例尺是1:100000（地圖1公分=實際100000公分=1公里）。你在地圖上量到寶藏距離出發點7.5公分，實際距離是幾公里？',
+        hints:['比例尺1:100000代表地圖1公分等於實際1公里。','7.5 × 1 = ?'],
+        explain:'因為1公分=1公里，所以7.5公分=7.5公里。' }
+    ],
+    victoryText: '魔王甘拜下風：「你已經完全掌握了比例縮放的規律，不管是食譜還是地圖都難不倒你了！」'
+  }
+};
+
+
+const UNIT6 = {
+  id: 'unit6',
+  title: '基礎幾何：角度與三角形',
+  icon: '📐',
+  shortDesc: '動手調整角度、拼出三角形，發現三角形內角和永遠是180度，並延伸到多邊形的規律。',
+  hook: {
+    text: '老師給你三根可以自由轉動角度的木條，請你想辦法把它們接成一個三角形。<br><br>老師問：「不管你怎麼拼，三角形三個角加起來，你覺得都會是同一個數字嗎？」',
+    cta: '先別急，我們動手拼拼看，找出答案 →'
+  },
+  discovery: [
+    { id:'d1', type:'angleprotractor', target:90, step:5, start:45,
+      prompt:'先來認識角度。請用下方的角度器（可以拖曳，或用+/−按鈕）調整角度，做出一個「直角」（90度）。',
+      correctMsg:'沒錯！這就是90度的直角。' },
+    { id:'d2', type:'mc', answer:0,
+      prompt:'一個「直角」是幾度？',
+      options:['90度','180度'],
+      hints:['回想一下你剛剛做出來的角度。'],
+      correctMsg:'沒錯，直角是90度！' },
+    { id:'d3', type:'angleprotractor', target:180, step:5, start:90,
+      prompt:'接下來做出一個「平角」——也就是角度器完全打平、變成一直線的角度。',
+      correctMsg:'沒錯！一直線的角度剛好是180度，這叫做「平角」。' },
+    { id:'d4', type:'mc', answer:0,
+      prompt:'「平角」看起來就像一直線，是幾度？',
+      options:['180度','360度'],
+      hints:['回想你剛剛拉直角度器時的角度。'],
+      correctMsg:'完全正確，平角是180度！' },
+    { id:'d5', type:'trianglebuilder', targetA:60, targetB:60,
+      prompt:'現在來拼三角形！請把角A和角B都調整到60度，看看角C會自動變成多少？',
+      correctMsg:'沒錯！角A=60°、角B=60°時，角C自動變成60°，三個角加起來剛好180°。' },
+    { id:'d6', type:'number', answer:60,
+      prompt:'角A=60°、角B=60°時，角C是多少度？（180−60−60）',
+      hints:['180 − 60 − 60 = ?'],
+      correctMsg:'沒錯，角C=60度！' },
+    { id:'d7', type:'trianglebuilder', targetA:90, targetB:40,
+      prompt:'再試一次，請把角A調到90度、角B調到40度，看看角C變成多少？',
+      correctMsg:'沒錯！角A=90°、角B=40°時，角C變成50°，三個角加起來還是180°！' },
+    { id:'d8', type:'number', answer:50,
+      prompt:'這次角C是多少度？（180−90−40）',
+      hints:['180 − 90 − 40 = ?'],
+      correctMsg:'完全正確，角C=50度！' },
+    { id:'d9', type:'mc', answer:0,
+      prompt:'不管角A、角B怎麼變化，角A+角B+角C的總和，你發現了什麼規律？',
+      options:['不管三角形怎麼拼，三個內角加起來永遠是180度','每次拼出來的總和都不一樣，沒有固定規律'],
+      hints:['回想剛剛兩次拼三角形，三個角加起來的總和是不是都一樣？'],
+      correctMsg:'太棒了！這是三角形最重要的性質：三個內角和永遠是180度，不管形狀怎麼變。' },
+    { id:'d10', type:'number', answer:60,
+      prompt:'應用一下：一個三角形已知兩個角分別是50度和70度，第三個角是多少度？',
+      hints:['180 − 50 − 70 = ?'],
+      correctMsg:'沒錯，第三個角是60度！' },
+    { id:'d11', type:'mc', answer:0,
+      prompt:'如果把兩個三角形拼成一個四邊形（例如長方形），你猜四邊形的內角和會是多少度？',
+      options:['360度（因為是兩個三角形的180度加起來）','180度（跟三角形一樣）'],
+      hints:['一個四邊形可以用一條對角線切成兩個三角形。'],
+      correctMsg:'沒錯！四邊形可以切成2個三角形，內角和是 2×180=360度。' },
+    { id:'d12', type:'number', answer:360,
+      prompt:'四邊形可以拆成2個三角形，內角和 = 2×180 = ?',
+      hints:['2 × 180 = ?'],
+      correctMsg:'完全正確，360度！' },
+    { id:'d13', type:'mc', answer:0,
+      prompt:'五邊形可以拆成幾個三角形？（提示：從一個頂點拉線到其他不相鄰的頂點）',
+      options:['3個三角形（所以內角和是3×180=540度）','5個三角形'],
+      hints:['試著在腦中畫一個五邊形，從一個角拉線到其他角，數數看能切出幾個三角形。'],
+      correctMsg:'沒錯！五邊形能切成3個三角形，內角和是540度。邊數愈多，能切出的三角形也愈多！' }
+  ],
+  formalize: `
+    <h4>📐 三角形內角和 = 180°</h4>
+    <p>不管三角形的形狀或大小怎麼變化，三個內角加起來永遠等於180度。這是三角形最重要的性質之一！</p>
+    <div class="formula-box">角A + 角B + 角C = 180°</div>
+    <p>所以只要知道其中兩個角，就可以直接算出第三個角：第三角 = 180° − 已知兩角之和。</p>
+    <h4>🔷 多邊形內角和的規律</h4>
+    <p>任何多邊形都可以從一個頂點拉出對角線，切割成好幾個三角形。切成幾個三角形，內角和就是「幾個180度」相加。</p>
+    <div class="formula-box">n邊形內角和 = (n−2) × 180°</div>
+    <p>例如四邊形可以切成2個三角形：內角和=2×180=360°；五邊形可以切成3個三角形：內角和=3×180=540°。</p>
+  `,
+  formalizeCheck: {
+    id:'fc6', type:'number', answer:4,
+    prompt:'小測驗：六邊形可以切成幾個三角形？（提示：n−2，這裡 n=6）',
+    hints:['6 − 2 = ?'],
+    correctMsg:'完全正確！準備好進入練習關卡了。'
+  },
+  practice: [
+    { id:'u6p1', type:'number', answer:80,
+      prompt:'三角形兩個角分別是45度和55度，第三個角是多少度？',
+      hints:['180 − 45 − 55 = ?'],
+      explain:'180−45−55=80度。' },
+    { id:'u6p2', type:'number', answer:60,
+      prompt:'三角形一個角是90度（直角三角形），另一個角是30度，第三個角是多少度？',
+      hints:['180 − 90 − 30 = ?'],
+      explain:'180−90−30=60度。' },
+    { id:'u6p3', type:'mc', answer:0,
+      prompt:'三角形三個角都相等（正三角形），每個角是多少度？',
+      options:['60度','90度','45度','120度'],
+      hints:['180 ÷ 3 = ?'],
+      explain:'180÷3=60度，正三角形每個角都是60度。' },
+    { id:'u6p4', type:'number', answer:360,
+      prompt:'四邊形內角和是多少度？',
+      hints:['(4−2)×180=?'],
+      explain:'(4−2)×180=360度。' },
+    { id:'u6p5', type:'number', answer:90,
+      prompt:'一個四邊形已知三個角分別是80、90、100度，第四個角是多少度？',
+      hints:['先算出四邊形內角和是360度。','360 − 80 − 90 − 100 = ?'],
+      explain:'360−80−90−100=90度。' },
+    { id:'u6p6', type:'number', answer:720,
+      prompt:'六邊形內角和是多少度？（提示：(6−2)×180）',
+      hints:['(6−2)×180=?'],
+      explain:'(6−2)×180=720度。' },
+    { id:'u6p7', type:'mc', answer:0,
+      prompt:'八邊形可以切成幾個三角形？',
+      options:['6個','8個','4個','10個'],
+      hints:['n−2，這裡n=8。'],
+      explain:'8−2=6個三角形。' },
+    { id:'u6p8', type:'number', answer:45,
+      prompt:'應用題：一個三角形中，最大角是90度，另外兩個角相等，這兩個角各是多少度？',
+      hints:['180−90=90，這90度要平分給另外兩個角。','90 ÷ 2 = ?'],
+      explain:'180−90=90，90÷2=45，每個角是45度。' }
+  ],
+  boss: {
+    title: '幾何魔王：多邊形拆解大師',
+    intro: '魔王秀出一連串多邊形，要你證明真正搞懂了內角和的規律！',
+    parts: [
+      { id:'b6a', type:'number', answer:80,
+        prompt:'試煉一：三角形兩角是35度和65度，第三角是多少度？',
+        hints:['180 − 35 − 65 = ?'],
+        explain:'180−35−65=80度。' },
+      { id:'b6b', type:'number', answer:540,
+        prompt:'試煉二：五邊形內角和是多少度？（提示：(5−2)×180）',
+        hints:['(5−2)×180=?'],
+        explain:'(5−2)×180=540度。' },
+      { id:'b6c', type:'number', answer:1440,
+        prompt:'試煉三（終極提問）：一個十邊形（10邊），可以切成幾個三角形？請直接算出內角和是多少度。',
+        hints:['先算能切成幾個三角形：n−2，這裡n=10。','10−2=8個三角形。','內角和 = 8 × 180 = ?'],
+        explain:'10−2=8個三角形，內角和=8×180=1440度。' }
+    ],
+    victoryText: '魔王徹底信服：「你已經完全掌握了三角形和多邊形內角和的規律，幾何世界對你來說毫無秘密！」'
+  }
+};
+
+
+const UNIT7 = {
+  id: 'unit7',
+  title: '百分比與應用',
+  icon: '💯',
+  shortDesc: '從打折情境與生活統計圖表出發，理解百分比「以100為基準」的思考方式，並學會計算折扣與漲跌幅。',
+  hook: {
+    text: '手搖飲料店特價活動：珍珠奶茶原價 <b>100元</b>，今天「打8折」出售。<br><br>你知道「打8折」代表要付多少錢嗎？先別急著查手機，猜猜看！',
+    cta: '先別急，我們一步一步搞懂百分比和打折的秘密 →'
+  },
+  discovery: [
+    { id:'d1', type:'percentgrid', target:80,
+      prompt:'「百分比」的意思就是「每100份中佔多少份」。這裡有一個100格的方格，請點選80格，代表「80%」。',
+      correctMsg:'沒錯！你選了80格，也就是80/100=80%。' },
+    { id:'d2', type:'number', answer:80,
+      prompt:'你剛剛選了80格，也就是80/100。如果原價100元的飲料要付「80%」的錢，要付多少元？',
+      hints:['因為原價剛好是100元，80%直接就是80元。'],
+      correctMsg:'沒錯！當基準剛好是100時，百分比可以直接當成金額看待。' },
+    { id:'d3', type:'mc', answer:0,
+      prompt:'「打8折」和「80%」，你覺得代表一樣的意思嗎？',
+      options:['一樣，打8折就是付原價的80%','不一樣，打8折是只要付20%'],
+      hints:['「打X折」代表付原價的 X 成，也就是 X×10%。8折就是8×10%=80%。'],
+      correctMsg:'完全正確！打8折 = 付原價的80%。' },
+    { id:'d4', type:'ratioslider', min:5, max:10, step:1, target:8,
+      renderVisual: function(v){
+        return '<div style="font-size:2rem;">🧥</div><div>原價250元　打'+v+'折　→　付 '+Math.round(250*v/10)+' 元</div>';
+      },
+      prompt:'這次原價是 <b>250元</b> 的外套。請拖曳滑桿調整「折數」，先拖到「8折」，看看要付多少錢？',
+      correctMsg:'沒錯！250元打8折，要付200元。' },
+    { id:'d5', type:'number', answer:200,
+      prompt:'250元的外套打8折，要付多少元？',
+      hints:['250 × 0.8 = ?'],
+      correctMsg:'沒錯，200元！' },
+    { id:'d6', type:'mc', answer:0,
+      prompt:'飲料店漲價了！原本100元的飲料漲成120元，你覺得漲了百分之幾？',
+      options:['20%（漲的20元，佔原價100元的20%）','120%（因為新價格是120元）'],
+      hints:['漲價的百分比，是用「漲了多少」除以「原本的價格」算出來的，不是用新價格。'],
+      correctMsg:'完全正確！漲價百分比 = 漲的金額 ÷ 原價 × 100% = 20÷100×100% = 20%。' },
+    { id:'d7', type:'number', answer:8,
+      prompt:'如果原價80元的東西漲價10%，漲了多少元？',
+      hints:['80 × 0.1 = ?'],
+      correctMsg:'沒錯，漲了8元！' },
+    { id:'d8', type:'number', answer:88,
+      prompt:'承上題，漲價後的新價格是多少元？',
+      hints:['80 + 8 = ?'],
+      correctMsg:'沒錯，新價格是88元！' },
+    { id:'d9', type:'mc', answer:1,
+      prompt:'下面是某班一週飲料銷售量的長條圖：<br><div style="display:flex;align-items:flex-end;gap:10px;height:80px;margin:10px 0;"><div style="width:30px;height:60%;background:var(--accent-teal);border-radius:4px 4px 0 0;"></div><div style="width:30px;height:90%;background:var(--accent-teal);border-radius:4px 4px 0 0;"></div><div style="width:30px;height:40%;background:var(--accent-teal);border-radius:4px 4px 0 0;"></div><div style="width:30px;height:70%;background:var(--accent-teal);border-radius:4px 4px 0 0;"></div></div><div style="display:flex;gap:10px;font-size:.75rem;color:var(--text-dim);"><span style="width:30px;text-align:center;">紅茶</span><span style="width:30px;text-align:center;">奶茶</span><span style="width:30px;text-align:center;">綠茶</span><span style="width:30px;text-align:center;">可可</span></div>哪一種飲料賣得最多？',
+      options:['紅茶','奶茶','綠茶','可可'],
+      hints:['看看哪一根長條最高。'],
+      correctMsg:'沒錯！奶茶那根長條最高，賣得最多。' },
+    { id:'d10', type:'number', answer:45,
+      prompt:'這四種飲料一週總共賣了100杯，其中奶茶賣了45杯。奶茶佔全部銷量的百分之幾？',
+      hints:['因為總共剛好是100杯，45杯直接就是45%。'],
+      correctMsg:'沒錯，45%！' },
+    { id:'d11', type:'number', answer:25,
+      prompt:'如果總共賣了200杯飲料，其中有50杯是紅茶，紅茶佔百分之幾？（提示：50/200，化成百分之幾）',
+      hints:['50 ÷ 200 = 0.25，再把小數轉成百分比：0.25 × 100 = ?'],
+      correctMsg:'沒錯，25%！' },
+    { id:'d12', type:'mc', answer:0,
+      prompt:'「百分比」其實就是把「比」統一用「每100為基準」來表示，方便互相比較。這樣說對嗎？',
+      options:['對，百分比讓不同的比例可以用同一個基準(100)輕鬆比較','不對，百分比跟比例完全是兩回事'],
+      hints:['回想一下單元五學過的「比」——百分比其實就是分母固定是100的比。'],
+      correctMsg:'完全正確！百分比就是分母固定為100的特殊比例，方便大家用同一個基準比較。' },
+    { id:'d13', type:'number', answer:225,
+      prompt:'再挑戰一次：原價300元的鞋子打75折，要付多少元？',
+      hints:['300 × 0.75 = ?'],
+      correctMsg:'太棒了，225元！你已經完全掌握百分比和打折的計算了！' }
+  ],
+  formalize: `
+    <h4>💯 百分比：以100為基準的比</h4>
+    <p>「百分比」就是把「比」統一用「每100為基準」來表示。例如80%就是「每100份中佔80份」，寫成分數是80/100，也就是最簡分數4/5。</p>
+    <div class="formula-box">百分比 = (部分 ÷ 全部) × 100%</div>
+    <h4>🏷️ 打折的計算</h4>
+    <p>台灣的「打X折」，代表要付原價的 X/10（也就是X×10%）。例如打8折 = 付原價的80%；打75折 = 付原價的75%。</p>
+    <div class="formula-box">折扣後價格 = 原價 × (折數 ÷ 10)</div>
+    <h4>📈 漲跌百分比</h4>
+    <p>漲價／跌價的百分比，是用「變化量 ÷ 原本的量 × 100%」算出來的，永遠是跟「原本」的量比較，不是跟新的量比較。</p>
+  `,
+  formalizeCheck: {
+    id:'fc7', type:'number', answer:90,
+    prompt:'小測驗：原價150元的商品打6折，要付多少元？',
+    hints:['150 × 0.6 = ?'],
+    correctMsg:'完全正確！準備好進入練習關卡了。'
+  },
+  practice: [
+    { id:'u7p1', type:'number', answer:140,
+      prompt:'原價200元的商品打7折，要付多少元？',
+      hints:['200 × 0.7 = ?'],
+      explain:'200×0.7=140元。' },
+    { id:'u7p2', type:'number', answer:7,
+      prompt:'一件商品原價500元，特價350元，打了幾折？（提示：350/500=0.7）',
+      hints:['350 ÷ 500 = 0.7，也就是7折。'],
+      explain:'350÷500=0.7=7折。' },
+    { id:'u7p3', type:'mc', answer:0,
+      prompt:'某班50人中有20人戴眼鏡，戴眼鏡的人佔全班的百分之幾？',
+      options:['40%','20%','50%','25%'],
+      hints:['20 ÷ 50 = ?，再轉成百分比。'],
+      explain:'20÷50=0.4=40%。' },
+    { id:'u7p4', type:'number', answer:12,
+      prompt:'一件商品漲價15%，原價80元，漲了多少元？',
+      hints:['80 × 0.15 = ?'],
+      explain:'80×0.15=12元。' },
+    { id:'u7p5', type:'number', answer:92,
+      prompt:'承上題，漲價後的新價格是多少元？',
+      hints:['80 + 12 = ?'],
+      explain:'80+12=92元。' },
+    { id:'u7p6', type:'number', answer:20,
+      prompt:'某商店一天賣出150件商品，其中30件是特價品，特價品佔百分之幾？',
+      hints:['30 ÷ 150 = ?，再轉成百分比。'],
+      explain:'30÷150=0.2=20%。' },
+    { id:'u7p7', type:'mc', answer:0,
+      prompt:'原價1000元的商品打9折後，又再打8折（折上折），最後要付多少元？',
+      options:['720元','810元','900元','700元'],
+      hints:['先算打9折後的價格：1000×0.9=900元。','再對900元打8折：900×0.8=?'],
+      explain:'1000×0.9=900，900×0.8=720元。' },
+    { id:'u7p8', type:'number', answer:550,
+      prompt:'應用題：某餐廳帳單500元，要加10%服務費，總共要付多少元？',
+      hints:['服務費 = 500 × 0.1 = 50元。','總金額 = 500 + 50 = ?'],
+      explain:'500+500×0.1=500+50=550元。' }
+  ],
+  boss: {
+    title: '百分比魔王：折扣與統計挑戰',
+    intro: '魔王擺出一連串折扣海報和銷售數據，考驗你是否真正搞懂百分比！',
+    parts: [
+      { id:'b7a', type:'number', answer:312,
+        prompt:'試煉一：原價480元的商品打65折，要付多少元？',
+        hints:['480 × 0.65 = ?'],
+        explain:'480×0.65=312元。' },
+      { id:'b7b', type:'number', answer:75,
+        prompt:'試煉二：某次考試60人中有45人及格，及格率是百分之幾？',
+        hints:['45 ÷ 60 = ?，再轉成百分比。'],
+        explain:'45÷60=0.75=75%。' },
+      { id:'b7c', type:'number', answer:960,
+        prompt:'試煉三（終極提問）：一件商品原價1000元，先漲價20%，之後又打8折出售。最後的價格是多少元？（提示：先算漲價後的價格，再打折）',
+        hints:['先算漲價後的價格：1000×1.2=1200元。','再對1200元打8折：1200×0.8=?'],
+        explain:'1000×1.2=1200，1200×0.8=960元。' }
+    ],
+    victoryText: '魔王甘拜下風：「你已經完全掌握了百分比、打折與統計判讀的技巧，購物精算大師就是你！」'
+  }
+};
+
+
+const UNIT8 = {
+  id: 'unit8',
+  title: '坐標平面',
+  icon: '🧭',
+  shortDesc: '從藏寶遊戲出發，學會用(x, y)座標精確定位平面上的一個點，並延伸到圖形的座標特徵。',
+  hook: {
+    text: '海盜地圖上藏著寶藏！地圖是一個方格座標系統，寶藏的位置寫著「座標 (3, 2)」。<br><br>你知道要怎麼在地圖上找到這個位置嗎？',
+    cta: '先別急，我們一步一步學會怎麼讀座標 →'
+  },
+  discovery: [
+    { id:'d1', type:'coordgrid', minX:-5, maxX:5, minY:-5, maxY:5, target:{x:3,y:2},
+      prompt:'座標 (3, 2) 的意思是：先往右（x方向）走3格，再往上（y方向）走2格。請在下方地圖上點擊 (3, 2) 這個位置，挖出寶藏！',
+      correctMsg:'太棒了！你找到了第一個寶藏，座標是 (3, 2)。' },
+    { id:'d2', type:'mc', answer:0,
+      prompt:'座標 (x, y) 中，先寫的x代表什麼方向？',
+      options:['左右方向（水平），正數往右、負數往左','上下方向（垂直），正數往上、負數往下'],
+      hints:['x永遠寫在前面，代表「橫向」的位置。'],
+      correctMsg:'沒錯！x是左右方向，y是上下方向。' },
+    { id:'d3', type:'coordgrid', minX:-5, maxX:5, minY:-5, maxY:5, target:{x:-2,y:4},
+      prompt:'再找一個寶藏！這次座標是 (−2, 4)，代表往左2格、往上4格。點擊看看！',
+      correctMsg:'沒錯！(−2, 4) 就在左邊2格、上面4格的位置。' },
+    { id:'d4', type:'number', answer:-2,
+      prompt:'座標 (−2, 4) 中，x座標是多少？',
+      hints:['x座標就是括號裡的第一個數字。'],
+      correctMsg:'完全正確，x座標是−2！' },
+    { id:'d5', type:'coordgrid', minX:-5, maxX:5, minY:-5, maxY:5, target:{x:0,y:0},
+      prompt:'座標系統的正中心，也就是x和y都是0的地方，叫做「原點」。請點擊原點 (0, 0)！',
+      correctMsg:'沒錯！(0, 0) 就是原點，是整個座標系統的起點（黃色標記的格子）。' },
+    { id:'d6', type:'mc', answer:0,
+      prompt:'如果x是正數、y也是正數（像剛剛第一個寶藏(3,2)），這個點會落在座標系統的哪個區域？',
+      options:['右上方','左上方','左下方','右下方'],
+      hints:['x正代表往右，y正代表往上。'],
+      correctMsg:'沒錯！x正y正的點都落在右上方。' },
+    { id:'d7', type:'coordgrid', minX:-5, maxX:5, minY:-5, maxY:5, target:{x:-3,y:-3},
+      prompt:'座標 (−3, −3) 會落在哪裡呢？點點看，驗證你的想法！',
+      correctMsg:'沒錯！(−3, −3) 落在左下方。' },
+    { id:'d8', type:'mc', answer:0,
+      prompt:'(−3, −3) 這個點，x和y都是負數，落在座標系統的哪個區域？',
+      options:['左下方','右上方'],
+      hints:['x負代表往左，y負代表往下。'],
+      correctMsg:'完全正確，落在左下方！' },
+    { id:'d9', type:'mc', answer:0,
+      prompt:'兩個點 (2, 3) 和 (5, 3) 的y座標都一樣，你覺得連接這兩點的線會是什麼方向？（提示：y不變，只有x在變）',
+      options:['水平線（左右方向）','垂直線（上下方向）'],
+      hints:['y座標相同，代表兩點的「上下位置」一樣，只有左右位置不同。'],
+      correctMsg:'沒錯！y座標相同的兩點，連線一定是水平線。' },
+    { id:'d10', type:'number', answer:3,
+      prompt:'(2,3)和(5,3)之間，x座標相差多少？（這條水平線的長度）',
+      hints:['5 − 2 = ?'],
+      correctMsg:'沒錯，相差3！這條水平線的長度就是3。' },
+    { id:'d11', type:'coordgrid', minX:-5, maxX:5, minY:-5, maxY:5, target:{x:1,y:4},
+      prompt:'有一個正方形，已知三個角在 (1,1)、(4,1)、(4,4)。請找出第四個角的座標，讓四個點恰好圍成一個正方形！',
+      correctMsg:'太棒了！第四個角是 (1, 4)，四個點剛好圍成一個正方形！' },
+    { id:'d12', type:'mc', answer:0,
+      prompt:'你剛剛完成的正方形中，(1,1)和(4,1)這兩點在同一條水平邊上，它們的哪個座標相同？',
+      options:['y座標（都是1）','x座標'],
+      hints:['水平邊上的點，上下位置應該一樣。'],
+      correctMsg:'沒錯！同一條水平邊上的點，y座標一定相同。' },
+    { id:'d13', type:'mc', answer:0,
+      prompt:'學會了座標系統後，你覺得座標系統最大的用途是什麼？',
+      options:['可以用兩個數字精確描述平面上任何一個點的位置，方便定位、畫圖形','只能用來玩藏寶遊戲，沒有其他用途'],
+      hints:['想想看，地圖、遊戲畫面、甚至電腦螢幕上的每個像素，是不是都需要座標來定位？'],
+      correctMsg:'完全正確！座標系統是數學和生活中最重要的定位工具之一。' }
+  ],
+  formalize: `
+    <h4>🗺️ 座標系統：用兩個數字定位一個點</h4>
+    <p>座標平面上，每個點都可以用一組「座標 (x, y)」來描述位置。x座標告訴你「左右方向」要走幾格（正數往右、負數往左），y座標告訴你「上下方向」要走幾格（正數往上、負數往下）。</p>
+    <div class="formula-box">座標 (x, y)：先看x決定左右位置，再看y決定上下位置</div>
+    <p>兩個座標軸的交叉點，也就是 (0, 0)，叫做「原點」，是整個座標系統的起點。</p>
+    <h4>🧭 四個象限</h4>
+    <p>座標平面被x軸和y軸切成四個區域：右上方（x正y正）、左上方（x負y正）、左下方（x負y負）、右下方（x正y負）。</p>
+    <h4>📐 座標與圖形</h4>
+    <p>知道圖形每個頂點的座標，就能精確描述、比較、甚至計算圖形的邊長和位置關係——這是座標系統最強大的地方！</p>
+  `,
+  formalizeCheck: {
+    id:'fc8', type:'mc', answer:0,
+    prompt:'小測驗：座標 (−4, −1) 會落在哪個區域？',
+    options:['左下方','右上方','左上方','右下方'],
+    hints:['x是負的、y也是負的。'],
+    correctMsg:'完全正確！準備好進入練習關卡了。'
+  },
+  practice: [
+    { id:'u8p1', type:'number', answer:5,
+      prompt:'座標 (5, −2) 的x座標是多少？',
+      hints:['括號裡第一個數字就是x座標。'],
+      explain:'x座標是5。' },
+    { id:'u8p2', type:'number', answer:-2,
+      prompt:'座標 (5, −2) 的y座標是多少？',
+      hints:['括號裡第二個數字就是y座標。'],
+      explain:'y座標是−2。' },
+    { id:'u8p3', type:'mc', answer:0,
+      prompt:'座標 (−3, 2) 落在哪個區域？',
+      options:['左上方','右上方','左下方','右下方'],
+      hints:['x負代表左邊，y正代表上面。'],
+      explain:'x負y正，落在左上方。' },
+    { id:'u8p4', type:'mc', answer:0,
+      prompt:'原點的座標是？',
+      options:['(0, 0)','(1, 1)','(0, 1)','(1, 0)'],
+      hints:['原點是x和y都是0的地方。'],
+      explain:'原點座標是(0, 0)。' },
+    { id:'u8p5', type:'number', answer:6,
+      prompt:'兩點 (1, 5) 和 (7, 5) 的y座標相同，這條連線是水平線。這兩點x座標相差多少？',
+      hints:['7 − 1 = ?'],
+      explain:'7−1=6。' },
+    { id:'u8p6', type:'mc', answer:0,
+      prompt:'如果一個點的x座標是正數、y座標是負數，會落在哪個區域？',
+      options:['右下方','右上方','左下方','左上方'],
+      hints:['x正代表右邊，y負代表下面。'],
+      explain:'x正y負，落在右下方。' },
+    { id:'u8p7', type:'number', answer:2,
+      prompt:'正方形三個角是 (2,2)、(6,2)、(6,6)，第四個角的x座標是多少？',
+      hints:['第四個角要跟(2,2)在同一條垂直邊上，x座標應該相同。'],
+      explain:'第四個角是(2,6)，x座標是2。' },
+    { id:'u8p8', type:'number', answer:6,
+      prompt:'承上題，第四個角的y座標是多少？',
+      hints:['第四個角要跟(6,6)在同一條水平邊上，y座標應該相同。'],
+      explain:'第四個角是(2,6)，y座標是6。' }
+  ],
+  boss: {
+    title: '座標魔王：藏寶圖終極挑戰',
+    intro: '魔王攤開一張超大藏寶圖，考驗你是否真正掌握了座標定位的技巧！',
+    parts: [
+      { id:'b8a', type:'number', answer:4,
+        prompt:'試煉一：從原點(0,0)出發，先往右走4格、再往下走3格，最後停在的點，x座標是多少？',
+        hints:['往右走是x方向增加。'],
+        explain:'往右走4格，x座標是4。' },
+      { id:'b8b', type:'number', answer:-3,
+        prompt:'試煉二：承上題，最後停在的點，y座標是多少？（提示：往下走是負方向）',
+        hints:['往下走是y方向減少（負數）。'],
+        explain:'往下走3格，y座標是−3。' },
+      { id:'b8c', type:'number', answer:6,
+        prompt:'試煉三（終極提問）：長方形四個角是 (0,0)、(6,0)、(6,3)、(0,3)。這個長方形的長（水平邊長度）是多少？',
+        hints:['水平邊的長度，看x座標相差多少。','(0,0)到(6,0)，x座標相差6。'],
+        explain:'水平邊從x=0到x=6，長度是6。' }
+    ],
+    victoryText: '魔王甘拜下風：「你已經完全掌握了座標定位的技巧，任何藏寶圖都難不倒你了！」'
+  }
+};
+
+const UNITS = [UNIT1, UNIT2, UNIT3, UNIT4, UNIT5, UNIT6, UNIT7, UNIT8];
 function getUnit(id){ return UNITS.find(u=>u.id===id); }
 
 /* ========================================================================
-   狀態管理 (State / Progress)
+     狀態管理 (State / Progress)
    ======================================================================== */
 function defaultUnitState(){
-  return {
-    unlocked:false,
-    hookSeen:false,
-    discoveryIndex:0,
-    discoveryDone:false,
-    formalizeSeen:false,
-    formalizeCheckDone:false,
-    practiceIndex:0,
-    practiceAnswers:{}, // qId -> {correct, hintsUsed}
-    practiceDone:false,
-    bossState:{ partsAnswers:{}, sievePassed:false, cleared:false },
-    bossDone:false,
-    hintsUsedTotal:0
-  };
+    return {
+          unlocked:false,
+          hookSeen:false,
+          discoveryIndex:0,
+          discoveryDone:false,
+          formalizeSeen:false,
+          formalizeCheckDone:false,
+          practiceIndex:0,
+          practiceAnswers:{}, // qId -> {correct, hintsUsed}
+          practiceDone:false,
+                bossState:{ partsAnswers:{}, sievePassed:false, cleared:false },
+                bossDone:false,
+                hintsUsedTotal:0
+            };
 }
 function defaultProgress(){
-  return {
-    xp:0,
-    streak:0,
-    maxStreak:0,
-    badges:[],
-    units:{
+    return {
+          xp:0,
+          streak:0,
+          maxStreak:0,
+          badges:[],
+          badgeUnlocks:{},
+          noHintTotal:0,
+          visitDates:[],
+          units:{
       unit1: Object.assign(defaultUnitState(), {unlocked:true}),
-      unit2: defaultUnitState()
-    }
-  };
+              unit2: defaultUnitState(),
+              unit3: defaultUnitState(),
+              unit4: defaultUnitState(),
+              unit5: defaultUnitState(),
+              unit6: defaultUnitState(),
+              unit7: defaultUnitState(),
+              unit8: defaultUnitState()
+}
+};
 }
 let STATE = null;
 
 function loadProgress(){
-  try{
+    try{
     const raw = localStorage.getItem(STORAGE_KEY);
     if(raw){
       const parsed = JSON.parse(raw);
@@ -858,14 +1634,20 @@ function loadProgress(){
       STATE.units = STATE.units || {};
       STATE.units.unit1 = Object.assign(defaultUnitState(), {unlocked:true}, parsed.units && parsed.units.unit1 || {});
       STATE.units.unit2 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit2 || {});
+      STATE.units.unit3 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit3 || {});
+      STATE.units.unit4 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit4 || {});
+      STATE.units.unit5 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit5 || {});
+      STATE.units.unit6 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit6 || {});
+      STATE.units.unit7 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit7 || {});
+      STATE.units.unit8 = Object.assign(defaultUnitState(), parsed.units && parsed.units.unit8 || {});
       return;
     }
-  }catch(e){ console.warn('讀取進度失敗，使用預設值', e); }
+    }catch(e){ console.warn('讀取進度失敗，使用預設值', e); }
   STATE = defaultProgress();
 }
 function saveProgress(){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE)); }
-  catch(e){ console.warn('儲存進度失敗', e); }
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE)); }
+        catch(e){ console.warn('儲存進度失敗', e); }
 }
 
 /* ---- XP / Level ---- */
@@ -874,43 +1656,93 @@ function levelFromXp(xp){ return Math.floor(xp / XP_PER_LEVEL) + 1; }
 function xpIntoLevel(xp){ return xp % XP_PER_LEVEL; }
 
 function addXp(amount, reason){
-  const beforeLevel = levelFromXp(STATE.xp);
+    const beforeLevel = levelFromXp(STATE.xp);
   STATE.xp = Math.max(0, STATE.xp + amount);
   const afterLevel = levelFromXp(STATE.xp);
+  if(STATE.xp >= 150) awardBadge('xp_bronze');
+  if(STATE.xp >= 400) awardBadge('xp_silver');
+  if(STATE.xp >= 800) awardBadge('xp_gold');
   saveProgress();
   updateHeaderStats();
   if(amount > 0) showToast(`✨ +${amount} XP　${reason||''}`, 'xp');
-  if(afterLevel > beforeLevel){
+    if(afterLevel > beforeLevel){
     showToast(`🎉 升級了！Lv.${afterLevel}`, 'level');
-  }
-}
+      }
+    }
 function registerCorrect(){
-  STATE.streak += 1;
+    STATE.streak += 1;
   if(STATE.streak > STATE.maxStreak) STATE.maxStreak = STATE.streak;
-  if(STATE.streak === 5) awardBadge('streak5');
-  if(STATE.streak === 10) awardBadge('streak10');
+  if(STATE.streak === 5) awardBadge('streak_bronze');
+  if(STATE.streak === 10) awardBadge('streak_silver');
+  if(STATE.streak === 20) awardBadge('streak_gold');
   saveProgress();
   updateHeaderStats();
 }
 function registerWrong(){
-  STATE.streak = 0;
+    STATE.streak = 0;
   saveProgress();
   updateHeaderStats();
 }
 function awardBadge(id){
-  if(!STATE.badges.includes(id)){
+    if(!STATE.badges.includes(id)){
     STATE.badges.push(id);
+    STATE.badgeUnlocks = STATE.badgeUnlocks || {};
+    STATE.badgeUnlocks[id] = new Date().toISOString();
     saveProgress();
     const b = BADGES[id];
-    if(b) showToast(`🏅 獲得新徽章：${b.icon} ${b.name}`, 'badge');
-  }
+    if(b){
+      showToast(`🏅 獲得新徽章：${b.icon} ${b.name}`, 'badge');
+      if(b.rarity === 'epic'){ celebrateEpicBadge(); }
+    }
+                                        }
+    }
+function celebrateEpicBadge(){
+  try{ runConfetti(); }catch(e){}
+  try{ playChime(); }catch(e){}
+  try{
+    const flash = document.createElement('div');
+    flash.style.position='fixed'; flash.style.inset='0'; flash.style.zIndex='450';
+    flash.style.background='radial-gradient(circle, rgba(251,191,36,.35), transparent 70%)';
+    flash.style.pointerEvents='none';
+    flash.style.transition='opacity .8s ease';
+    document.body.appendChild(flash);
+    requestAnimationFrame(()=>{ flash.style.opacity='0'; });
+    setTimeout(()=>{ flash.remove(); }, 850);
+  }catch(e){}
+}
+function playChime(){
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if(!AC) return;
+  const ctx = new AC();
+  const notes = [660, 880];
+  notes.forEach((freq, i)=>{
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.001, ctx.currentTime + i*0.14);
+    gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + i*0.14 + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i*0.14 + 0.3);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(ctx.currentTime + i*0.14);
+    osc.stop(ctx.currentTime + i*0.14 + 0.32);
+  });
+}
+function checkMilestones(){
+  if(typeof UNITS === 'undefined') return;
+  const allBossDone = UNITS.every(u => STATE.units[u.id] && STATE.units[u.id].bossDone);
+  if(allBossDone) awardBadge('all_boss_cleared');
+  const allPerfect = UNITS.every(u => STATE.badges.includes('perfect' + u.id.replace('unit','')));
+  if(allPerfect) awardBadge('all_perfect');
+  const allHookSeen = UNITS.every(u => STATE.units[u.id] && STATE.units[u.id].hookSeen);
+  if(allHookSeen) awardBadge('explorer_all_units');
 }
 
 /* ========================================================================
-   UI：Header
-   ======================================================================== */
+         UI：Header
+         ======================================================================== */
 function updateHeaderStats(){
-  const lvl = levelFromXp(STATE.xp);
+    const lvl = levelFromXp(STATE.xp);
   const inLevel = xpIntoLevel(STATE.xp);
   document.getElementById('levelBadge').textContent = 'Lv' + lvl;
   document.getElementById('xpBarFill').style.width = (inLevel / XP_PER_LEVEL * 100) + '%';
@@ -920,10 +1752,10 @@ function updateHeaderStats(){
 }
 
 function showToast(msg, kind){
-  const stack = document.getElementById('toast-stack');
+    const stack = document.getElementById('toast-stack');
   const el = document.createElement('div');
   el.className = 'toast' + (kind==='badge' ? ' badge' : kind==='level' ? ' level' : '');
-  el.textContent = msg;
+      el.textContent = msg;
   stack.appendChild(el);
   setTimeout(()=>{ el.remove(); }, 3100);
 }
@@ -934,12 +1766,12 @@ function showToast(msg, kind){
 let CURRENT_UNIT_PHASE = null; // {unitId, phase}
 
 function goHome(){
-  CURRENT_UNIT_PHASE = null;
+    CURRENT_UNIT_PHASE = null;
   renderHome();
 }
 
 function unitProgressPercent(unitId){
-  const u = getUnit(unitId);
+    const u = getUnit(unitId);
   const s = STATE.units[unitId];
   if(!s.unlocked) return 0;
   let total = 1 + u.discovery.length + 1 + u.practice.length + 1; // hook + discovery + formalize + practice + boss
@@ -952,54 +1784,78 @@ function unitProgressPercent(unitId){
   return Math.round(done/total*100);
 }
 function unitStars(unitId){
-  const s = STATE.units[unitId];
+    const s = STATE.units[unitId];
   if(!s.bossDone) return 0;
   if(s.hintsUsedTotal === 0) return 3;
   if(s.hintsUsedTotal <= 5) return 2;
   return 1;
 }
 
+
+function renderPathMap(){
+  const ordLabels = ['一','二','三','四','五','六','七','八'];
+  let html = '<div class="path-map-wrap"><div class="path-map">';
+  UNITS.forEach((u,i)=>{
+    const s = STATE.units[u.id];
+    const locked = !s.unlocked;
+    const done = s.bossDone;
+    const cls = locked ? 'locked' : (done ? 'done' : 'current');
+    html += `<div class="path-node ${cls}">
+      <div class="path-node-circle" ${locked?'':`onclick="enterUnit('${u.id}')"`} title="${u.title}">${locked?'🔒':u.icon}</div>
+      <div class="path-node-label">單元${ordLabels[i]}</div>
+    </div>`;
+    if(i < UNITS.length-1){
+      html += `<div class="path-line ${done?'done':''}"></div>`;
+    }
+  });
+  html += '</div></div>';
+  return html;
+}
+
 function renderHome(){
-  const app = document.getElementById('app');
+    const app = document.getElementById('app');
   const u1 = STATE.units.unit1, u2 = STATE.units.unit2;
   app.innerHTML = `
-    <div class="screen">
-      <h1 class="page-title">選擇你的冒險單元 🗺️</h1>
-      <p class="page-sub">用 AoPS 引導式發現學習法，一步步打好國一數學基礎。完成單元一的魔王挑戰，即可解鎖單元二。</p>
+        <div class="screen">
+          <h1 class="page-title">選擇你的冒險單元 🗺️</h1>
+          <p class="page-sub">用 AoPS 引導式發現學習法，一步步打好國一數學基礎。完成每個單元的魔王挑戰，就能解鎖下一個單元。</p>
+          ${renderPathMap()}
       <div class="unit-grid">
-        ${UNITS.map(u => renderUnitCard(u)).join('')}
+            ${UNITS.map(u => renderUnitCard(u)).join('')}
       </div>
       <div class="badges-row">
         ${Object.values(BADGES).map(b=>{
-          const earned = STATE.badges.includes(b.id);
+              const earned = STATE.badges.includes(b.id);
           return `<div class="badge-chip ${earned?'earned':''}" title="${b.desc}">${b.icon} ${b.name}</div>`;
-        }).join('')}
+}).join('')}
       </div>
     </div>
   `;
 }
 function renderUnitCard(u){
-  const s = STATE.units[u.id];
+    const s = STATE.units[u.id];
   const pct = unitProgressPercent(u.id);
   const stars = unitStars(u.id);
   const starStr = '★'.repeat(stars) + '☆'.repeat(3-stars);
   const locked = !s.unlocked;
+  const __idx = UNITS.findIndex(x=>x.id===u.id);
+  const __ords = ['一','二','三','四','五','六','七','八'];
+  const lockMsg = __idx>0 ? ('先完成單元'+__ords[__idx-1]+'解鎖') : '尚未開放';
   return `
     <div class="unit-card ${locked?'locked':''}">
-      ${locked ? '<div class="lock-overlay">🔒</div>' : ''}
-      <div class="unit-icon">${u.icon}</div>
-      <h3>${u.title}</h3>
-      <p>${u.shortDesc}</p>
-      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-      ${renderMiniPath(u)}
-      <div class="unit-meta">
-        <span>${pct}% 完成</span>
-        <span class="stars">${starStr}</span>
-      </div>
+          ${locked ? '<div class="lock-overlay">🔒</div>' : ''}
+          <div class="unit-icon">${u.icon}</div>
+          <h3>${u.title}</h3>
+          <p>${u.shortDesc}</p>
+          <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+          <div class="unit-meta">
+            <span>${pct}% 完成</span>
+            <span class="stars">${starStr}</span>
+          </div>
       ${locked
-        ? `<button class="unit-cta" style="background:rgba(255,255,255,.1);color:var(--text-dim);" disabled>先完成單元一解鎖</button>`
+        ? `<button class="unit-cta" style="background:rgba(255,255,255,.1);color:var(--text-dim);" disabled>${lockMsg}</button>`
         : `<button class="unit-cta" onclick="enterUnit('${u.id}')">${pct>0?'繼續冒險':'開始冒險'} →</button>`
-      }
+}
     </div>
   `;
 }
@@ -1017,22 +1873,32 @@ function enterUnit(unitId){
   renderUnitScreen();
 }
 function gotoPhase(phase){
-  CURRENT_UNIT_PHASE.phase = phase;
+    CURRENT_UNIT_PHASE.phase = phase;
   renderUnitScreen();
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
 function renderUnitScreen(){
-  const {unitId, phase} = CURRENT_UNIT_PHASE;
+    const {unitId, phase} = CURRENT_UNIT_PHASE;
   const u = getUnit(unitId);
   const app = document.getElementById('app');
+  const phases = ['hook','discovery','formalize','practice','boss'];
+  const currentIdx = phases.indexOf(phase==='complete'?'boss':phase);
+  const stepper = phases.map((p,i)=>{
+    let cls='phase-dot';
+    if(i<currentIdx || phase==='complete') cls+=' done';
+    else if(i===currentIdx) cls+=' active';
+    const labels={hook:'引子問題',discovery:'引導發現',formalize:'正式化',practice:'練習題',boss:'魔王挑戰'};
+    return `<div class="${cls}">${labels[p]}</div>`;
+}).join('');
+
   app.innerHTML = `
     <div class="screen">
       <div class="unit-header">
         <button class="back-btn" onclick="goHome()">← 回單元選單</button>
         <h1 class="page-title" style="margin:0;">${u.icon} ${u.title}</h1>
       </div>
-      ${renderPathMap(phase)}
+      <div class="phase-stepper">${stepper}</div>
       <div id="phase-content"></div>
     </div>
   `;
@@ -1058,6 +1924,7 @@ function renderHookPhase(u, target){
 function finishHook(unitId){
   STATE.units[unitId].hookSeen = true;
   saveProgress();
+  checkMilestones();
   gotoPhase('discovery');
 }
 
@@ -1066,15 +1933,216 @@ function renderDiscoveryPhase(u, target){
   const s = STATE.units[u.id];
   if(s.discoveryIndex >= u.discovery.length){
     s.discoveryDone = true; saveProgress();
-    awardBadge(u.id==='unit1'?'unit1_discoverer':'unit2_discoverer');
+    awardBadge(u.id + '_discoverer');
     gotoPhase('formalize');
     return;
-  }
+}
   const step = u.discovery[s.discoveryIndex];
   const total = u.discovery.length;
   const idx = s.discoveryIndex;
 
   let bodyHtml = '';
+  if(step.type === 'numberline'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="numlineContainer"></div>
+        <div id="numlineContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountNumberLine('numlineContainer', {min:step.min, max:step.max, answer:step.answer}, function onSolved(){
+      document.getElementById('numlineContinueWrap').classList.remove('hidden');
+      addXp(10, '數線探索');
+    });
+    return;
+  }
+
+  if(step.type === 'chips'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="chipsContainer"></div>
+        <div id="chipsContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountChipCancel('chipsContainer', {posCount:step.posCount, negCount:step.negCount}, function onSolved(){
+      document.getElementById('chipsContinueWrap').classList.remove('hidden');
+      addXp(10, '籌碼抵消探索');
+    });
+    return;
+  }
+
+
+  if(step.type === 'lineup'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="lineupContainer"></div>
+        <div id="lineupContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountLineupBuilder('lineupContainer', {items: step.items, target: step.target}, function onSolved(){
+      document.getElementById('lineupContinueWrap').classList.remove('hidden');
+      addXp(10, '排列探索');
+    });
+    return;
+  }
+
+  if(step.type === 'lineupcollect'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="lineupCollectContainer"></div>
+        <div id="lineupCollectContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountLineupCollector('lineupCollectContainer', {items: step.items}, function onAllFound(){
+      document.getElementById('lineupCollectContinueWrap').classList.remove('hidden');
+      addXp(20, '找齊所有排列');
+    });
+    return;
+  }
+
+  if(step.type === 'ratioslider'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="ratioSliderContainer"></div>
+        <div id="ratioSliderContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountRatioSlider('ratioSliderContainer', {min:step.min, max:step.max, step:step.step, target:step.target, renderVisual:step.renderVisual}, function onSolved(){
+      document.getElementById('ratioSliderContinueWrap').classList.remove('hidden');
+      addXp(10, '比例滑桿探索');
+    });
+    return;
+  }
+
+  if(step.type === 'pizzaslices'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="pizzaContainer"></div>
+        <div id="pizzaContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountPizzaFraction('pizzaContainer', {total:step.total, target:step.target}, function onSolved(){
+      document.getElementById('pizzaContinueWrap').classList.remove('hidden');
+      addXp(10, '披薩分數探索');
+    });
+    return;
+  }
+
+  if(step.type === 'angleprotractor'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="angleContainer"></div>
+        <div id="angleContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountAnglePicker('angleContainer', {target:step.target, step:step.step||5, start:step.start}, function onSolved(){
+      document.getElementById('angleContinueWrap').classList.remove('hidden');
+      addXp(10, '角度探索');
+    });
+    return;
+  }
+
+  if(step.type === 'trianglebuilder'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="triangleContainer"></div>
+        <div id="triangleContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountTriangleBuilder('triangleContainer', {targetA:step.targetA, targetB:step.targetB}, function onSolved(){
+      document.getElementById('triangleContinueWrap').classList.remove('hidden');
+      addXp(15, '三角形拼接探索');
+    });
+    return;
+  }
+
+  if(step.type === 'percentgrid'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="percentGridContainer"></div>
+        <div id="percentGridContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountPercentGrid('percentGridContainer', {target:step.target}, function onSolved(){
+      document.getElementById('percentGridContinueWrap').classList.remove('hidden');
+      addXp(10, '百分比方格探索');
+    });
+    return;
+  }
+
+  if(step.type === 'coordgrid'){
+    target.innerHTML = `
+      <div class="card">
+        <span class="tag discovery">引導發現</span>
+        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
+        <div class="prompt-text">${step.prompt}</div>
+        <div id="coordGridContainer"></div>
+        <div id="coordGridContinueWrap" class="hidden" style="margin-top:14px;">
+          <div class="feedback correct">${step.correctMsg}</div>
+          <button class="btn" style="margin-top:10px;" onclick="advanceDiscovery('${u.id}')">繼續 →</button>
+        </div>
+      </div>
+    `;
+    mountCoordGrid('coordGridContainer', {minX:step.minX, maxX:step.maxX, minY:step.minY, maxY:step.maxY, target:step.target}, function onSolved(){
+      document.getElementById('coordGridContinueWrap').classList.remove('hidden');
+      addXp(10, '座標尋寶探索');
+    });
+    return;
+  }
+
   if(step.type === 'sieve'){
     bodyHtml = `
       <div class="prompt-text">${step.prompt}</div>
@@ -1094,26 +2162,9 @@ function renderDiscoveryPhase(u, target){
     mountSieve('sieveContainer', step.min, step.max, function onComplete(){
       document.getElementById('sieveContinueWrap').classList.remove('hidden');
       addXp(15, '完成篩法探索');
-      if(step.max===20) {} // small badge reserved for boss sieve
-    });
+}, function onAllTouched(){ awardBadge('hidden_sieve_toucher'); });
     return;
-  }
-
-  if(step.type === 'scale'){
-    target.innerHTML = `
-      <div class="card">
-        <span class="tag discovery">引導發現</span>
-        <div class="step-progress-label">第 ${idx+1} / ${total} 步</div>
-        <div class="prompt-text">${step.prompt}</div>
-        <div id="scaleContainer"></div>
-      </div>
-    `;
-    mountBalanceScale('scaleContainer', {leftExtra:step.leftExtra, rightWeight:step.rightWeight}, function onSolved(){
-      addXp(10, '操作天秤');
-      advanceDiscovery(u.id);
-    });
-    return;
-  }
+}
 
   target.innerHTML = `
     <div class="card">
@@ -1127,7 +2178,7 @@ function renderDiscoveryPhase(u, target){
     xpCorrect: 5,
     onCorrect: ()=>{ advanceDiscovery(u.id); },
     context:'discovery'
-  });
+});
 }
 function advanceDiscovery(unitId){
   const s = STATE.units[unitId];
@@ -1154,9 +2205,9 @@ function renderFormalizePhase(u, target){
     onCorrect: ()=>{
       s.formalizeCheckDone = true; saveProgress();
       setTimeout(()=>gotoPhase('practice'), 900);
-    },
+},
     context:'formalize'
-  });
+});
 }
 
 /* ---- Practice ---- */
@@ -1170,7 +2221,7 @@ function renderPracticePhase(u, target){
     s.practiceDone = true; saveProgress();
     gotoPhase('boss');
     return;
-  }
+}
   // find next unanswered question
   let nextQ = u.practice.find(q => !(answered[q.id] && answered[q.id].correct));
   const qIndex = u.practice.indexOf(nextQ);
@@ -1180,7 +2231,7 @@ function renderPracticePhase(u, target){
     if(answered[q.id] && answered[q.id].correct) cls+=' correct';
     else if(q.id===nextQ.id) cls+=' current';
     return `<div class="${cls}">${i+1}</div>`;
-  }).join('');
+}).join('');
 
   target.innerHTML = `
     <div class="card">
@@ -1199,8 +2250,8 @@ function renderPracticePhase(u, target){
       answered[nextQ.id] = {correct:true, hintsUsed};
       saveProgress();
       setTimeout(()=>renderUnitScreen(), 1100);
-    }
-  });
+}
+});
 }
 
 /* ---- Boss ---- */
@@ -1211,7 +2262,7 @@ function renderBossPhase(u, target){
   if(boss.sieveRange){
     renderBossSieve(u, target);
     return;
-  }
+}
   // multi-part boss (unit1 style)
   const parts = boss.parts;
   const answered = s.bossState.partsAnswers;
@@ -1220,7 +2271,7 @@ function renderBossPhase(u, target){
   if(doneCount >= parts.length){
     completeBoss(u);
     return;
-  }
+}
   let nextPart = parts.find(p => !(answered[p.id] && answered[p.id].correct));
   const idx = parts.indexOf(nextPart);
 
@@ -1243,8 +2294,8 @@ function renderBossPhase(u, target){
       answered[nextPart.id] = {correct:true, hintsUsed};
       saveProgress();
       setTimeout(()=>renderUnitScreen(), 1100);
-    }
-  });
+}
+});
 }
 
 function renderBossSieve(u, target){
@@ -1266,9 +2317,9 @@ function renderBossSieve(u, target){
       document.getElementById('sieveContinueWrap').classList.remove('hidden');
       awardBadge('sieve_master');
       addXp(30, '完成 100 以內質數篩選');
-    });
+}, function onAllTouched(){ awardBadge('hidden_sieve_toucher'); });
     return;
-  }
+}
   // after sieve passed -> ask extra parts
   const parts = boss.afterSieveParts;
   const answered = s.bossState.partsAnswers;
@@ -1276,7 +2327,7 @@ function renderBossSieve(u, target){
   if(doneCount >= parts.length){
     completeBoss(u);
     return;
-  }
+}
   let nextPart = parts.find(p => !(answered[p.id] && answered[p.id].correct));
   const idx = parts.indexOf(nextPart);
   target.innerHTML = `
@@ -1297,8 +2348,8 @@ function renderBossSieve(u, target){
       answered[nextPart.id] = {correct:true, hintsUsed};
       saveProgress();
       setTimeout(()=>renderUnitScreen(), 1100);
-    }
-  });
+}
+});
 }
 function passBossSieve(unitId){
   STATE.units[unitId].bossState.sievePassed = true;
@@ -1311,14 +2362,39 @@ function completeBoss(u){
   s.bossDone = true;
   s.bossState.cleared = true;
   saveProgress();
-  awardBadge(u.id==='unit1' ? 'boss1' : 'boss2');
+  awardBadge('boss' + u.id.replace('unit',''));
   if(s.hintsUsedTotal === 0){
-    awardBadge(u.id==='unit1' ? 'perfect1' : 'perfect2');
-  }
+    awardBadge('perfect' + u.id.replace('unit',''));
+}
   if(u.id==='unit1'){
     STATE.units.unit2.unlocked = true;
     saveProgress();
+}
+  if(u.id==='unit2'){
+    STATE.units.unit3.unlocked = true;
+    saveProgress();
   }
+  if(u.id==='unit3'){
+    STATE.units.unit4.unlocked = true;
+    saveProgress();
+  }
+  if(u.id==='unit4'){
+    STATE.units.unit5.unlocked = true;
+    saveProgress();
+  }
+  if(u.id==='unit5'){
+    STATE.units.unit6.unlocked = true;
+    saveProgress();
+  }
+  if(u.id==='unit6'){
+    STATE.units.unit7.unlocked = true;
+    saveProgress();
+  }
+  if(u.id==='unit7'){
+    STATE.units.unit8.unlocked = true;
+    saveProgress();
+  }
+  checkMilestones();
   celebrate(u.boss.victoryText, u.id);
 }
 
@@ -1338,7 +2414,8 @@ function renderCompletePhase(u, target){
    通用題目輸入元件 (number / expr / mc / list)
    ======================================================================== */
 function renderQuestionInput(container, q, opts){
-  const state = { hintsUsed:0, resolved:false, selectedMc:null, wrongCount:0 };
+  const state = { hintsUsed:0, resolved:false, selectedMc:null };
+  const renderedAt = Date.now();
 
   function renderBody(){
     let inputHtml = '';
@@ -1346,38 +2423,28 @@ function renderQuestionInput(container, q, opts){
       inputHtml = `<div class="mc-options">${q.options.map((opt,i)=>
         `<button class="mc-btn" data-idx="${i}" onclick="window.__qHandlers['${q.id}'].pick(${i})">${opt}</button>`
       ).join('')}</div>`;
-    } else if(q.type==='number' && q.tileChoices){
-      const shuffled = shuffleArray(q.tileChoices);
-      inputHtml = `<div class="tile-picker-wrap">
-        <div class="tile-blank" id="blank_${q.id}">?</div>
-        <div class="tile-options">
-          ${shuffled.map(v=>`<button class="num-tile" data-val="${v}" onclick="window.__qHandlers['${q.id}'].pickTile(${v},this)">${v}</button>`).join('')}
-        </div>
-      </div>`;
-    } else if(q.type==='number'){
+} else if(q.type==='number' && q.tileChoices && q.tileChoices.length){
+      inputHtml = `<div class="mc-options tile-choices">${q.tileChoices.map((val)=>
+        `<button class="mc-btn tile-btn" data-val="${val}" onclick="window.__qHandlers['${q.id}'].pickTile(${val})">${val}</button>`
+      ).join('')}</div>`;
+} else if(q.type==='number'){
       inputHtml = `<div class="answer-row">
         <input type="number" id="input_${q.id}" placeholder="輸入答案">
         <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
       </div>`;
-    } else if(q.type==='expr'){
+} else if(q.type==='expr'){
       inputHtml = `<div class="answer-row">
         <input type="text" id="input_${q.id}" placeholder="例如 3n-2">
         <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
       </div>
       <div class="helper-note">可以用 n 代表項數，例如 3n-2 或 5n+2</div>`;
-    } else if(q.type==='list' && q.gridMax){
-      let cells = '';
-      for(let i=1;i<=q.gridMax;i++){ cells += `<button class="factor-cell" data-n="${i}" onclick="window.__qHandlers['${q.id}'].toggleFactor(${i},this)">${i}</button>`; }
-      inputHtml = `<div class="factor-grid">${cells}</div>
-      <div class="helper-note">點選所有你覺得對的數字，選好後按送出</div>
-      <button class="btn" onclick="window.__qHandlers['${q.id}'].submitFactors()">送出</button>`;
-    } else if(q.type==='list'){
+} else if(q.type==='list'){
       inputHtml = `<div class="answer-row">
         <input type="text" id="input_${q.id}" placeholder="例如 1,2,3,6" style="max-width:400px;">
         <button class="btn" onclick="window.__qHandlers['${q.id}'].submit()">送出</button>
       </div>
       <div class="helper-note">請用逗號或空格分隔多個數字</div>`;
-    }
+}
 
     const hintsHtml = q.hints && q.hints.length ? `
       <div class="hint-zone">
@@ -1395,37 +2462,36 @@ function renderQuestionInput(container, q, opts){
     const inputEl = document.getElementById('input_'+q.id);
     if(inputEl){
       inputEl.addEventListener('keydown', (e)=>{ if(e.key==='Enter') window.__qHandlers[q.id].submit(); });
-    }
-  }
+}
+}
 
   function showHint(i){
     if(state.resolved) return;
     const btn = document.getElementById(`hintbtn_${q.id}_${i}`);
     if(btn.disabled) return;
     btn.disabled = true;
-    btn.classList.remove('pulse-attn');
     state.hintsUsed = Math.max(state.hintsUsed, i+1);
     const box = document.getElementById('hintboxes_'+q.id);
     const div = document.createElement('div');
     div.className = 'hint-box';
     div.textContent = '💡 ' + q.hints[i];
     box.appendChild(div);
-  }
+}
 
   function evaluate(userAnswerRaw){
     if(q.type==='number'){
       const val = parseFloat(userAnswerRaw);
       return !isNaN(val) && Math.abs(val - q.answer) < 1e-9;
-    }
+}
     if(q.type==='expr'){
       return checkExprEquivalent(userAnswerRaw, q.answer);
-    }
+}
     if(q.type==='list'){
       const arr = parseNumberList(userAnswerRaw);
       return arraysEqual(arr, q.answer);
-    }
+}
     return false;
-  }
+}
 
   function finalizeCorrect(){
     state.resolved = true;
@@ -1436,35 +2502,31 @@ function renderQuestionInput(container, q, opts){
     // disable inputs
     const body = document.getElementById('qbody_'+q.id);
     body.querySelectorAll('input,button').forEach(el=>el.disabled=true);
-    flashCorrect(body);
     if(q.hints){ q.hints.forEach((_,i)=>{ const b=document.getElementById(`hintbtn_${q.id}_${i}`); if(b) b.disabled=true; }); }
 
     registerCorrect();
+    STATE.noHintTotal = (STATE.noHintTotal||0) + (state.hintsUsed===0 ? 1 : 0);
+    if(STATE.noHintTotal>=5) awardBadge('nohint_bronze');
+    if(STATE.noHintTotal>=15) awardBadge('nohint_silver');
+    if(STATE.noHintTotal>=30) awardBadge('nohint_gold');
+    saveProgress();
+    if(state.hintsUsed===0 && (Date.now()-renderedAt)<=4000){ awardBadge('hidden_speed_demon'); }
     addXp(xp, opts.context==='discovery' ? '引導發現' : opts.context==='formalize' ? '正式化小測驗' : opts.context==='boss' ? '魔王試煉' : '練習題');
     if(state.hintsUsed===0 && opts.context==='practice'){
       awardBadge('no_hint_ace');
-    }
+}
     if(opts.unitId){
       STATE.units[opts.unitId].hintsUsedTotal = (STATE.units[opts.unitId].hintsUsedTotal||0) + state.hintsUsed;
       saveProgress();
-    }
+}
     if(opts.onCorrect) opts.onCorrect(state.hintsUsed);
-  }
+}
 
   function markWrong(){
     registerWrong();
-    state.wrongCount = (state.wrongCount||0) + 1;
-    flashWrong(document.getElementById('qbody_'+q.id));
     const fb = document.getElementById('feedback_'+q.id);
-    if(state.wrongCount >= 2 && q.hints && q.hints.length){
-      fb.innerHTML = `<div class="feedback wrong">🤔 再想想看，不太對喔！別擔心，卡住是很正常的——按下面「提示」按鈕，會一步步帶你找到方向。</div>`;
-      const nextHintIdx = Math.min(state.hintsUsed, q.hints.length-1);
-      const nextBtn = document.getElementById(`hintbtn_${q.id}_${nextHintIdx}`);
-      if(nextBtn && !nextBtn.disabled){ nextBtn.classList.add('pulse-attn'); }
-    } else {
-      fb.innerHTML = `<div class="feedback wrong">🤔 再想想看，不太對喔！可以試著使用下面的提示。</div>`;
-    }
-  }
+    fb.innerHTML = `<div class="feedback wrong">🤔 再想想看，不太對喔！可以試著使用下面的提示。</div>`;
+}
 
   function submit(){
     if(state.resolved) return;
@@ -1472,7 +2534,7 @@ function renderQuestionInput(container, q, opts){
     const val = inputEl.value;
     if(!val || !val.toString().trim()){ return; }
     if(evaluate(val)) finalizeCorrect(); else markWrong();
-  }
+}
   function pick(i){
     if(state.resolved) return;
     const body = document.getElementById('qbody_'+q.id);
@@ -1482,53 +2544,576 @@ function renderQuestionInput(container, q, opts){
     if(correct){
       body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('correct');
       finalizeCorrect();
-    }else{
+}else{
       body.querySelector(`.mc-btn[data-idx="${i}"]`).classList.add('wrong');
       markWrong();
-    }
-  }
-
-  function pickTile(val, el){
-    if(state.resolved) return;
-    const blank = document.getElementById('blank_'+q.id);
-    blank.textContent = val;
-    blank.classList.add('filled');
-    if(Math.abs(val - q.answer) < 1e-9){
-      el.classList.add('used');
-      finalizeCorrect();
-    } else {
-      el.classList.add('wrong-pick');
-      setTimeout(()=>el.classList.remove('wrong-pick'), 400);
-      markWrong();
-    }
-  }
-
-  function toggleFactor(n, el){
-    if(state.resolved) return;
-    if(!state.pickedSet) state.pickedSet = new Set();
-    if(state.pickedSet.has(n)){ state.pickedSet.delete(n); el.classList.remove('picked'); }
-    else { state.pickedSet.add(n); el.classList.add('picked'); }
-  }
-  function submitFactors(){
-    if(state.resolved) return;
-    const arr = Array.from(state.pickedSet||[]).sort((a,b)=>a-b);
-    if(arr.length===0) return;
-    if(arraysEqual(arr, q.answer)) finalizeCorrect(); else markWrong();
-  }
+}
+}
 
   window.__qHandlers = window.__qHandlers || {};
-  window.__qHandlers[q.id] = { submit, pick, showHint, pickTile, toggleFactor, submitFactors };
+  function pickTile(val){
+    if(state.resolved) return;
+    const body = document.getElementById('qbody_'+q.id);
+    body.querySelectorAll('.tile-btn').forEach(b=>b.classList.remove('selected'));
+    const btn = body.querySelector(`.tile-btn[data-val="${val}"]`);
+    if(btn) btn.classList.add('selected');
+    const correct = Math.abs(val - q.answer) < 1e-9;
+    if(correct){
+      if(btn) btn.classList.add('correct');
+      finalizeCorrect();
+}else{
+      if(btn) btn.classList.add('wrong');
+      markWrong();
+}
+}
+  window.__qHandlers[q.id] = { submit, pick, pickTile, showHint };
   renderBody();
 }
 
 /* ========================================================================
    質數篩選互動元件 (Sieve of Eratosthenes)
    ======================================================================== */
-function mountSieve(containerId, min, max, onComplete){
+
+/* ---- 小小的浮動特效：在元素旁邊冒出一個表情符號並淡出 ---- */
+function spawnBurst(el, emoji){
+  try{
+    const rect = el.getBoundingClientRect();
+    const span = document.createElement('span');
+    span.textContent = emoji || '✨';
+    span.style.position = 'fixed';
+    span.style.left = (rect.left + rect.width/2) + 'px';
+    span.style.top = rect.top + 'px';
+    span.style.fontSize = '1.4rem';
+    span.style.pointerEvents = 'none';
+    span.style.zIndex = 500;
+    span.style.transition = 'transform .6s ease, opacity .6s ease';
+    document.body.appendChild(span);
+    requestAnimationFrame(()=>{
+      span.style.transform = 'translateY(-30px) scale(1.3)';
+      span.style.opacity = '0';
+    });
+    setTimeout(()=>{ span.remove(); }, 650);
+  }catch(e){ /* 環境不支援時安靜跳過 */ }
+}
+
+
+/* ---- 數線互動元件：點選數線上的位置 ---- */
+function mountNumberLine(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const min = opts.min, max = opts.max, answer = opts.answer;
+  let resolved = false;
+  function render(){
+    let cells = '';
+    for(let n=min; n<=max; n++){
+      cells += `<button class="numberline-cell ${n===0?'zero':''}" data-n="${n}" onclick="window.__numlineHandlers['${containerId}'].pick(${n},this)">${n}</button>`;
+    }
+    container.innerHTML = `<div class="numberline-wrap"><div class="numberline-row">${cells}</div></div>`;
+  }
+  function pick(n, el){
+    if(resolved) return;
+    if(n === answer){
+      resolved = true;
+      el.classList.add('correct-pick');
+      spawnBurst(el, '✨');
+      if(onSolved) onSolved();
+    } else {
+      el.classList.add('wrong-pick');
+      setTimeout(()=>{ el.classList.remove('wrong-pick'); }, 400);
+    }
+  }
+  window.__numlineHandlers = window.__numlineHandlers || {};
+  window.__numlineHandlers[containerId] = { pick };
+  render();
+}
+
+/* ---- 籌碼抵消互動元件：點選正負籌碼互相抵消 ---- */
+function mountChipCancel(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  let pos = opts.posCount, neg = opts.negCount;
+  let done = false;
+  function render(){
+    const canCancel = pos>0 && neg>0;
+    let posChips = '';
+    for(let i=0;i<pos;i++){ posChips += `<div class="chip pos" onclick="window.__chipHandlers['${containerId}'].cancel()">+1</div>`; }
+    let negChips = '';
+    for(let i=0;i<neg;i++){ negChips += `<div class="chip neg" onclick="window.__chipHandlers['${containerId}'].cancel()">−1</div>`; }
+    let resultHtml = '';
+    let noteHtml = '<div class="chip-hint-note">點一下任何一個籌碼，會自動抵消一正一負</div>';
+    if(!canCancel){
+      const net = pos>0 ? pos : (neg>0 ? -neg : 0);
+      resultHtml = `<div class="chip-result">= ${net>0?'+':''}${net}</div>`;
+      noteHtml = `<div class="answer-row" style="justify-content:center;"><button class="btn" onclick="window.__chipHandlers['${containerId}'].finish()">繼續 →</button></div>`;
+    }
+    container.innerHTML = `
+      <div class="chip-wrap">
+        <div class="chip-piles">
+          <div class="chip-pile">${posChips}</div>
+          <div class="chip-pile">${negChips}</div>
+        </div>
+        ${resultHtml}
+        ${noteHtml}
+      </div>
+    `;
+  }
+  function cancel(){
+    if(done || pos<=0 || neg<=0) return;
+    pos--; neg--;
+    render();
+  }
+  function finish(){
+    if(done) return;
+    done = true;
+    if(onSolved) onSolved();
+  }
+  window.__chipHandlers = window.__chipHandlers || {};
+  window.__chipHandlers[containerId] = { cancel, finish };
+  render();
+}
+
+
+function factorial(n){ let r=1; for(let i=2;i<=n;i++){ r*=i; } return r; }
+
+/* ---- 排列建造元件：依序點選項目，排出指定的目標順序 ---- */
+function mountLineupBuilder(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const items = opts.items, target = opts.target;
+  let slots = new Array(items.length).fill(null);
+  let usedIdx = new Set();
+  let resolved = false;
+  function render(){
+    const slotsHtml = slots.map(v=>`<div class="lineup-slot ${v!==null?'filled':''}">${v!==null?items[v]:'?'}</div>`).join('');
+    const tilesHtml = items.map((it,i)=>`<button class="lineup-tile ${usedIdx.has(i)?'used':''}" ${usedIdx.has(i)?'disabled':''} onclick="window.__lineupHandlers['${containerId}'].pick(${i})">${it}</button>`).join('');
+    container.innerHTML = `
+      <div class="lineup-wrap">
+        <div class="lineup-slots">${slotsHtml}</div>
+        <div class="lineup-tiles">${tilesHtml}</div>
+        <div class="answer-row" style="margin-top:10px;justify-content:center;">
+          <button class="btn secondary" onclick="window.__lineupHandlers['${containerId}'].reset()">🔄 重新排列</button>
+        </div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function pick(i){
+    if(resolved || usedIdx.has(i)) return;
+    const nextSlot = slots.findIndex(v=>v===null);
+    if(nextSlot === -1) return;
+    slots[nextSlot] = i;
+    usedIdx.add(i);
+    render();
+    if(slots.every(v=>v!==null)){
+      const msgEl = document.getElementById(containerId+'_msg');
+      const match = slots.every((v,idx)=> items[v] === target[idx]);
+      if(match){
+        resolved = true;
+        msgEl.innerHTML = `<div class="feedback correct">🎉 排對了！</div>`;
+        if(onSolved) onSolved();
+      } else {
+        msgEl.innerHTML = `<div class="feedback wrong">順序不太對，點「重新排列」再試一次！</div>`;
+      }
+    }
+  }
+  function reset(){
+    if(resolved) return;
+    slots = new Array(items.length).fill(null);
+    usedIdx = new Set();
+    render();
+  }
+  window.__lineupHandlers = window.__lineupHandlers || {};
+  window.__lineupHandlers[containerId] = { pick, reset };
+  render();
+}
+
+/* ---- 排列蒐集元件：反覆排出所有可能的排列，全部找齊才過關 ---- */
+function mountLineupCollector(containerId, opts, onAllFound){
+  const container = document.getElementById(containerId);
+  const items = opts.items;
+  const total = factorial(items.length);
+  let slots = new Array(items.length).fill(null);
+  let usedIdx = new Set();
+  const found = new Set();
+  let allFoundFired = false;
+  function render(){
+    const slotsHtml = slots.map(v=>`<div class="lineup-slot ${v!==null?'filled':''}">${v!==null?items[v]:'?'}</div>`).join('');
+    const tilesHtml = items.map((it,i)=>`<button class="lineup-tile ${usedIdx.has(i)?'used':''}" ${usedIdx.has(i)?'disabled':''} onclick="window.__lineupHandlers['${containerId}'].pick(${i})">${it}</button>`).join('');
+    const galleryHtml = [...found].map(key=>{
+      const order = key.split(',').map(ix=>items[ix]);
+      return `<div class="lineup-found-item">${order.join(' ')}</div>`;
+    }).join('');
+    container.innerHTML = `
+      <div class="lineup-wrap">
+        <div class="lineup-progress">已找到 ${found.size} / ${total} 種排法</div>
+        <div class="lineup-slots">${slotsHtml}</div>
+        <div class="lineup-tiles">${tilesHtml}</div>
+        <div class="answer-row" style="margin-top:10px;justify-content:center;">
+          <button class="btn secondary" onclick="window.__lineupHandlers['${containerId}'].reset()">🔄 重新排列</button>
+        </div>
+        <div class="lineup-gallery">${galleryHtml}</div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function pick(i){
+    if(usedIdx.has(i)) return;
+    const nextSlot = slots.findIndex(v=>v===null);
+    if(nextSlot === -1) return;
+    slots[nextSlot] = i;
+    usedIdx.add(i);
+    if(slots.every(v=>v!==null)){
+      const key = slots.join(',');
+      const isNew = !found.has(key);
+      found.add(key);
+      render();
+      const msgEl = document.getElementById(containerId+'_msg');
+      msgEl.innerHTML = isNew ? `<div class="feedback correct">✨ 新排法解鎖！</div>` : `<div class="feedback info">這個排法你已經找過囉，再試試別的順序！</div>`;
+      setTimeout(()=>{
+        slots = new Array(items.length).fill(null);
+        usedIdx = new Set();
+        render();
+        if(!allFoundFired && found.size === total){
+          allFoundFired = true;
+          if(onAllFound) onAllFound();
+        }
+      }, 700);
+    } else {
+      render();
+    }
+  }
+  function reset(){
+    slots = new Array(items.length).fill(null);
+    usedIdx = new Set();
+    render();
+  }
+  window.__lineupHandlers = window.__lineupHandlers || {};
+  window.__lineupHandlers[containerId] = { pick, reset };
+  render();
+}
+
+
+/* ---- 比例滑桿元件：拖曳滑桿調整倍數/數值，即時看到視覺變化 ---- */
+function mountRatioSlider(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const min = opts.min, max = opts.max, step = opts.step, target = opts.target, renderVisual = opts.renderVisual;
+  let resolved = false;
+  let current = min;
+  function render(){
+    container.innerHTML = `
+      <div class="ratio-slider-wrap">
+        <div class="ratio-visual">${renderVisual(current)}</div>
+        <input type="range" id="${containerId}_range" min="${min}" max="${max}" step="${step}" value="${current}" oninput="window.__ratioHandlers['${containerId}'].onInput(this.value)">
+        <div class="ratio-slider-value">目前數值：${current}</div>
+        <div class="answer-row" style="justify-content:center;margin-top:10px;">
+          <button class="btn" onclick="window.__ratioHandlers['${containerId}'].confirm()">✅ 確認</button>
+        </div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function onInput(v){
+    if(resolved) return;
+    current = parseFloat(v);
+    const visualEl = container.querySelector('.ratio-visual');
+    if(visualEl) visualEl.innerHTML = renderVisual(current);
+    const valEl = container.querySelector('.ratio-slider-value');
+    if(valEl) valEl.textContent = '目前數值：' + current;
+  }
+  function confirm(){
+    if(resolved) return;
+    const msgEl = document.getElementById(containerId+'_msg');
+    if(Math.abs(current - target) < 1e-9){
+      resolved = true;
+      msgEl.innerHTML = `<div class="feedback correct">🎉 對了！</div>`;
+      if(onSolved) onSolved();
+    } else {
+      msgEl.innerHTML = `<div class="feedback wrong">再拖拖看，還沒到目標數值喔！</div>`;
+    }
+  }
+  window.__ratioHandlers = window.__ratioHandlers || {};
+  window.__ratioHandlers[containerId] = { onInput, confirm };
+  render();
+}
+
+/* ---- 披薩分數元件：點選披薩片數，視覺化理解分數/等值分數 ---- */
+function mountPizzaFraction(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const total = opts.total, target = opts.target;
+  let selected = new Set();
+  let resolved = false;
+  function render(){
+    const slicesHtml = Array.from({length: total}, (_,i)=>
+      `<button class="pizza-slice ${selected.has(i)?'eaten':''}" onclick="window.__pizzaHandlers['${containerId}'].toggle(${i})">${selected.has(i)?'🍽️':'🍕'}</button>`
+    ).join('');
+    container.innerHTML = `
+      <div class="pizza-wrap">
+        <div class="pizza-slices">${slicesHtml}</div>
+        <div class="pizza-count">已選 ${selected.size} / ${total} 片</div>
+        <div class="answer-row" style="justify-content:center;margin-top:10px;">
+          <button class="btn" onclick="window.__pizzaHandlers['${containerId}'].confirm()">✅ 確認</button>
+        </div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function toggle(i){
+    if(resolved) return;
+    if(selected.has(i)) selected.delete(i); else selected.add(i);
+    render();
+  }
+  function confirm(){
+    if(resolved) return;
+    const msgEl = document.getElementById(containerId+'_msg');
+    if(selected.size === target){
+      resolved = true;
+      msgEl.innerHTML = `<div class="feedback correct">🎉 對了！</div>`;
+      if(onSolved) onSolved();
+    } else {
+      msgEl.innerHTML = `<div class="feedback wrong">片數不太對，再調整看看！</div>`;
+    }
+  }
+  window.__pizzaHandlers = window.__pizzaHandlers || {};
+  window.__pizzaHandlers[containerId] = { toggle, confirm };
+  render();
+}
+
+
+/* ---- 角度協進器元件：可拖曳或用+/-按鈕調整角度 ---- */
+function mountAnglePicker(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const target = opts.target;
+  const step = opts.step || 5;
+  let current = opts.start !== undefined ? opts.start : 90;
+  let resolved = false;
+  let dragging = false;
+
+  function angleToXY(deg, r){
+    const rad = (180-deg) * Math.PI/180;
+    return { x: 100 + r*Math.cos(rad), y: 100 - r*Math.sin(rad) };
+  }
+  function render(){
+    const p = angleToXY(current, 80);
+    container.innerHTML = `
+      <div class="angle-wrap">
+        <svg viewBox="0 0 200 110" class="angle-svg" id="${containerId}_svg">
+          <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--border)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="180" y2="100" stroke="var(--text-dim)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="${p.x}" y2="${p.y}" stroke="var(--accent-teal)" stroke-width="3"/>
+          <circle cx="${p.x}" cy="${p.y}" r="9" fill="var(--accent-teal)" style="cursor:pointer;" onpointerdown="window.__angleHandlers['${containerId}'].startDrag(event)"></circle>
+          <circle cx="100" cy="100" r="3" fill="var(--text-dim)"/>
+        </svg>
+        <div class="angle-readout">目前角度：${current}°</div>
+        <div class="answer-row" style="justify-content:center;gap:14px;">
+          <button class="btn secondary" onclick="window.__angleHandlers['${containerId}'].stepAngle(-${step})">− ${step}°</button>
+          <button class="btn secondary" onclick="window.__angleHandlers['${containerId}'].stepAngle(${step})">＋ ${step}°</button>
+        </div>
+        <div class="answer-row" style="justify-content:center;margin-top:8px;">
+          <button class="btn" onclick="window.__angleHandlers['${containerId}'].confirm()">✅ 確認</button>
+        </div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function setAngle(deg){
+    if(resolved) return;
+    current = Math.max(0, Math.min(180, Math.round(deg/step)*step));
+    render();
+  }
+  function stepAngle(delta){ setAngle(current+delta); }
+  function startDrag(e){
+    dragging = true;
+    document.addEventListener('pointermove', onDrag);
+    document.addEventListener('pointerup', stopDrag);
+  }
+  function onDrag(e){
+    if(!dragging) return;
+    const svg = document.getElementById(containerId+'_svg');
+    if(!svg || !svg.getBoundingClientRect) return;
+    const rect = svg.getBoundingClientRect();
+    if(!rect || rect.width === 0) return;
+    const scaleX = 200/rect.width, scaleY = 110/rect.height;
+    const x = (e.clientX-rect.left)*scaleX - 100;
+    const y = 100 - (e.clientY-rect.top)*scaleY;
+    let deg = Math.atan2(y, x) * 180/Math.PI;
+    if(deg < 0) deg = 0;
+    if(deg > 180) deg = 180;
+    setAngle(deg);
+  }
+  function stopDrag(){
+    dragging = false;
+    document.removeEventListener('pointermove', onDrag);
+    document.removeEventListener('pointerup', stopDrag);
+  }
+  function confirm(){
+    if(resolved) return;
+    const msgEl = document.getElementById(containerId+'_msg');
+    if(current === target){
+      resolved = true;
+      msgEl.innerHTML = `<div class="feedback correct">🎉 對了！</div>`;
+      if(onSolved) onSolved();
+    } else {
+      msgEl.innerHTML = `<div class="feedback wrong">還不太對，再調整看看！</div>`;
+    }
+  }
+  window.__angleHandlers = window.__angleHandlers || {};
+  window.__angleHandlers[containerId] = { setAngle, step: stepAngle, startDrag, confirm };
+  render();
+}
+
+/* ---- 三角形拼接元件：調整角A、角B，即時看到角C與內角和 ---- */
+function mountTriangleBuilder(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const targetA = opts.targetA, targetB = opts.targetB;
+  const step = 10;
+  let A = 60, B = 60;
+  let resolved = false;
+  function angleC(){ return 180 - A - B; }
+  function render(){
+    const c = angleC();
+    container.innerHTML = `
+      <div class="triangle-wrap">
+        <svg viewBox="0 0 200 140" class="triangle-svg">
+          <polygon points="20,120 180,120 100,20" fill="rgba(45,212,191,.12)" stroke="var(--accent-teal)" stroke-width="2"/>
+          <text x="20" y="135" fill="var(--text)" font-size="13" text-anchor="start">A=${A}°</text>
+          <text x="180" y="135" fill="var(--text)" font-size="13" text-anchor="end">B=${B}°</text>
+          <text x="100" y="15" fill="var(--text)" font-size="13" text-anchor="middle">C=${c}°</text>
+        </svg>
+        <div class="triangle-controls">
+          <div class="triangle-ctrl-row">
+            <span>角 A：${A}°</span>
+            <button class="btn secondary" onclick="window.__triHandlers['${containerId}'].adjust('A',-${step})">−</button>
+            <button class="btn secondary" onclick="window.__triHandlers['${containerId}'].adjust('A',${step})">＋</button>
+          </div>
+          <div class="triangle-ctrl-row">
+            <span>角 B：${B}°</span>
+            <button class="btn secondary" onclick="window.__triHandlers['${containerId}'].adjust('B',-${step})">−</button>
+            <button class="btn secondary" onclick="window.__triHandlers['${containerId}'].adjust('B',${step})">＋</button>
+          </div>
+          <div class="triangle-sum">A + B + C = ${A} + ${B} + ${c} = ${A+B+c}°</div>
+        </div>
+        <div class="answer-row" style="justify-content:center;margin-top:10px;">
+          <button class="btn" onclick="window.__triHandlers['${containerId}'].confirm()">✅ 確認</button>
+        </div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function adjust(which, delta){
+    if(resolved) return;
+    let nextA = A, nextB = B;
+    if(which==='A') nextA = Math.max(10, Math.min(160, A+delta));
+    if(which==='B') nextB = Math.max(10, Math.min(160, B+delta));
+    if(180 - nextA - nextB < 10) return;
+    A = nextA; B = nextB;
+    render();
+  }
+  function confirm(){
+    if(resolved) return;
+    const msgEl = document.getElementById(containerId+'_msg');
+    if(A===targetA && B===targetB){
+      resolved = true;
+      msgEl.innerHTML = `<div class="feedback correct">🎉 對了！</div>`;
+      if(onSolved) onSolved();
+    } else {
+      msgEl.innerHTML = `<div class="feedback wrong">再調整看看A和B的角度！</div>`;
+    }
+  }
+  window.__triHandlers = window.__triHandlers || {};
+  window.__triHandlers[containerId] = { adjust, confirm };
+  render();
+}
+
+
+/* ---- 百分比方格元件：100格方格點選，直覺理解「每100為基準」 ---- */
+function mountPercentGrid(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const target = opts.target;
+  let selected = new Set();
+  let resolved = false;
+  function render(){
+    const cellsHtml = Array.from({length:100}, (_,i)=>
+      `<button class="percent-cell ${selected.has(i)?'filled':''}" onclick="window.__percentHandlers['${containerId}'].toggle(${i})"></button>`
+    ).join('');
+    container.innerHTML = `
+      <div class="percent-grid-wrap">
+        <div class="percent-grid">${cellsHtml}</div>
+        <div class="percent-count">已選 ${selected.size} / 100 格　＝ ${selected.size}%</div>
+        <div class="answer-row" style="justify-content:center;margin-top:10px;">
+          <button class="btn" onclick="window.__percentHandlers['${containerId}'].confirm()">✅ 確認</button>
+        </div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function toggle(i){
+    if(resolved) return;
+    if(selected.has(i)) selected.delete(i); else selected.add(i);
+    render();
+  }
+  function confirm(){
+    if(resolved) return;
+    const msgEl = document.getElementById(containerId+'_msg');
+    if(selected.size === target){
+      resolved = true;
+      msgEl.innerHTML = `<div class="feedback correct">🎉 對了！</div>`;
+      if(onSolved) onSolved();
+    } else {
+      msgEl.innerHTML = `<div class="feedback wrong">格數不太對，再調整看看！</div>`;
+    }
+  }
+  window.__percentHandlers = window.__percentHandlers || {};
+  window.__percentHandlers[containerId] = { toggle, confirm };
+  render();
+}
+
+
+/* ---- 座標尋寶元件：點擊方格找出指定座標的位置 ---- */
+function mountCoordGrid(containerId, opts, onSolved){
+  const container = document.getElementById(containerId);
+  const minX = opts.minX, maxX = opts.maxX, minY = opts.minY, maxY = opts.maxY;
+  const target = opts.target;
+  let resolved = false;
+  function render(){
+    let rowsHtml = '';
+    for(let y=maxY; y>=minY; y--){
+      let rowCells = `<div class="coord-row-label">${y}</div>`;
+      for(let x=minX; x<=maxX; x++){
+        const isOrigin = (x===0 && y===0);
+        rowCells += `<button class="coord-cell ${isOrigin?'origin':''}" onclick="window.__coordHandlers['${containerId}'].pick(${x},${y},this)"></button>`;
+      }
+      rowsHtml += `<div class="coord-row">${rowCells}</div>`;
+    }
+    let xLabelsHtml = `<div class="coord-row-label"></div>`;
+    for(let x=minX;x<=maxX;x++){ xLabelsHtml += `<div class="coord-x-label">${x}</div>`; }
+    container.innerHTML = `
+      <div class="coord-wrap">
+        <div class="coord-grid">${rowsHtml}<div class="coord-row coord-xlabels">${xLabelsHtml}</div></div>
+        <div id="${containerId}_msg"></div>
+      </div>
+    `;
+  }
+  function pick(x,y,el){
+    if(resolved) return;
+    if(x===target.x && y===target.y){
+      resolved = true;
+      el.classList.add('correct-pick');
+      spawnBurst(el, '🎁');
+      if(onSolved) onSolved();
+    } else {
+      el.classList.add('wrong-pick');
+      setTimeout(()=>{ el.classList.remove('wrong-pick'); }, 400);
+    }
+  }
+  window.__coordHandlers = window.__coordHandlers || {};
+  window.__coordHandlers[containerId] = { pick };
+  render();
+}
+
+function mountSieve(containerId, min, max, onComplete, onAllTouched){
   const container = document.getElementById(containerId);
   const cellStates = {}; // num -> 'unset'|'prime'|'comp'
   for(let n=min;n<=max;n++){ cellStates[n]='unset'; }
   let completed = false;
+  const touchedSet = new Set();
+  let allTouchedFired = false;
 
   function truth(n){ return isPrime(n); }
 
@@ -1548,26 +3133,27 @@ function mountSieve(containerId, min, max, onComplete){
             const st = cellStates[n];
             const cls = st==='prime' ? 'prime' : st==='comp' ? 'comp' : '';
             return `<button class="sieve-cell ${cls}" data-n="${n}" onclick="window.__sieveHandlers['${containerId}'].cycle(${n})">${n}</button>`;
-          }).join('')}
+}).join('')}
         </div>
         <div class="answer-row">
           <button class="btn secondary" onclick="window.__sieveHandlers['${containerId}'].check()">🔍 檢查進度</button>
-          <button class="btn secondary" onclick="window.__sieveHandlers['${containerId}'].hint()">💡 給我一個提示</button>
         </div>
         <div id="${containerId}_msg"></div>
       </div>
     `;
-  }
+}
 
   function cycle(n){
     if(completed) return;
+    touchedSet.add(n);
+    if(!allTouchedFired && touchedSet.size === (max-min+1)){
+      allTouchedFired = true;
+      if(onAllTouched) onAllTouched();
+    }
     const cur = cellStates[n];
     cellStates[n] = cur==='unset' ? 'prime' : cur==='prime' ? 'comp' : 'unset';
     render();
-    const grid = document.getElementById(containerId+'_grid');
-    const cell = grid && grid.querySelector(`.sieve-cell[data-n="${n}"]`);
-    if(cell){ cell.classList.add('pulse-right'); setTimeout(()=>cell.classList.remove('pulse-right'), 400); }
-  }
+}
 
   function check(){
     if(completed) return;
@@ -1581,191 +3167,29 @@ function mountSieve(containerId, min, max, onComplete){
       const shouldBePrime = truth(n);
       const isCorrect = (shouldBePrime && st==='prime') || (!shouldBePrime && st==='comp');
       if(!isCorrect){ wrongCells.push(n); allCorrect=false; }
-    }
+}
     const msgEl = document.getElementById(containerId+'_msg');
     if(allCorrect){
       completed = true;
       msgEl.innerHTML = `<div class="feedback correct">🎉 全部正確！做得非常好！</div>`;
-      const grid2 = document.getElementById(containerId+'_grid');
-      if(grid2){
-        Array.from(grid2.children).forEach((cell,i)=>{
-          setTimeout(()=>{ cell.classList.add('pulse-right'); }, i*16);
-        });
-      }
       if(onComplete) onComplete();
       return;
-    }
+}
     // visual feedback: pulse wrong ones, briefly
     const grid = document.getElementById(containerId+'_grid');
     wrongCells.forEach(n=>{
       const cell = grid.querySelector(`.sieve-cell[data-n="${n}"]`);
       if(cell){ cell.classList.add('pulse-wrong'); setTimeout(()=>cell.classList.remove('pulse-wrong'), 500); }
-    });
+});
     let msg = '';
     if(unsetCount>0) msg += `還有 ${unsetCount} 個數字尚未標記。`;
     if(wrongCells.length>0) msg += ` 有 ${wrongCells.length} 個標記錯誤（已用紅色閃爍標示），再想想看！`;
     msgEl.innerHTML = `<div class="feedback wrong">${msg}</div>`;
-  }
-
-  function hint(){
-    if(completed) return;
-    const msgEl = document.getElementById(containerId+'_msg');
-    // 優先找還沒標記的數字；如果都標記了，找標記錯誤的數字
-    let target = null;
-    for(const nStr of Object.keys(cellStates)){
-      if(cellStates[nStr]==='unset'){ target = parseInt(nStr,10); break; }
-    }
-    if(target===null){
-      for(const nStr of Object.keys(cellStates)){
-        const n = parseInt(nStr,10);
-        const st = cellStates[n];
-        const shouldBePrime = truth(n);
-        const isCorrect = (shouldBePrime && st==='prime') || (!shouldBePrime && st==='comp');
-        if(!isCorrect){ target = n; break; }
-      }
-    }
-    if(target===null){
-      msgEl.innerHTML = `<div class="feedback correct">目前看起來都標記好囉，按「檢查進度」看看吧！</div>`;
-      return;
-    }
-    const grid = document.getElementById(containerId+'_grid');
-    const cell = grid.querySelector(`.sieve-cell[data-n="${target}"]`);
-    if(cell){ cell.classList.add('pulse-attn'); setTimeout(()=>cell.classList.remove('pulse-attn'), 2200); }
-    if(target===1){
-      msgEl.innerHTML = `<div class="hint-box">💡 先想想 1 特別在哪裡：它只有自己一個因數，所以規定 1 既不是質數、也不是合數（通常篩選範圍會從2開始，你可以先跳過1）。</div>`;
-      return;
-    }
-    let divisorFound = null;
-    for(let d=2; d*d<=target; d++){
-      if(target % d === 0){ divisorFound = d; break; }
-    }
-    if(divisorFound){
-      msgEl.innerHTML = `<div class="hint-box">💡 試試看：${target} 可以被 ${divisorFound} 整除嗎？${target} ÷ ${divisorFound} = ${target/divisorFound}，剛好除盡，所以 ${target} 除了1和自己之外還有別的因數，是「合數」。</div>`;
-    } else {
-      msgEl.innerHTML = `<div class="hint-box">💡 試試看：把 ${target} 除以比它小的質數（2、3、5、7……），只要試到某個數字的平方剛好超過 ${target} 就可以停了。你會發現都除不盡，所以 ${target} 是「質數」。</div>`;
-    }
-  }
+}
 
   window.__sieveHandlers = window.__sieveHandlers || {};
-  window.__sieveHandlers[containerId] = { cycle, check, hint };
+  window.__sieveHandlers[containerId] = { cycle, check };
   render();
-}
-
-/* ========================================================================
-   Brilliant 風格：學習路徑地圖
-   ======================================================================== */
-function renderPathMap(currentPhase){
-  const phases = [
-    {key:'hook', icon:'🎣', label:'引子'},
-    {key:'discovery', icon:'🔍', label:'發現'},
-    {key:'formalize', icon:'📐', label:'正式化'},
-    {key:'practice', icon:'✏️', label:'練習'},
-    {key:'boss', icon:'👑', label:'魔王'}
-  ];
-  const effectivePhase = currentPhase==='complete' ? 'boss' : currentPhase;
-  const currentIdx = phases.findIndex(p=>p.key===effectivePhase);
-  const nodes = phases.map((p,i)=>{
-    let cls='path-node';
-    const isDone = i<currentIdx || currentPhase==='complete';
-    const isActive = i===currentIdx && currentPhase!=='complete';
-    if(isDone) cls+=' done';
-    else if(isActive) cls+=' active';
-    const icon = isDone ? '✓' : p.icon;
-    const line = i<phases.length-1 ? `<div class="path-line ${i<currentIdx?'done':''}"></div>` : '';
-    return `<div class="path-node-wrap"><div class="${cls}">${icon}<span class="path-label">${p.label}</span></div>${line}</div>`;
-  }).join('');
-  return `<div class="path-map">${nodes}</div>`;
-}
-function renderMiniPath(u){
-  const s = STATE.units[u.id];
-  const steps = [s.hookSeen, s.discoveryDone, s.formalizeCheckDone, s.practiceDone, s.bossDone];
-  const firstUndone = steps.findIndex(x=>!x);
-  let html = '<div class="mini-path">';
-  steps.forEach((done,i)=>{
-    const cls = done ? 'mini-node done' : (i===firstUndone ? 'mini-node active' : 'mini-node');
-    html += `<div class="${cls}"></div>`;
-    if(i<steps.length-1) html += `<div class="mini-line ${done?'done':''}"></div>`;
-  });
-  html += '</div>';
-  return html;
-}
-
-/* ========================================================================
-   Brilliant 風格：天秤拖曳/點選互動元件
-   ======================================================================== */
-function mountBalanceScale(containerId, opts, onSolved){
-  const container = document.getElementById(containerId);
-  let leftExtra = opts.leftExtra;
-  let rightCount = opts.rightWeight;
-  let done = false;
-
-  function render(){
-    const leftWeights = Array.from({length:leftExtra}).map(()=>
-      `<div class="weight-tile" onclick="window.__scaleHandlers['${containerId}'].remove()">1</div>`
-    ).join('');
-    const rightWeights = Array.from({length:rightCount}).map(()=>
-      `<div class="weight-tile" onclick="window.__scaleHandlers['${containerId}'].remove()">1</div>`
-    ).join('');
-    container.innerHTML = `
-      <div class="scale-wrap">
-        <div class="scale-beam-area">
-          <div class="scale-pivot"></div>
-          <div class="scale-beam"></div>
-          <div class="scale-pan left"><div class="scale-box ${done?'solved':''}">📦</div>${leftWeights}</div>
-          <div class="scale-pan right">${rightWeights}</div>
-        </div>
-        <div class="scale-hint">${done
-          ? `🎉 箱子單獨留在天秤上了！箱子 = <b>${rightCount}</b> 公斤`
-          : '點一下任何一個砝碼，兩邊會同時各拿掉一個（維持平衡）'}</div>
-        <div class="scale-controls">${done ? `<button class="btn" onclick="window.__scaleHandlers['${containerId}'].finish()">繼續 →</button>` : ''}</div>
-      </div>
-    `;
-  }
-  function remove(){
-    if(done || leftExtra<=0 || rightCount<=0) return;
-    leftExtra--; rightCount--;
-    if(leftExtra===0){ done = true; }
-    render();
-  }
-  function finish(){ if(onSolved) onSolved(rightCount); }
-
-  window.__scaleHandlers = window.__scaleHandlers || {};
-  window.__scaleHandlers[containerId] = { remove, finish };
-  render();
-}
-
-/* ========================================================================
-   Brilliant 風格：視覺化答題回饋 / 小工具
-   ======================================================================== */
-function shuffleArray(arr){
-  const a = arr.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]] = [a[j],a[i]];
-  }
-  return a;
-}
-function spawnBurst(anchorEl, emoji){
-  const card = (anchorEl && anchorEl.closest) ? (anchorEl.closest('.card') || anchorEl) : anchorEl;
-  if(!card) return;
-  const el = document.createElement('div');
-  el.className = 'burst-pop';
-  el.textContent = emoji;
-  el.style.left = (35 + Math.random()*30) + '%';
-  el.style.top = '6px';
-  card.appendChild(el);
-  setTimeout(()=>{ if(el.parentNode) el.parentNode.removeChild(el); }, 850);
-}
-function flashCorrect(el){
-  if(!el) return;
-  el.classList.add('answer-flash-correct');
-  setTimeout(()=>el.classList.remove('answer-flash-correct'), 600);
-  spawnBurst(el, ['✨','🎉','⭐','💫','🌟'][Math.floor(Math.random()*5)]);
-}
-function flashWrong(el){
-  if(!el) return;
-  el.classList.add('answer-flash-wrong');
-  setTimeout(()=>el.classList.remove('answer-flash-wrong'), 500);
 }
 
 /* ========================================================================
@@ -1801,17 +3225,17 @@ function runConfetti(){
   const particles = [];
   for(let i=0;i<140;i++){
     particles.push({
-      x: Math.random()*canvas.width,
-      y: -20 - Math.random()*canvas.height*0.5,
-      w: 6+Math.random()*6,
-      h: 8+Math.random()*10,
-      color: colors[Math.floor(Math.random()*colors.length)],
-      speedY: 2+Math.random()*3,
-      speedX: -1.5+Math.random()*3,
+            x: Math.random()*canvas.width,
+            y: -20 - Math.random()*canvas.height*0.5,
+            w: 6+Math.random()*6,
+            h: 8+Math.random()*10,
+            color: colors[Math.floor(Math.random()*colors.length)],
+            speedY: 2+Math.random()*3,
+            speedX: -1.5+Math.random()*3,
       rot: Math.random()*360,
       rotSpeed: -6+Math.random()*12
-    });
-  }
+});
+}
   let frame = 0;
   const maxFrames = 220;
   function tick(){
@@ -1825,37 +3249,62 @@ function runConfetti(){
       ctx.fillStyle = p.color;
       ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
       ctx.restore();
-    });
+});
     if(frame < maxFrames){
       requestAnimationFrame(tick);
-    } else {
+} else {
       ctx.clearRect(0,0,canvas.width,canvas.height);
-    }
-  }
+}
+}
   tick();
 }
 
 /* ========================================================================
    Modals: 徽章 / 設定
    ======================================================================== */
+function renderBadgeTile(b){
+  const earned = STATE.badges.includes(b.id);
+  const rarity = b.rarity || 'common';
+  const showHiddenMystery = b.hidden && !earned;
+  const icon = earned ? b.icon : (showHiddenMystery ? '❓' : '❔');
+  const name = earned ? b.name : (showHiddenMystery ? '？？？' : b.name);
+  const desc = earned ? b.desc : (showHiddenMystery ? '隱藏成就，解鎖後才會揭曉！' : '完成挑戰以解鎖');
+  const unlockTs = STATE.badgeUnlocks && STATE.badgeUnlocks[b.id];
+  const unlockDate = earned && unlockTs ? new Date(unlockTs).toLocaleDateString('zh-TW') : '';
+  return `<div class="badge-tile ${earned?'earned':'locked'} rarity-${rarity}">
+    <span class="bicon">${icon}</span>
+    <div style="font-weight:700;">${name}</div>
+    <div style="margin-top:4px;">${desc}</div>
+    ${unlockDate ? `<div class="unlock-date">🗓️ ${unlockDate}</div>` : ''}
+  </div>`;
+}
+function badgeGroups(){
+  const all = Object.values(BADGES);
+  const milestoneIds = ['all_boss_cleared','all_perfect','explorer_all_units'];
+  const tiered = all.filter(b=>b.family);
+  const milestone = all.filter(b=>milestoneIds.includes(b.id));
+  const hidden = all.filter(b=>b.hidden);
+  const regular = all.filter(b=>!b.family && !b.hidden && !milestoneIds.includes(b.id));
+  return [
+    {title:'🎖️ 單元成就', list: regular},
+    {title:'📈 分級成就', list: tiered},
+    {title:'🌍 里程碑成就', list: milestone},
+    {title:'❓ 隱藏成就', list: hidden}
+  ];
+}
 function openBadgeModal(){
   const backdrop = document.createElement('div');
   backdrop.className = 'modal-backdrop';
   backdrop.onclick = (e)=>{ if(e.target===backdrop) backdrop.remove(); };
+  const groups = badgeGroups();
   backdrop.innerHTML = `
-    <div class="modal">
-      <h3>🏅 我的徽章</h3>
-      <p style="color:var(--text-dim);font-size:.85rem;">已獲得 ${STATE.badges.length} / ${Object.keys(BADGES).length} 個徽章</p>
-      <div class="badge-grid">
-        ${Object.values(BADGES).map(b=>{
-          const earned = STATE.badges.includes(b.id);
-          return `<div class="badge-tile ${earned?'earned':''}">
-            <span class="bicon">${earned?b.icon:'❔'}</span>
-            <div style="font-weight:700;">${earned?b.name:'尚未解鎖'}</div>
-            <div style="margin-top:4px;">${earned?b.desc:'完成挑戰以解鎖'}</div>
-          </div>`;
-        }).join('')}
-      </div>
+    <div class="modal" style="max-width:640px;">
+      <h3>🏆 成就牆・獎盃室</h3>
+      <p style="color:var(--text-dim);font-size:.85rem;">已獲得 ${STATE.badges.length} / ${Object.keys(BADGES).length} 個成就</p>
+      ${groups.map(g => `
+        <div class="achv-section-title">${g.title}</div>
+        <div class="badge-grid">${g.list.map(b=>renderBadgeTile(b)).join('')}</div>
+      `).join('')}
       <button class="btn secondary" style="margin-top:16px;width:100%;" onclick="this.closest('.modal-backdrop').remove()">關閉</button>
     </div>
   `;
@@ -1884,14 +3333,35 @@ function confirmReset(){
     document.querySelectorAll('.modal-backdrop').forEach(m=>m.remove());
     goHome();
     showToast('已重置所有進度', 'info');
-  }
+}
 }
 
 /* ========================================================================
    Init
    ======================================================================== */
+function recordVisit(){
+  try{
+    const today = new Date().toISOString().slice(0,10);
+    STATE.visitDates = STATE.visitDates || [];
+    if(STATE.visitDates[STATE.visitDates.length-1] !== today){
+      STATE.visitDates.push(today);
+      if(STATE.visitDates.length>60) STATE.visitDates = STATE.visitDates.slice(-60);
+    }
+    saveProgress();
+    const dates = STATE.visitDates.map(d=>new Date(d+'T00:00:00').getTime()).sort((a,b)=>a-b);
+    let run = 1, best = 1;
+    for(let i=1;i<dates.length;i++){
+      const diffDays = Math.round((dates[i]-dates[i-1])/86400000);
+      if(diffDays===1){ run++; best=Math.max(best,run); }
+      else if(diffDays>1){ run=1; }
+    }
+    if(best>=3) awardBadge('hidden_login_streak');
+  }catch(e){ /* 安靜跳過 */ }
+}
 window.addEventListener('DOMContentLoaded', ()=>{
   loadProgress();
+  recordVisit();
+  checkMilestones();
   updateHeaderStats();
   renderHome();
 });
