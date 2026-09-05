@@ -3319,7 +3319,13 @@ function openSettingsModal(){
       <h3>⚙️ 設定</h3>
       <p style="color:var(--text-dim);font-size:.85rem;">目前等級 Lv.${levelFromXp(STATE.xp)}，總經驗值 ${STATE.xp} XP，已獲得 ${STATE.badges.length} 個徽章。</p>
       <p style="color:var(--text-dim);font-size:.85rem;">你的學習進度會自動儲存在這台裝置的瀏覽器中。</p>
-      <button class="btn warn" style="width:100%;margin-top:10px;" onclick="confirmReset()">🗑️ 重置所有進度</button>
+      <div class="achv-section-title">💾 備份與還原進度</div>
+      <p style="color:var(--text-dim);font-size:.78rem;margin:0 0 10px;">換裝置、換瀏覽器，或擔心不小心清除資料前，建議先匯出備份；之後可以在任何裝置匯入還原進度。</p>
+      <button class="btn" style="width:100%;" onclick="exportProgress()">📤 匯出進度</button>
+      <button class="btn secondary" style="margin-top:10px;width:100%;" onclick="triggerImportProgress()">📥 匯入進度</button>
+      <input type="file" id="importFileInput" accept="application/json,.json" style="display:none" onchange="handleImportFile(event)">
+      <div class="achv-section-title" style="margin-top:22px;">⚠️ 危險區域</div>
+      <button class="btn warn" style="width:100%;margin-top:6px;" onclick="confirmReset()">🗑️ 重置所有進度</button>
       <button class="btn secondary" style="margin-top:10px;width:100%;" onclick="this.closest('.modal-backdrop').remove()">關閉</button>
     </div>
   `;
@@ -3334,6 +3340,132 @@ function confirmReset(){
     goHome();
     showToast('已重置所有進度', 'info');
 }
+}
+
+/* ========================================================================
+   匯出／匯入進度 (Export / Import Progress)
+   ======================================================================== */
+const PROGRESS_EXPORT_APP_ID = 'math-adventure-island';
+const PROGRESS_EXPORT_SCHEMA_VERSION = 1;
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+function todayDateStr(){
+  const d = new Date();
+  return d.getFullYear() + '-' + pad2(d.getMonth()+1) + '-' + pad2(d.getDate());
+}
+
+function buildProgressExportPayload(){
+  return {
+    app: PROGRESS_EXPORT_APP_ID,
+    schemaVersion: PROGRESS_EXPORT_SCHEMA_VERSION,
+    storageKey: STORAGE_KEY,
+    exportedAt: new Date().toISOString(),
+    data: STATE
+  };
+}
+
+function exportProgress(){
+  try{
+    const payload = buildProgressExportPayload();
+    const json = JSON.stringify(payload, null, 2);
+    const blob = new Blob([json], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `aops-progress-${todayDateStr()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>{ try{ URL.revokeObjectURL(url); }catch(e){} }, 1000);
+    showToast('📤 進度已匯出，請妥善保存檔案', 'info');
+  }catch(e){
+    console.warn('匯出進度失敗', e);
+    showToast('匯出失敗，請稍後再試', 'wrong');
+  }
+}
+
+function triggerImportProgress(){
+  const input = document.getElementById('importFileInput');
+  if(input){ input.value = ''; input.click(); }
+}
+
+function isValidProgressUnitShape(u){
+  return !!(u && typeof u === 'object' &&
+    typeof u.unlocked === 'boolean' &&
+    typeof u.discoveryIndex === 'number' &&
+    typeof u.practiceIndex === 'number' &&
+    typeof u.practiceAnswers === 'object' &&
+    typeof u.bossState === 'object');
+}
+
+// 檢查匯入的物件是否為本網站產生的合法進度檔（回傳 {ok, reason}）
+function validateProgressExportPayload(obj){
+  if(!obj || typeof obj !== 'object' || Array.isArray(obj)){
+    return {ok:false, reason:'檔案格式不是合法的 JSON 物件'};
+  }
+  if(obj.app !== PROGRESS_EXPORT_APP_ID){
+    return {ok:false, reason:'這不是「數學冒險島」產生的進度備份檔'};
+  }
+  if(!obj.data || typeof obj.data !== 'object'){
+    return {ok:false, reason:'檔案缺少進度資料（data）欄位'};
+  }
+  const d = obj.data;
+  if(typeof d.xp !== 'number' || typeof d.streak !== 'number' || !Array.isArray(d.badges)){
+    return {ok:false, reason:'進度資料欄位不完整（xp / streak / badges）'};
+  }
+  if(!d.units || typeof d.units !== 'object'){
+    return {ok:false, reason:'進度資料缺少單元（units）資訊'};
+  }
+  const requiredUnitIds = ['unit1','unit2','unit3','unit4','unit5','unit6','unit7','unit8'];
+  for(const uid of requiredUnitIds){
+    if(!isValidProgressUnitShape(d.units[uid])){
+      return {ok:false, reason:`單元資料缺漏或格式錯誤：${uid}`};
+    }
+  }
+  return {ok:true};
+}
+
+function applyImportedProgress(parsed){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed.data));
+  document.querySelectorAll('.modal-backdrop').forEach(m=>m.remove());
+  showToast('✅ 進度已匯入，正在重新整理…', 'info');
+  setTimeout(()=>{ location.reload(); }, 600);
+}
+
+function handleImportFile(event){
+  const input = event && event.target;
+  const file = input && input.files && input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(){
+    let parsed;
+    try{
+      parsed = JSON.parse(reader.result);
+    }catch(e){
+      showToast('❌ 檔案不是合法的 JSON，匯入失敗', 'wrong');
+      return;
+    }
+    const check = validateProgressExportPayload(parsed);
+    if(!check.ok){
+      showToast('❌ ' + check.reason, 'wrong');
+      return;
+    }
+    try{
+      const existingRaw = localStorage.getItem(STORAGE_KEY);
+      if(existingRaw){
+        const proceed = confirm('匯入將會覆蓋目前裝置上的學習進度（等級、XP、成就與各單元記錄），此動作無法復原。確定要繼續匯入嗎？');
+        if(!proceed) return;
+      }
+      applyImportedProgress(parsed);
+    }catch(e){
+      console.warn('匯入進度失敗', e);
+      showToast('匯入失敗，請稍後再試', 'wrong');
+    }
+  };
+  reader.onerror = function(){
+    showToast('讀取檔案失敗，請重試', 'wrong');
+  };
+  reader.readAsText(file);
 }
 
 /* ========================================================================
