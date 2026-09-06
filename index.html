@@ -3322,8 +3322,6 @@ function openSettingsModal(){
       <div class="achv-section-title">💾 備份與還原進度</div>
       <p style="color:var(--text-dim);font-size:.78rem;margin:0 0 10px;">換裝置、換瀏覽器，或擔心不小心清除資料前，建議先匯出備份；之後可以在任何裝置匯入還原進度。</p>
       <button class="btn" style="width:100%;" onclick="exportProgress()">📤 匯出進度</button>
-      <button class="btn" style="width:100%;margin-top:10px;" onclick="triggerImportFile()">⬆️ 匯入進度</button>
-      <input type="file" id="import-file-input" accept="application/json,.json" style="display:none" onchange="handleImportFileChange(event)">
       <button class="btn secondary" style="margin-top:10px;width:100%;" onclick="triggerImportProgress()">📥 匯入進度</button>
       <input type="file" id="importFileInput" accept="application/json,.json" style="display:none" onchange="handleImportFile(event)">
       <div class="achv-section-title" style="margin-top:22px;">⚠️ 危險區域</div>
@@ -3386,90 +3384,6 @@ function exportProgress(){
   }
 }
 
-
-function isValidProgressExport(obj){
-  try{
-    if(!obj || typeof obj !== 'object' || Array.isArray(obj)) return false;
-    if(obj.app !== PROGRESS_EXPORT_APP_ID) return false;
-    const d = obj.data;
-    if(!d || typeof d !== 'object' || Array.isArray(d)) return false;
-    if(typeof d.xp !== 'number') return false;
-    if(!d.units || typeof d.units !== 'object') return false;
-    const requiredUnits = ['unit1','unit2','unit3','unit4','unit5','unit6','unit7','unit8'];
-    for(const uid of requiredUnits){
-      if(!d.units[uid] || typeof d.units[uid] !== 'object') return false;
-    }
-    if(!Array.isArray(d.badges)) return false;
-    return true;
-  }catch(e){ return false; }
-}
-
-function hasExistingProgress(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(!raw) return false;
-    const parsed = JSON.parse(raw);
-    if(!parsed) return false;
-    const hasXp = typeof parsed.xp === 'number' && parsed.xp > 0;
-    const hasBadges = Array.isArray(parsed.badges) && parsed.badges.length > 0;
-    const hasUnitProgress = parsed.units && Object.values(parsed.units).some(u => u && (u.hookSeen || u.discoveryIndex > 0 || u.discoveryDone || u.formalizeSeen || u.formalizeCheckDone || u.practiceIndex > 0 || u.practiceDone || u.sievePassed));
-    return hasXp || hasBadges || hasUnitProgress;
-  }catch(e){ return false; }
-}
-
-function performImport(data){
-  try{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    showToast('✅ 進度已匯入，正在重新整理...', 'info');
-    setTimeout(()=>location.reload(), 600);
-    return true;
-  }catch(e){
-    console.warn('匯入進度失敗', e);
-    showToast('匯入失敗：無法寫入儲存空間', 'wrong');
-    return false;
-  }
-}
-
-function triggerImportFile(){
-  const input = document.getElementById('import-file-input');
-  if(input) input.click();
-}
-
-function handleImportFileChange(event){
-  const input = event.target;
-  const file = input.files && input.files[0];
-  input.value = '';
-  if(!file) return;
-  if(file.size > 5 * 1024 * 1024){
-    showToast('匯入失敗：檔案過大，不像是有效的進度檔', 'wrong');
-    return;
-  }
-  const reader = new FileReader();
-  reader.onload = function(e){
-    let parsed;
-    try{
-      parsed = JSON.parse(e.target.result);
-    }catch(err){
-      showToast('匯入失敗：檔案不是有效的 JSON 格式', 'wrong');
-      return;
-    }
-    if(!isValidProgressExport(parsed)){
-      showToast('匯入失敗：這不是有效的「數學冒險島」進度檔', 'wrong');
-      return;
-    }
-    if(hasExistingProgress()){
-      if(confirm('匯入將會覆蓋目前裝置上的學習進度（等級、經驗值、成就與各單元進度），確定要匯入嗎？此動作無法復原。')){
-        performImport(parsed.data);
-      }
-    } else {
-      performImport(parsed.data);
-    }
-  };
-  reader.onerror = function(){
-    showToast('匯入失敗：無法讀取檔案', 'wrong');
-  };
-  reader.readAsText(file);
-}
 function triggerImportProgress(){
   const input = document.getElementById('importFileInput');
   if(input){ input.value = ''; input.click(); }
